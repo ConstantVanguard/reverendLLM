@@ -11,6 +11,7 @@ body {
   color: #f1f1f1;
   line-height: 1.6;
   overflow-x: hidden;
+  background: url("hero_background.png") center/cover fixed;
 }
 
 h1, h2, h3 {
@@ -23,18 +24,15 @@ a {
   color: inherit;
 }
 
-/* Hero Section */
-.hero-section {
-  height: 60vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("hero_background.jpg") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.main-container {
+  min-height: 100vh;
+  padding-bottom: 60px; /* Espace pour la barre de navigation en bas */
 }
 
-.overlay {
-  padding: 0 20px;
+/* Hero Section */
+.hero-section {
+  padding: 80px 20px 40px;
+  text-align: center;
 }
 
 .hero-section h1 {
@@ -52,16 +50,18 @@ a {
 
 /* Minister Section with Orbital Services */
 .minister-section {
-  padding: 80px 20px;
-  background-color: #0d0d0d;
-  min-height: 100vh;
   position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .minister-container {
+  position: relative;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,7 +71,6 @@ a {
   position: relative;
   width: 300px;
   height: 450px;
-  margin-bottom: 50px;
   z-index: 2;
 }
 
@@ -79,49 +78,49 @@ a {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
 }
 
-.services-orbit {
+/* Services orbitaux */
+.service-orbit {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 600px;
-  height: 600px;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .service-item {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120px;
-  height: 120px;
-  background-color: rgba(27, 27, 27, 0.8);
-  border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
   transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   z-index: 1;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
-.service-item:hover, .service-item.active {
-  transform: translate(-50%, -50%) scale(1.1);
-  background-color: #222;
+.service-circle {
+  width: 120px;
+  height: 120px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+}
+
+.service-item:hover .service-circle {
+  transform: scale(1.1);
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
   border-color: #d4af37;
 }
 
 .service-icon {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 10px;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,16 +132,44 @@ a {
 }
 
 .service-item h3 {
-  font-size: 0.9rem;
-  margin: 0;
-  padding: 0 5px;
+  font-size: 1rem;
+  margin-top: 10px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+}
+
+/* Positionnement spécifique de chaque service */
+#service-mariage {
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+}
+
+#service-bapteme {
+  bottom: 20%;
+  right: 25%;
+}
+
+#service-confirmation {
+  bottom: 10%;
+  left: 40%;
+}
+
+#service-funerailles {
+  top: 40%;
+  left: 15%;
+}
+
+#service-accompagnement {
+  top: 20%;
+  right: 30%;
 }
 
 /* Welcome Section */
 .welcome-section {
   padding: 80px 20px;
-  background-color: #0a0a0a;
   text-align: center;
+  background-color: rgba(10, 10, 10, 0.8);
 }
 
 .welcome-container {
@@ -164,8 +191,8 @@ a {
 /* Location Section */
 .location-section {
   padding: 80px 20px;
-  background-color: #0d0d0d;
   text-align: center;
+  background-color: rgba(13, 13, 13, 0.8);
 }
 
 .location-container {
@@ -214,7 +241,7 @@ a {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 1000;
   padding: 10px 0;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
@@ -245,7 +272,7 @@ a {
 
 /* Footer */
 footer {
-  background-color: #000;
+  background-color: transparent;
   padding: 20px;
   text-align: center;
   margin-bottom: 50px; /* Pour laisser de l'espace pour la navigation du bas */
@@ -257,21 +284,41 @@ footer {
 }
 
 /* Responsive Design */
+@media (max-width: 992px) {
+  .minister-photo-container {
+    width: 250px;
+    height: 375px;
+  }
+  
+  .service-circle {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .service-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-section h1 {
     font-size: 2.5rem;
   }
   
+  .minister-section {
+    min-height: auto;
+    padding: 40px 20px;
+  }
+  
   .minister-photo-container {
     width: 200px;
     height: 300px;
+    margin-bottom: 80px;
   }
   
-  .services-orbit {
+  .service-orbit {
     position: relative;
-    width: 100%;
-    height: auto;
-    transform: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -281,14 +328,26 @@ footer {
   
   .service-item {
     position: relative;
-    top: 0;
-    left: 0;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
     transform: none;
     margin: 10px;
   }
   
-  .service-item:hover, .service-item.active {
-    transform: scale(1.1);
+  .service-circle {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .service-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .service-item h3 {
+    font-size: 0.8rem;
   }
 }
 
