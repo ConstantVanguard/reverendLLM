@@ -9,73 +9,91 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <header class="hero-section">
-    <div class="overlay">
-      <h1>Révérend Constant</h1>
-      <p class="hero-subtitle">Pasteur protestant indépendant – tradition & modernité</p>
-    </div>
-  </header>
-
-  <section class="minister-section">
-    <div class="minister-container">
-      <div class="minister-photo-container">
-        <img src="reverend_enhanced.png" class="minister-photo" alt="Révérend Constant">
+  <div class="main-container">
+    <header class="hero-section">
+      <div class="overlay">
+        <h1>Révérend Constant</h1>
+        <p class="hero-subtitle">Pasteur protestant indépendant – tradition & modernité</p>
       </div>
-      
-      <div class="services-orbit">
-        <a href="mariage.html" class="service-item" style="--angle: 0deg; --distance: 250px;">
-          <div class="service-icon">
-            <img src="icon_mariage.png" alt="Mariage">
-          </div>
-          <h3>Mariage</h3>
-        </a>
+    </header>
+
+    <section class="minister-section">
+      <div class="minister-container">
+        <div class="minister-photo-container">
+          <img src="reverend_enhanced.png" class="minister-photo" alt="Révérend Constant">
+        </div>
         
-        <a href="bapteme.html" class="service-item" style="--angle: 72deg; --distance: 250px;">
-          <div class="service-icon">
-            <img src="icon_bapteme.png" alt="Baptême">
-          </div>
-          <h3>Baptême</h3>
-        </a>
-        
-        <a href="confirmation.html" class="service-item" style="--angle: 144deg; --distance: 250px;">
-          <div class="service-icon">
-            <img src="icon_confirmation.png" alt="Confirmation">
-          </div>
-          <h3>Confirmation</h3>
-        </a>
-        
-        <a href="enterrement.html" class="service-item" style="--angle: 216deg; --distance: 250px;">
-          <div class="service-icon">
-            <img src="icon_enterrement.png" alt="Funérailles">
-          </div>
-          <h3>Funérailles</h3>
-        </a>
-        
-        <a href="guidance.html" class="service-item" style="--angle: 288deg; --distance: 250px;">
-          <div class="service-icon">
-            <img src="icon_guidance.png" alt="Accompagnement">
-          </div>
-          <h3>Accompagnement</h3>
-        </a>
+        <!-- Services orbitaux -->
+        <div class="service-orbit">
+          <!-- Mariage -->
+          <a href="mariage.html" class="service-item" id="service-mariage">
+            <div class="service-circle">
+              <div class="service-icon">
+                <img src="icon_mariage.png" alt="Mariage">
+              </div>
+            </div>
+            <h3>MARIAGE</h3>
+          </a>
+          
+          <!-- Baptême -->
+          <a href="bapteme.html" class="service-item" id="service-bapteme">
+            <div class="service-circle">
+              <div class="service-icon">
+                <img src="icon_bapteme.png" alt="Baptême">
+              </div>
+            </div>
+            <h3>BAPTÊME</h3>
+          </a>
+          
+          <!-- Confirmation -->
+          <a href="confirmation.html" class="service-item" id="service-confirmation">
+            <div class="service-circle">
+              <div class="service-icon">
+                <img src="icon_confirmation.png" alt="Confirmation">
+              </div>
+            </div>
+            <h3>CONFIRMATION</h3>
+          </a>
+          
+          <!-- Funérailles -->
+          <a href="enterrement.html" class="service-item" id="service-funerailles">
+            <div class="service-circle">
+              <div class="service-icon">
+                <img src="icon_enterrement.png" alt="Funérailles">
+              </div>
+            </div>
+            <h3>FUNÉRAILLES</h3>
+          </a>
+          
+          <!-- Accompagnement -->
+          <a href="guidance.html" class="service-item" id="service-accompagnement">
+            <div class="service-circle">
+              <div class="service-icon">
+                <img src="icon_guidance.png" alt="Accompagnement">
+              </div>
+            </div>
+            <h3>ACCOMPAGNEMENT</h3>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="welcome-section">
-    <div class="welcome-container">
-      <h2>Bienvenue</h2>
-      <p>Pasteur protestant, je suis au service de tous les chrétiens qui souhaitent vivre leur foi en respectant tradition et modernité. Ma mission est d'accompagner chacun dans son cheminement spirituel, au travers des Écritures et des outils offerts par notre Religion.</p>
-    </div>
-  </section>
+    <section class="welcome-section">
+      <div class="welcome-container">
+        <h2>Bienvenue</h2>
+        <p>Pasteur protestant, je suis au service de tous les chrétiens qui souhaitent vivre leur foi en respectant tradition et modernité. Ma mission est d'accompagner chacun dans son cheminement spirituel, au travers des Écritures et des outils offerts par notre Religion.</p>
+      </div>
+    </section>
 
-  <section class="location-section">
-    <div class="location-container">
-      <h2>Lieu de Culte & Contact</h2>
-      <p>Services disponibles à mon presbytère (Octave Michotlaan 1, 1640 Rhode-Saint-Genèse), à 10 minutes de Waterloo, en déplacement ou par visioconférence si besoin.</p>
-      <p class="phone"><i class="fas fa-phone"></i> 0470 78 18 34</p>
-      <a class="cta-button" href="contact.html">Me contacter</a>
-    </div>
-  </section>
+    <section class="location-section">
+      <div class="location-container">
+        <h2>Lieu de Culte & Contact</h2>
+        <p>Services disponibles à mon presbytère (Octave Michotlaan 1, 1640 Rhode-Saint-Genèse), à 10 minutes de Waterloo, en déplacement ou par visioconférence si besoin.</p>
+        <p class="phone"><i class="fas fa-phone"></i> 0470 78 18 34</p>
+        <a class="cta-button" href="contact.html">Me contacter</a>
+      </div>
+    </section>
+  </div>
 
   <nav class="bottom-nav">
     <div class="nav-container">
@@ -88,31 +106,5 @@
   <footer>
     <p class="copyright">&copy; 2025 Révérend Constant. Tous droits réservés.</p>
   </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const serviceItems = document.querySelectorAll('.service-item');
-      
-      // Positionner les services en orbite
-      serviceItems.forEach(item => {
-        const angle = parseFloat(item.style.getPropertyValue('--angle'));
-        const distance = parseFloat(item.style.getPropertyValue('--distance'));
-        
-        const x = Math.cos(angle * Math.PI / 180) * distance;
-        const y = Math.sin(angle * Math.PI / 180) * distance;
-        
-        item.style.transform = `translate(${x}px, ${y}px)`;
-        
-        // Animation au survol
-        item.addEventListener('mouseenter', function() {
-          this.classList.add('active');
-        });
-        
-        item.addEventListener('mouseleave', function() {
-          this.classList.remove('active');
-        });
-      });
-    });
-  </script>
 </body>
 </html>
