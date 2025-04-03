@@ -9,19 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <nav class="main-nav">
-    <div class="nav-container">
-      <div class="logo-container">
-        <img src="logo.png" alt="Logo" class="nav-logo">
-      </div>
-      <div class="nav-links">
-        <a href="index.html" class="active">Accueil</a>
-        <a href="agenda.html">Agenda</a>
-        <a href="contact.html" class="nav-button">Contact</a>
-      </div>
-    </div>
-  </nav>
-
   <header class="hero-section">
     <div class="overlay">
       <h1>Révérend Constant</h1>
@@ -32,39 +19,39 @@
   <section class="minister-section">
     <div class="minister-container">
       <div class="minister-photo-container">
-        <img src="reverend_enhanced.jpg" class="minister-photo" alt="Révérend Constant">
+        <img src="reverend_enhanced.png" class="minister-photo" alt="Révérend Constant">
       </div>
       
       <div class="services-orbit">
-        <a href="mariage.html" class="service-item" style="--rotation: 0deg">
+        <a href="mariage.html" class="service-item" style="--angle: 0deg; --distance: 250px;">
           <div class="service-icon">
             <img src="icon_mariage.png" alt="Mariage">
           </div>
           <h3>Mariage</h3>
         </a>
         
-        <a href="bapteme.html" class="service-item" style="--rotation: 72deg">
+        <a href="bapteme.html" class="service-item" style="--angle: 72deg; --distance: 250px;">
           <div class="service-icon">
             <img src="icon_bapteme.png" alt="Baptême">
           </div>
           <h3>Baptême</h3>
         </a>
         
-        <a href="confirmation.html" class="service-item" style="--rotation: 144deg">
+        <a href="confirmation.html" class="service-item" style="--angle: 144deg; --distance: 250px;">
           <div class="service-icon">
             <img src="icon_confirmation.png" alt="Confirmation">
           </div>
           <h3>Confirmation</h3>
         </a>
         
-        <a href="enterrement.html" class="service-item" style="--rotation: 216deg">
+        <a href="enterrement.html" class="service-item" style="--angle: 216deg; --distance: 250px;">
           <div class="service-icon">
             <img src="enterrement.jpg" alt="Funérailles">
           </div>
           <h3>Funérailles</h3>
         </a>
         
-        <a href="guidance.html" class="service-item" style="--rotation: 288deg">
+        <a href="guidance.html" class="service-item" style="--angle: 288deg; --distance: 250px;">
           <div class="service-icon">
             <img src="icon_guidance.png" alt="Accompagnement">
           </div>
@@ -90,23 +77,33 @@
     </div>
   </section>
 
-  <footer>
-    <div class="footer-container">
-      <div class="footer-links">
-        <a href="index.html">Accueil</a>
-        <a href="contact.html">Contact</a>
-        <a href="agenda.html">Agenda</a>
-      </div>
-      <p class="copyright">&copy; 2025 Révérend Constant. Tous droits réservés.</p>
+  <nav class="bottom-nav">
+    <div class="nav-container">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="contact.html">Contact</a>
+      <a href="agenda.html">Agenda</a>
     </div>
+  </nav>
+
+  <footer>
+    <p class="copyright">&copy; 2025 Révérend Constant. Tous droits réservés.</p>
   </footer>
 
   <script>
-    // Animation pour les services orbitaux
     document.addEventListener('DOMContentLoaded', function() {
       const serviceItems = document.querySelectorAll('.service-item');
       
+      // Positionner les services en orbite
       serviceItems.forEach(item => {
+        const angle = parseFloat(item.style.getPropertyValue('--angle'));
+        const distance = parseFloat(item.style.getPropertyValue('--distance'));
+        
+        const x = Math.cos(angle * Math.PI / 180) * distance;
+        const y = Math.sin(angle * Math.PI / 180) * distance;
+        
+        item.style.transform = `translate(${x}px, ${y}px)`;
+        
+        // Animation au survol
         item.addEventListener('mouseenter', function() {
           this.classList.add('active');
         });
