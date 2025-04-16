@@ -23,7 +23,7 @@ body {
 }
 
 .logo img {
-  height: 60px;
+  height: 120px; /* Taille doublée */
   width: auto;
 }
 
@@ -81,42 +81,64 @@ body {
   pointer-events: auto; /* Réactive les clics sur les éléments enfants */
 }
 
-/* Animation de flottement */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+/* Animations de flottement plus aléatoires */
+@keyframes float1 {
+  0% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-8px) translateX(3px); }
+  50% { transform: translateY(-12px) translateX(-2px); }
+  75% { transform: translateY(-5px) translateX(-4px); }
+  100% { transform: translateY(0px) translateX(0px); }
 }
 
-.floating {
-  animation: float 4s ease-in-out infinite;
+@keyframes float2 {
+  0% { transform: translateY(0px) translateX(0px); }
+  30% { transform: translateY(-10px) translateX(-3px); }
+  60% { transform: translateY(-6px) translateX(5px); }
+  100% { transform: translateY(0px) translateX(0px); }
 }
 
-/* Décalage des animations pour chaque service */
-#service-mariage {
-  animation-delay: 0s;
+@keyframes float3 {
+  0% { transform: translateY(0px) translateX(0px); }
+  40% { transform: translateY(-12px) translateX(4px); }
+  70% { transform: translateY(-7px) translateX(-3px); }
+  100% { transform: translateY(0px) translateX(0px); }
 }
 
+@keyframes float4 {
+  0% { transform: translateY(0px) translateX(0px); }
+  20% { transform: translateY(-5px) translateX(-5px); }
+  55% { transform: translateY(-15px) translateX(2px); }
+  85% { transform: translateY(-8px) translateX(4px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+@keyframes float5 {
+  0% { transform: translateY(0px) translateX(0px); }
+  35% { transform: translateY(-9px) translateX(5px); }
+  65% { transform: translateY(-14px) translateX(-4px); }
+  90% { transform: translateY(-4px) translateX(-2px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+/* Application des animations différentes pour chaque service */
 #service-bapteme {
-  animation-delay: 0.8s;
+  animation: float1 5s ease-in-out infinite;
 }
 
 #service-confirmation {
-  animation-delay: 1.6s;
+  animation: float2 6s ease-in-out infinite;
 }
 
-#service-funerailles {
-  animation-delay: 2.4s;
+#service-mariage {
+  animation: float3 5.5s ease-in-out infinite;
 }
 
 #service-accompagnement {
-  animation-delay: 3.2s;
+  animation: float4 6.5s ease-in-out infinite;
+}
+
+#service-funerailles {
+  animation: float5 7s ease-in-out infinite;
 }
 
 .service-circle {
@@ -144,37 +166,41 @@ body {
   object-fit: contain;
 }
 
-.service-item span {
-  font-size: 1rem;
+/* Style pour les noms des services */
+.service-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem; /* Taille réduite */
   margin-top: 10px;
+  color: #d4af37; /* Couleur dorée */
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   letter-spacing: 1px;
+  text-decoration: none;
 }
 
-/* Positionnement spécifique de chaque service - Ajusté pour éviter les superpositions */
-#service-mariage {
-  top: 25%;
-  right: 10%;
-}
-
+/* Positionnement spécifique de chaque service - Réorganisé selon l'ordre demandé */
 #service-bapteme {
-  bottom: 20%;
-  right: 25%;
-}
-
-#service-confirmation {
-  bottom: 20%;
-  left: 25%;
-}
-
-#service-funerailles {
-  top: 25%;
+  top: 30%;
   left: 10%;
 }
 
-#service-accompagnement {
+#service-confirmation {
+  top: 15%;
+  left: 30%;
+}
+
+#service-mariage {
   top: 10%;
+  right: 40%;
+}
+
+#service-accompagnement {
+  top: 15%;
   right: 30%;
+}
+
+#service-funerailles {
+  top: 30%;
+  right: 10%;
 }
 
 /* Bottom bar */
@@ -199,26 +225,26 @@ body {
   max-width: 800px;
 }
 
-.name {
-  font-size: 1.2rem;
+/* Style uniforme pour tous les éléments de navigation */
+.nav-item {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem; /* Taille uniforme basée sur "Notre Ministère" */
   letter-spacing: 1px;
-}
-
-.nav-link {
   color: #d4af37;
   text-decoration: none;
-  font-size: 1rem;
-  letter-spacing: 1px;
   transition: all 0.3s ease;
-  margin-left: 20px;
 }
 
-.nav-link:hover {
+.nav-item:hover {
   color: #ffffff;
 }
 
 /* Responsive Design */
 @media (max-width: 992px) {
+  .logo img {
+    height: 90px;
+  }
+  
   .service-circle {
     width: 100px;
     height: 100px;
@@ -231,6 +257,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  .logo img {
+    height: 80px;
+  }
+  
   .minister-photo {
     height: 50vh;
   }
@@ -265,8 +295,8 @@ body {
     height: 50px;
   }
   
-  .service-item span {
-    font-size: 0.8rem;
+  .service-name {
+    font-size: 0.75rem;
   }
   
   .main-container {
@@ -284,30 +314,21 @@ body {
     align-items: center;
   }
   
-  .nav-link {
+  .nav-item {
     margin: 5px 0;
-    margin-left: 0;
-  }
-  
-  .name {
-    margin-bottom: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .logo img {
-    height: 40px;
+    height: 60px;
   }
   
   .bottom-bar {
     padding: 10px 15px;
   }
   
-  .name {
-    font-size: 1rem;
-  }
-  
-  .nav-link {
+  .nav-item {
     font-size: 0.9rem;
   }
 }
