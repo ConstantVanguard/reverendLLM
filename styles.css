@@ -23,7 +23,7 @@ body {
 }
 
 .logo img {
-  height: 120px; /* Taille doublée */
+  height: 60px;
   width: auto;
 }
 
@@ -67,7 +67,6 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Pour que les clics passent à travers la div parente */
 }
 
 .service-item {
@@ -78,68 +77,6 @@ body {
   text-align: center;
   transition: all 0.3s ease;
   z-index: 1;
-  pointer-events: auto; /* Réactive les clics sur les éléments enfants */
-  text-decoration: none !important; /* Suppression du soulignement */
-}
-
-/* Animations de flottement plus aléatoires */
-@keyframes float1 {
-  0% { transform: translateY(0px) translateX(0px); }
-  25% { transform: translateY(-8px) translateX(3px); }
-  50% { transform: translateY(-12px) translateX(-2px); }
-  75% { transform: translateY(-5px) translateX(-4px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
-
-@keyframes float2 {
-  0% { transform: translateY(0px) translateX(0px); }
-  30% { transform: translateY(-10px) translateX(-3px); }
-  60% { transform: translateY(-6px) translateX(5px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
-
-@keyframes float3 {
-  0% { transform: translateY(0px) translateX(0px); }
-  40% { transform: translateY(-12px) translateX(4px); }
-  70% { transform: translateY(-7px) translateX(-3px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
-
-@keyframes float4 {
-  0% { transform: translateY(0px) translateX(0px); }
-  20% { transform: translateY(-5px) translateX(-5px); }
-  55% { transform: translateY(-15px) translateX(2px); }
-  85% { transform: translateY(-8px) translateX(4px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
-
-@keyframes float5 {
-  0% { transform: translateY(0px) translateX(0px); }
-  35% { transform: translateY(-9px) translateX(5px); }
-  65% { transform: translateY(-14px) translateX(-4px); }
-  90% { transform: translateY(-4px) translateX(-2px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
-
-/* Application des animations différentes pour chaque service */
-#service-bapteme {
-  animation: float1 5s ease-in-out infinite;
-}
-
-#service-confirmation {
-  animation: float2 6s ease-in-out infinite;
-}
-
-#service-mariage {
-  animation: float3 5.5s ease-in-out infinite;
-}
-
-#service-accompagnement {
-  animation: float4 6.5s ease-in-out infinite;
-}
-
-#service-funerailles {
-  animation: float5 7s ease-in-out infinite;
 }
 
 .service-circle {
@@ -167,41 +104,37 @@ body {
   object-fit: contain;
 }
 
-/* Style pour les noms des services */
-.service-name {
-  font-family: 'Cinzel', serif;
-  font-size: 0.85rem;
+.service-item span {
+  font-size: 1rem;
   margin-top: 10px;
-  color: #d4af37;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   letter-spacing: 1px;
-  text-decoration: none !important;
 }
 
-/* Positionnement spécifique de chaque service - Ajusté pour éviter les superpositions */
+/* Positionnement spécifique de chaque service */
+#service-mariage {
+  top: 30%;
+  right: 15%;
+}
+
 #service-bapteme {
   top: 30%;
-  left: 10%;
+  left: 15%;
 }
 
 #service-confirmation {
-  bottom: 20%;
-  left: 30%;
-}
-
-#service-mariage {
-  top: 20%;
-  right: 20%; /* Déplacé encore plus à droite */
-}
-
-#service-accompagnement {
-  bottom: 30%; /* Repositionné encore plus bas */
-  right: 25%;
+  bottom: 25%;
+  left: 20%;
 }
 
 #service-funerailles {
-  top: 30%;
-  right: 10%;
+  bottom: 25%;
+  left: 15%;
+}
+
+#service-accompagnement {
+  bottom: 25%;
+  right: 15%;
 }
 
 /* Bottom bar */
@@ -212,40 +145,31 @@ body {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
   z-index: 100;
 }
 
-.nav-links {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 800px;
+.name {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
 }
 
-/* Style uniforme pour tous les éléments de navigation */
-.nav-item {
-  font-family: 'Cinzel', serif;
-  font-size: 1rem;
-  letter-spacing: 1px;
+.contact-link {
   color: #d4af37;
   text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 1px;
   transition: all 0.3s ease;
 }
 
-.nav-item:hover {
+.contact-link:hover {
   color: #ffffff;
 }
 
 /* Responsive Design */
 @media (max-width: 992px) {
-  .logo img {
-    height: 90px;
-  }
-  
   .service-circle {
     width: 100px;
     height: 100px;
@@ -258,10 +182,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .logo img {
-    height: 80px;
-  }
-  
   .minister-photo {
     height: 50vh;
   }
@@ -273,7 +193,6 @@ body {
     justify-content: center;
     gap: 20px;
     margin-top: 30px;
-    pointer-events: auto;
   }
   
   .service-item {
@@ -283,7 +202,6 @@ body {
     right: auto !important;
     bottom: auto !important;
     margin: 10px;
-    animation: none !important; /* Désactive l'animation sur mobile */
   }
   
   .service-circle {
@@ -296,8 +214,8 @@ body {
     height: 50px;
   }
   
-  .service-name {
-    font-size: 0.75rem;
+  .service-item span {
+    font-size: 0.8rem;
   }
   
   .main-container {
@@ -309,27 +227,22 @@ body {
   body {
     overflow-y: auto;
   }
-  
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .nav-item {
-    margin: 5px 0;
-  }
 }
 
 @media (max-width: 480px) {
   .logo img {
-    height: 60px;
+    height: 40px;
   }
   
   .bottom-bar {
     padding: 10px 15px;
   }
   
-  .nav-item {
+  .name {
+    font-size: 1rem;
+  }
+  
+  .contact-link {
     font-size: 0.9rem;
   }
 }
