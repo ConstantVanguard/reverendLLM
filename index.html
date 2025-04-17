@@ -1,75 +1,158 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Révérend Constant</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="logo">
-    <!-- Remplacez par votre logo -->
-    <img src="logo.png" alt="Logo Révérend Constant">
-  </div>
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background-color: #0c0c0c;
+  color: #f1f1f1;
+}
 
-  <div class="main-container">
-    <div class="minister-container">
-      <div class="minister-photo">
-        <img src="reverend_enhanced.png" alt="Révérend Constant">
-      </div>
-      
-      <!-- Services orbitaux -->
-      <div class="service-orbit">
-        <!-- Baptême -->
-        <a href="bapteme.html" class="service-item floating" id="service-bapteme">
-          <div class="service-circle">
-            <img src="icon_bapteme.png" alt="Baptême">
-          </div>
-          <span class="service-name">BAPTÊME</span>
-        </a>
-        
-        <!-- Confirmation -->
-        <a href="confirmation.html" class="service-item floating" id="service-confirmation">
-          <div class="service-circle">
-            <img src="icon_confirmation.png" alt="Confirmation">
-          </div>
-          <span class="service-name">CONFIRMATION</span>
-        </a>
-        
-        <!-- Mariage -->
-        <a href="mariage.html" class="service-item floating" id="service-mariage">
-          <div class="service-circle">
-            <img src="icon_mariage.png" alt="Mariage">
-          </div>
-          <span class="service-name">MARIAGE</span>
-        </a>
-        
-        <!-- Accompagnement -->
-        <a href="guidance.html" class="service-item floating" id="service-accompagnement">
-          <div class="service-circle">
-            <img src="icon_guidance.png" alt="Accompagnement">
-          </div>
-          <span class="service-name">ACCOMPAGNEMENT</span>
-        </a>
-        
-        <!-- Funérailles -->
-        <a href="enterrement.html" class="service-item floating" id="service-funerailles">
-          <div class="service-circle">
-            <img src="icon_enterrement.png" alt="Funérailles">
-          </div>
-          <span class="service-name">FUNÉRAILLES</span>
-        </a>
-      </div>
-    </div>
-  </div>
+h1, h2, h3 {
+  font-family: 'Cinzel', serif;
+  color: #d4af37;
+  text-align: center;
+}
 
-  <div class="bottom-bar">
-    <div class="nav-links">
-      <div class="nav-item">Révérend Constant</div>
-      <a href="eglise.html" class="nav-item">Notre Ministère</a>
-      <a href="contact.html" class="nav-item">Contact</a>
-    </div>
-  </div>
-</body>
-</html>
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(15, 15, 15, 0.9)), url("hero_background.jpg") center/cover no-repeat;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-logo {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.about {
+  padding: 4rem 2rem;
+  background: #111;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.portrait {
+  max-width: 250px;
+  border-radius: 50%;
+  border: 3px solid #d4af37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.about-text {
+  flex: 1;
+  min-width: 280px;
+  color: #ddd;
+}
+
+.services {
+  padding: 4rem 2rem;
+  background-color: #0d0d0d;
+  text-align: center;
+}
+
+.service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem 4.5rem; /* Augmentation de l'espacement horizontal entre les icônes */
+  margin-top: 2rem;
+  position: relative;
+}
+
+.service-card {
+  background: #1b1b1b;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 180px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: #f1f1f1;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+  position: relative; /* Ajout pour permettre le z-index */
+}
+
+/* Ajustements spécifiques pour chaque icône */
+.service-card:nth-child(1) { /* Mariage */
+  margin-right: 15px; /* Déplace légèrement vers la droite */
+}
+
+.service-card:nth-child(2) { /* Baptême */
+  margin-right: -25px; /* Rapproche du baptême de la confirmation */
+}
+
+.service-card:nth-child(3) { /* Confirmation */
+  margin-left: -25px; /* Rapproche la confirmation du baptême */
+}
+
+.service-card:nth-child(4) { /* Funérailles */
+  margin-left: 20px; /* Éloigne des autres icônes */
+}
+
+.service-card:nth-child(5) { /* Accompagnement */
+  margin-right: 20px; /* Éloigne des autres icônes */
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  z-index: 10; /* Place la carte survolée au-dessus des autres */
+}
+
+.service-card img {
+  width: 70px;
+  margin-bottom: 1rem;
+}
+
+.contact {
+  padding: 3rem 2rem;
+  background: #101010;
+  text-align: center;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 2rem;
+  background: #d4af37;
+  color: #000;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.cta:hover {
+  background: #b8972e;
+}
+
+footer {
+  background: #000;
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.footer-links a {
+  color: #d4af37;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
