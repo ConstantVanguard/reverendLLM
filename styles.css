@@ -77,8 +77,7 @@ body {
   text-align: center;
   transition: all 0.3s ease;
   z-index: 1;
-  text-decoration: none !important;
-  color: #d4af37 !important;
+  text-decoration: none;
 }
 
 .service-circle {
@@ -111,7 +110,7 @@ body {
   margin-top: 10px;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   letter-spacing: 1px;
-  color: #d4af37 !important;
+  color: #d4af37;
 }
 
 /* Positionnement spécifique de chaque service */
