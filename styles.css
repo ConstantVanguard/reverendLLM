@@ -178,25 +178,28 @@ body {
   text-decoration: none;
 }
 
-/* Positionnement spécifique de chaque service - Réorganisé selon l'ordre demandé */
+/* Positionnement spécifique de chaque service - Modifié selon les nouvelles instructions */
 #service-bapteme {
   top: 30%;
   left: 10%;
 }
 
-#service-confirmation {
+/* Mariage déplacé à l'ancienne position de confirmation */
+#service-mariage {
   top: 15%;
   left: 30%;
 }
 
-#service-mariage {
-  top: 10%;
-  right: 40%;
+/* Confirmation déplacée en dessous de mariage */
+#service-confirmation {
+  top: 30%;
+  left: 30%;
 }
 
+/* Accompagnement déplacé 20% plus à droite */
 #service-accompagnement {
   top: 15%;
-  right: 30%;
+  right: 10%; /* Déplacé de 30% à 10% (20% plus à droite) */
 }
 
 #service-funerailles {
