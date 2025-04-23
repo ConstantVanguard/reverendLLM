@@ -79,6 +79,7 @@ body {
   transition: all 0.3s ease;
   z-index: 1;
   pointer-events: auto; /* Réactive les clics sur les éléments enfants */
+  text-decoration: none; /* Supprime le soulignement des liens */
 }
 
 /* Animations de flottement plus aléatoires */
