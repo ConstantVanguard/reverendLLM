@@ -190,16 +190,16 @@ body {
   left: 30%;
 }
 
-/* Confirmation déplacée en dessous de mariage */
+/* Confirmation déplacée en dessous de mariage et 10% plus bas */
 #service-confirmation {
-  top: 30%;
+  top: 40%; /* 30% + 10% plus bas */
   left: 30%;
 }
 
-/* Accompagnement déplacé 20% plus à droite */
+/* Accompagnement déplacé 5% plus à droite */
 #service-accompagnement {
   top: 15%;
-  right: 10%; /* Déplacé de 30% à 10% (20% plus à droite) */
+  right: 25%; /* Déplacé de 30% à 25% (5% plus à droite) */
 }
 
 #service-funerailles {
