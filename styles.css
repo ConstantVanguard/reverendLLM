@@ -224,7 +224,7 @@ body {
   z-index: 100;
 }
 
-/* Modification de la navigation pour centrer "Notre Ministère" */
+/* Modification de la navigation pour centrer "Notre Ministère" et décaler de 2% vers la gauche */
 .nav-links {
   display: flex;
   justify-content: center; /* Centre les éléments */
@@ -232,6 +232,7 @@ body {
   width: 100%;
   max-width: 800px;
   position: relative; /* Pour le positionnement absolu des éléments latéraux */
+  transform: translateX(-2%); /* Décale tous les onglets de 2% vers la gauche */
 }
 
 /* Style uniforme pour tous les éléments de navigation */
@@ -337,6 +338,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 10px 0;
+    transform: translateX(0); /* Réinitialise le décalage sur mobile */
   }
   
   .nav-links div.nav-item:first-child,
