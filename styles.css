@@ -180,9 +180,10 @@ body {
 }
 
 /* Positionnement spécifique de chaque service - Modifié selon les nouvelles instructions */
+/* Baptême déplacé 3% plus à droite */
 #service-bapteme {
   top: 30%;
-  left: 10%;
+  left: 13%; /* Déplacé de left: 10% à left: 13% (3% plus à droite) */
 }
 
 /* Mariage déplacé à l'ancienne position de confirmation */
@@ -206,7 +207,7 @@ body {
 /* Funérailles déplacée 5% plus à gauche */
 #service-funerailles {
   top: 30%;
-  right: 15%; /* Déplacé de right: 10% à right: 15% (5% plus à gauche) */
+  right: 15%;
 }
 
 /* Bottom bar */
