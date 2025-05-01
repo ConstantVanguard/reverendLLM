@@ -81,6 +81,14 @@ body {
   z-index: 1;
   pointer-events: auto; /* Réactive les clics sur les éléments enfants */
   text-decoration: none; /* Supprime le soulignement des liens */
+  /* Correction pour les zones de cliquage */
+  cursor: pointer;
+}
+
+/* Correction pour s'assurer que toute la zone est cliquable */
+.service-item .service-circle,
+.service-item .service-name {
+  pointer-events: none; /* Permet aux clics de passer à travers ces éléments vers le lien parent */
 }
 
 /* Animations de flottement plus aléatoires */
@@ -186,16 +194,16 @@ body {
   left: 13%; /* Déplacé de left: 10% à left: 13% (3% plus à droite) */
 }
 
-/* Mariage déplacé à l'ancienne position de confirmation */
+/* Mariage déplacé 3% plus à gauche */
 #service-mariage {
   top: 15%;
-  left: 30%;
+  left: 27%; /* Déplacé de left: 30% à left: 27% (3% plus à gauche) */
 }
 
-/* Confirmation déplacée en dessous de mariage et 10% plus bas que précédemment */
+/* Confirmation déplacée 3% plus à gauche */
 #service-confirmation {
   top: 53%;
-  left: 30%;
+  left: 27%; /* Déplacé de left: 30% à left: 27% (3% plus à gauche) */
 }
 
 /* Accompagnement déplacé 5% plus à gauche */
