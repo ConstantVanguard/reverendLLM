@@ -44,17 +44,12 @@ body {
 .page-subtitle {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
-  color: #ffffff; /* Changé de #333 à blanc */
+  color: #f5e7c1; /* Beige clair */
   max-width: 800px;
   margin: 0 auto;
-  text-shadow: 
-    -1px -1px 0 #d4af37,  
-    1px -1px 0 #d4af37,
-    -1px 1px 0 #d4af37,
-    1px 1px 0 #d4af37,
-    0 0 8px rgba(212, 175, 55, 0.5); /* Effet de lueur dorée */
-  font-weight: 600; /* Ajouté pour rendre le texte plus visible */
-  letter-spacing: 0.5px; /* Ajouté pour améliorer la lisibilité */
+  font-weight: 600; /* Pour une meilleure lisibilité */
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Légère ombre pour améliorer la lisibilité */
 }
 
 /* Hamburger Menu */
