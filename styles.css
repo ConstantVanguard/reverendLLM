@@ -71,6 +71,7 @@ body {
   pointer-events: none; /* Pour que les clics passent à travers la div parente */
 }
 
+/* Correction des zones de cliquage - nouvelle implémentation */
 .service-item {
   position: absolute;
   display: flex;
@@ -81,14 +82,10 @@ body {
   z-index: 1;
   pointer-events: auto; /* Réactive les clics sur les éléments enfants */
   text-decoration: none; /* Supprime le soulignement des liens */
-  /* Correction pour les zones de cliquage */
   cursor: pointer;
-}
-
-/* Correction pour s'assurer que toute la zone est cliquable */
-.service-item .service-circle,
-.service-item .service-name {
-  pointer-events: none; /* Permet aux clics de passer à travers ces éléments vers le lien parent */
+  /* Assure que la zone cliquable couvre toute la surface */
+  width: 120px; /* Même largeur que le cercle */
+  height: auto; /* Hauteur automatique pour inclure le texte */
 }
 
 /* Animations de flottement plus aléatoires */
@@ -285,6 +282,11 @@ body {
     width: 60px;
     height: 60px;
   }
+  
+  /* Ajuster la largeur des zones cliquables en responsive */
+  .service-item {
+    width: 100px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -315,6 +317,7 @@ body {
     bottom: auto !important;
     margin: 10px;
     animation: none !important; /* Désactive l'animation sur mobile */
+    width: 80px; /* Ajuster la largeur en mode mobile */
   }
   
   .service-circle {
