@@ -267,7 +267,7 @@ body {
   color: #ffffff;
 }
 
-/* Responsive Design */
+/* Responsive Design - Nouvelle implémentation complète */
 @media (max-width: 992px) {
   .logo img {
     height: 90px;
@@ -283,117 +283,73 @@ body {
     height: 60px;
   }
   
-  /* Ajuster la largeur des zones cliquables en responsive */
   .service-item {
     width: 100px;
   }
 }
 
 @media (max-width: 768px) {
-  .logo img {
-    height: 80px;
-  }
-  
-  .minister-photo {
-    height: 50vh;
-    transform: translateX(0); /* Réinitialise le décalage sur mobile */
-  }
-  
-  /* Modification pour l'affichage mobile */
   body {
     overflow-y: auto;
     height: auto;
   }
   
+  .logo img {
+    height: 70px;
+  }
+  
+  /* Nouvelle mise en page pour mobile */
   .main-container {
     height: auto;
-    min-height: 100vh;
-    padding: 80px 0 100px; /* Ajoute un padding en bas pour éviter que le contenu soit masqué par la barre */
-    overflow-y: auto;
+    min-height: calc(100vh - 60px); /* Hauteur de l'écran moins la barre */
+    padding: 70px 0 0; /* Padding pour le logo */
+    display: block; /* Changement de flex à block */
   }
   
   .minister-container {
     height: auto;
-    flex-direction: column;
+    display: flex;
+    flex-direction: row; /* Layout horizontal */
+    padding: 0 20px 70px; /* Padding bas pour éviter la barre */
   }
   
+  /* Photo du ministre à gauche */
+  .minister-photo {
+    height: auto;
+    width: 40%; /* Prend 40% de la largeur */
+    max-height: none;
+    transform: translateX(0); /* Pas de décalage */
+    margin-right: 5%;
+  }
+  
+  .minister-photo img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Service orbit à droite */
   .service-orbit {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Affichage en grille 2x3 */
-    gap: 20px;
-    margin-top: 30px;
+    width: 55%; /* Prend 55% de la largeur */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end; /* Aligne à droite */
     pointer-events: auto;
-    width: 100%;
-    padding: 0 20px;
   }
   
+  /* Redimensionnement des services */
   .service-item {
     position: relative;
     top: auto !important;
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
-    margin: 10px auto;
-    animation: none !important; /* Désactive l'animation sur mobile */
-    width: 80px; /* Ajuster la largeur en mode mobile */
-    justify-self: center;
-  }
-  
-  .service-circle {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .service-circle img {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .service-name {
-    font-size: 0.75rem;
-  }
-  
-  /* Ajustement pour la navigation en mode mobile */
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 0;
-    transform: translateX(0); /* Réinitialise le décalage sur mobile */
-  }
-  
-  .nav-links div.nav-item:first-child,
-  .nav-links a.nav-item:last-child {
-    position: static; /* Réinitialise le positionnement absolu sur mobile */
-  }
-  
-  .nav-item {
     margin: 5px 0;
-  }
-  
-  /* Réduire la hauteur de la barre du bas sur mobile */
-  .bottom-bar {
-    padding: 10px 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo img {
-    height: 60px;
-  }
-  
-  .bottom-bar {
-    padding: 8px 10px;
-  }
-  
-  .nav-item {
-    font-size: 0.9rem;
-  }
-  
-  /* Ajustement supplémentaire pour les très petits écrans */
-  .service-orbit {
-    grid-template-columns: repeat(2, 1fr); /* Maintient 2 colonnes */
-    gap: 15px;
+    width: 70px;
+    animation: none !important;
+    z-index: 5; /* Doit être au-dessus de la barre du bas */
   }
   
   .service-circle {
@@ -406,7 +362,69 @@ body {
     height: 40px;
   }
   
+  .service-name {
+    font-size: 0.7rem;
+  }
+  
+  /* Barre de navigation */
+  .bottom-bar {
+    height: 60px; /* Hauteur fixe */
+    padding: 0 10px;
+  }
+  
+  .nav-links {
+    flex-direction: row;
+    transform: translateX(0);
+  }
+  
+  .nav-links div.nav-item:first-child {
+    display: none; /* Cache "Révérend Constant" sur mobile */
+  }
+  
+  .nav-links a.nav-item {
+    position: static;
+    margin: 0 15px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .minister-container {
+    padding: 0 10px 70px;
+  }
+  
+  .logo img {
+    height: 60px;
+  }
+  
+  .minister-photo {
+    width: 35%;
+  }
+  
+  .service-orbit {
+    width: 60%;
+  }
+  
+  .service-circle {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .service-circle img {
+    width: 35px;
+    height: 35px;
+  }
+  
   .service-item {
-    width: 70px;
+    width: 60px;
+  }
+  
+  .service-name {
+    font-size: 0.65rem;
+  }
+  
+  .nav-links a.nav-item {
+    margin: 0 10px;
+    font-size: 0.8rem;
   }
 }
