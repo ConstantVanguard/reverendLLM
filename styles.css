@@ -267,7 +267,7 @@ body {
   color: #ffffff;
 }
 
-/* Responsive Design - Nouvelle implémentation complète */
+/* Responsive Design - Solution simplifiée */
 @media (max-width: 992px) {
   .logo img {
     height: 90px;
@@ -289,37 +289,42 @@ body {
 }
 
 @media (max-width: 768px) {
+  /* Permettre le défilement sur mobile */
   body {
     overflow-y: auto;
     height: auto;
   }
   
+  /* Ajuster la taille du logo */
   .logo img {
-    height: 70px;
+    height: 80px;
   }
   
-  /* Nouvelle mise en page pour mobile */
+  /* Ajuster le conteneur principal */
   .main-container {
     height: auto;
-    min-height: calc(100vh - 60px); /* Hauteur de l'écran moins la barre */
-    padding: 70px 0 0; /* Padding pour le logo */
-    display: block; /* Changement de flex à block */
+    min-height: 100vh;
+    padding-bottom: 80px; /* Espace pour la barre du bas */
+    overflow-y: visible;
   }
   
+  /* Ajuster le conteneur du ministre */
   .minister-container {
     height: auto;
-    display: flex;
-    flex-direction: row; /* Layout horizontal */
-    padding: 0 20px 70px; /* Padding bas pour éviter la barre */
+    min-height: 100vh;
+    padding-bottom: 80px; /* Espace pour la barre du bas */
+    flex-direction: column;
   }
   
-  /* Photo du ministre à gauche */
+  /* Ajuster la photo du ministre */
   .minister-photo {
     height: auto;
-    width: 40%; /* Prend 40% de la largeur */
+    width: 80%;
+    max-width: 300px;
     max-height: none;
-    transform: translateX(0); /* Pas de décalage */
-    margin-right: 5%;
+    transform: translateX(0);
+    margin-top: 100px; /* Espace pour le logo */
+    margin-bottom: 30px;
   }
   
   .minister-photo img {
@@ -327,29 +332,76 @@ body {
     height: auto;
   }
   
-  /* Service orbit à droite */
+  /* Réorganiser les services en grille */
   .service-orbit {
     position: relative;
-    width: 55%; /* Prend 55% de la largeur */
+    width: 100%;
     height: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end; /* Aligne à droite */
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Aligner à droite */
+    padding: 0 20px;
     pointer-events: auto;
   }
   
-  /* Redimensionnement des services */
+  /* Ajuster les services */
   .service-item {
     position: relative;
     top: auto !important;
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
-    margin: 5px 0;
-    width: 70px;
+    margin: 10px;
+    width: 80px;
     animation: none !important;
-    z-index: 5; /* Doit être au-dessus de la barre du bas */
+  }
+  
+  .service-circle {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .service-circle img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .service-name {
+    font-size: 0.75rem;
+  }
+  
+  /* Ajuster la barre du bas */
+  .bottom-bar {
+    padding: 10px 15px;
+  }
+  
+  .nav-links {
+    transform: translateX(0);
+  }
+  
+  .nav-links div.nav-item:first-child {
+    display: none; /* Masquer sur mobile */
+  }
+  
+  .nav-item {
+    margin: 0 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    height: 60px;
+  }
+  
+  .minister-photo {
+    width: 70%;
+    margin-top: 80px;
+  }
+  
+  .service-item {
+    width: 70px;
+    margin: 8px;
   }
   
   .service-circle {
@@ -366,65 +418,7 @@ body {
     font-size: 0.7rem;
   }
   
-  /* Barre de navigation */
-  .bottom-bar {
-    height: 60px; /* Hauteur fixe */
-    padding: 0 10px;
-  }
-  
-  .nav-links {
-    flex-direction: row;
-    transform: translateX(0);
-  }
-  
-  .nav-links div.nav-item:first-child {
-    display: none; /* Cache "Révérend Constant" sur mobile */
-  }
-  
-  .nav-links a.nav-item {
-    position: static;
-    margin: 0 15px;
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .minister-container {
-    padding: 0 10px 70px;
-  }
-  
-  .logo img {
-    height: 60px;
-  }
-  
-  .minister-photo {
-    width: 35%;
-  }
-  
-  .service-orbit {
-    width: 60%;
-  }
-  
-  .service-circle {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .service-circle img {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .service-item {
-    width: 60px;
-  }
-  
-  .service-name {
-    font-size: 0.65rem;
-  }
-  
-  .nav-links a.nav-item {
-    margin: 0 10px;
+  .nav-item {
     font-size: 0.8rem;
   }
 }
