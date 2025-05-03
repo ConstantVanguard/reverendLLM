@@ -71,7 +71,6 @@ body {
   pointer-events: none; /* Pour que les clics passent à travers la div parente */
 }
 
-/* Correction des zones de cliquage - nouvelle implémentation */
 .service-item {
   position: absolute;
   display: flex;
@@ -82,10 +81,14 @@ body {
   z-index: 1;
   pointer-events: auto; /* Réactive les clics sur les éléments enfants */
   text-decoration: none; /* Supprime le soulignement des liens */
+  /* Correction pour les zones de cliquage */
   cursor: pointer;
-  /* Assure que la zone cliquable couvre toute la surface */
-  width: 120px; /* Même largeur que le cercle */
-  height: auto; /* Hauteur automatique pour inclure le texte */
+}
+
+/* Correction pour s'assurer que toute la zone est cliquable */
+.service-item .service-circle,
+.service-item .service-name {
+  pointer-events: none; /* Permet aux clics de passer à travers ces éléments vers le lien parent */
 }
 
 /* Animations de flottement plus aléatoires */
@@ -267,7 +270,7 @@ body {
   color: #ffffff;
 }
 
-/* Responsive Design - Solution simplifiée */
+/* Responsive Design */
 @media (max-width: 992px) {
   .logo img {
     height: 90px;
@@ -282,69 +285,28 @@ body {
     width: 60px;
     height: 60px;
   }
-  
-  .service-item {
-    width: 100px;
-  }
 }
 
 @media (max-width: 768px) {
-  /* Permettre le défilement sur mobile */
-  body {
-    overflow-y: auto;
-    height: auto;
-  }
-  
-  /* Ajuster la taille du logo */
   .logo img {
     height: 80px;
   }
   
-  /* Ajuster le conteneur principal */
-  .main-container {
-    height: auto;
-    min-height: 100vh;
-    padding-bottom: 80px; /* Espace pour la barre du bas */
-    overflow-y: visible;
-  }
-  
-  /* Ajuster le conteneur du ministre */
-  .minister-container {
-    height: auto;
-    min-height: 100vh;
-    padding-bottom: 80px; /* Espace pour la barre du bas */
-    flex-direction: column;
-  }
-  
-  /* Ajuster la photo du ministre */
   .minister-photo {
-    height: auto;
-    width: 80%;
-    max-width: 300px;
-    max-height: none;
-    transform: translateX(0);
-    margin-top: 100px; /* Espace pour le logo */
-    margin-bottom: 30px;
+    height: 50vh;
+    transform: translateX(0); /* Réinitialise le décalage sur mobile */
   }
   
-  .minister-photo img {
-    width: 100%;
-    height: auto;
-  }
-  
-  /* Réorganiser les services en grille */
   .service-orbit {
     position: relative;
-    width: 100%;
-    height: auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end; /* Aligner à droite */
-    padding: 0 20px;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
     pointer-events: auto;
   }
   
-  /* Ajuster les services */
   .service-item {
     position: relative;
     top: auto !important;
@@ -352,8 +314,7 @@ body {
     right: auto !important;
     bottom: auto !important;
     margin: 10px;
-    width: 80px;
-    animation: none !important;
+    animation: none !important; /* Désactive l'animation sur mobile */
   }
   
   .service-circle {
@@ -370,22 +331,31 @@ body {
     font-size: 0.75rem;
   }
   
-  /* Ajuster la barre du bas */
-  .bottom-bar {
-    padding: 10px 15px;
+  .main-container {
+    overflow-y: auto;
+    height: auto;
+    padding: 80px 0;
   }
   
+  body {
+    overflow-y: auto;
+  }
+  
+  /* Ajustement pour la navigation en mode mobile */
   .nav-links {
-    transform: translateX(0);
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    transform: translateX(0); /* Réinitialise le décalage sur mobile */
   }
   
-  .nav-links div.nav-item:first-child {
-    display: none; /* Masquer sur mobile */
+  .nav-links div.nav-item:first-child,
+  .nav-links a.nav-item:last-child {
+    position: static; /* Réinitialise le positionnement absolu sur mobile */
   }
   
   .nav-item {
-    margin: 0 10px;
-    font-size: 0.9rem;
+    margin: 5px 0;
   }
 }
 
@@ -394,31 +364,11 @@ body {
     height: 60px;
   }
   
-  .minister-photo {
-    width: 70%;
-    margin-top: 80px;
-  }
-  
-  .service-item {
-    width: 70px;
-    margin: 8px;
-  }
-  
-  .service-circle {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .service-circle img {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .service-name {
-    font-size: 0.7rem;
+  .bottom-bar {
+    padding: 10px 15px;
   }
   
   .nav-item {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }
