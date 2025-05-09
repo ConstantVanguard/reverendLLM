@@ -340,17 +340,31 @@ body {
   }
   
   .service-circle {
-    width: 70px; /* Réduit la taille */
-    height: 70px; /* Réduit la taille */
+    width: 77px; /* Augmenté de 10% par rapport à 70px */
+    height: 77px; /* Augmenté de 10% par rapport à 70px */
   }
   
   .service-circle img {
-    width: 40px; /* Réduit la taille */
-    height: 40px; /* Réduit la taille */
+    width: 44px; /* Augmenté de 10% par rapport à 40px */
+    height: 44px; /* Augmenté de 10% par rapport à 40px */
   }
   
   .service-name {
-    font-size: 0.7rem; /* Réduit la taille */
+    font-size: 0.7rem;
+  }
+  
+  /* Masquer le texte ACCOMPAGNEMENT et afficher AIDE à la place en version mobile */
+  #service-accompagnement .service-name {
+    font-size: 0; /* Cache le texte original */
+    position: relative;
+  }
+  
+  #service-accompagnement .service-name::after {
+    content: "AIDE";
+    font-size: 0.7rem; /* Même taille que les autres textes */
+    position: absolute;
+    left: 0;
+    right: 0;
   }
   
   /* Ajustement pour la navigation en mode mobile */
@@ -383,13 +397,13 @@ body {
   }
   
   .service-circle {
-    width: 60px; /* Encore plus petit pour les très petits écrans */
-    height: 60px;
+    width: 66px; /* Augmenté de 10% par rapport à 60px */
+    height: 66px; /* Augmenté de 10% par rapport à 60px */
   }
   
   .service-circle img {
-    width: 35px;
-    height: 35px;
+    width: 38.5px; /* Augmenté de 10% par rapport à 35px */
+    height: 38.5px; /* Augmenté de 10% par rapport à 35px */
   }
   
   .service-orbit {
