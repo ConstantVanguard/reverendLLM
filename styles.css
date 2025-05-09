@@ -87,7 +87,8 @@ body {
 
 /* Correction pour s'assurer que toute la zone est cliquable */
 .service-item .service-circle,
-.service-item .service-name {
+.service-item .service-name,
+.service-item .service-name-mobile {
   pointer-events: none; /* Permet aux clics de passer à travers ces éléments vers le lien parent */
 }
 
@@ -182,6 +183,18 @@ body {
   font-size: 0.85rem; /* Taille réduite */
   margin-top: 10px;
   color: #d4af37; /* Couleur dorée */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+/* Nom alternatif pour mobile - caché par défaut */
+.service-name-mobile {
+  display: none;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  color: #d4af37;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   letter-spacing: 1px;
   text-decoration: none;
@@ -353,16 +366,16 @@ body {
     font-size: 0.7rem;
   }
   
-  /* Masquer le texte ACCOMPAGNEMENT et afficher AIDE à la place en version mobile */
+  /* Afficher AIDE au lieu de ACCOMPAGNEMENT sur mobile */
   #service-accompagnement .service-name {
-    font-size: 0; /* Cache le texte original */
-    position: relative;
+    display: none;
   }
   
-  #service-accompagnement .service-name::after {
-    content: "AIDE";
-    font-size: 0.7rem; /* Même taille que les autres textes */
-    position: absolute;
+  #service-accompagnement .service-name-mobile {
+    display: block;
+    font-size: 0.7rem;
+    text-align: center;
+    width: 100%;
     left: 0;
     right: 0;
   }
