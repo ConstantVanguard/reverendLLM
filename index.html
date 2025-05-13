@@ -80,15 +80,22 @@
       
       // Ajouter un gestionnaire d'événements à chaque élément
       serviceItems.forEach(item => {
-        // Ajouter une classe pour le débogage si nécessaire
-        // item.classList.add('debug-clickable');
+        // Pour le débogage - décommentez pour voir les zones cliquables
+        // item.style.outline = '1px solid red';
         
+        // Ajouter un gestionnaire de clic pour s'assurer que toute la zone est cliquable
         item.addEventListener('click', function(e) {
+          // Empêcher le comportement par défaut
+          e.preventDefault();
+          
           // Obtenir l'URL de destination
           const href = this.getAttribute('href');
           
           // Rediriger vers la page
           window.location.href = href;
+          
+          // Pour le débogage
+          // console.log('Clicked on:', this.querySelector('.service-name').textContent);
         });
       });
     });
