@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baptême - Révérend Constant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bapteme-styles.css">
+</head>
+<body>
+  <div class="logo">
+    <a href="index.html">
+    <img src="logo.png" alt="Logo Révérend Constant">
+    </a>
+  </div>
+
+  <div class="hamburger-menu">
+    <button id="hamburger-button" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+    </button>
+    <nav id="mobile-menu" class="hidden">
+    <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="bapteme.html">Baptême</a></li>
+    <li><a href="mariage.html">Mariage</a></li>
+    <li><a href="enterrement.html">Funérailles</a></li>
+    <li><a href="confirmation.html">Confirmation</a></li>
+    <li><a href="guidance.html">Accompagnement Spirituel</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    </ul>
+    </nav>
+  </div>
+
+  <header class="page-header">
+    <h1 class="page-title">Baptême</h1>
+    <p class="page-subtitle">Une cérémonie œcuménique dans un cadre paisible</p>
+  </header>
+
+  <div class="main-container">
+    <div class="image-gallery">
+    <img src="bapteme1.jpg" alt="Baptême – Photo 1" class="gallery-image">
+    <img src="bapteme2.jpg" alt="Baptême – Photo 2" class="gallery-image">
+    <img src="bapteme3.jpg" alt="Baptême – Photo 3" class="gallery-image">
+    </div>
+    
+    <div class="content-section">
+    <h2 class="section-title">Présentation</h2>
+    <p>
+    Le baptême est un sacrement fondamental de la foi chrétienne, marquant une nouvelle naissance spirituelle et l'entrée dans la communauté des croyants. En tant que pasteur protestant, je propose des cérémonies uniques et adaptées, célébrées exclusivement à mon presbytère, un lieu paisible et propice au recueillement, situé à 10 minutes de Waterloo.
+    </p>
+    <p>
+    Bien que protestants, les baptêmes que je célèbre respectent un rite œcuménique reconnu par l'Église catholique, garantissant une cérémonie en harmonie avec les deux traditions.
+    </p>
+    <p>
+    Le baptême ouvre la voie à la communauté chrétienne, offrant au baptisé, enfant ou adulte, la liberté de suivre un chemin spirituel guidé par l'amour du Christ.
+    </p>
+    </div>
+    
+    <div class="content-section">
+    <h2 class="section-title">Organisation du baptême</h2>
+    <p>
+    La préparation au baptême commence par l'envoi d'informations sur le fait de baptiser son enfant ou de demander le baptême pour soi, avec les éléments fondamentaux à connaître pour confirmer la demande de baptême.
+    </p>
+    <p>
+    Le jour J, le déroulement est le suivant :
+    </p>
+    <ul>
+    <li>Accueil des personnes</li>
+    <li>Service liturgique organisé par le Révérend</li>
+    <li>Baptême du candidat au nom du Père, du Fils et du Saint-Esprit</li>
+    <li>Inscription au Livre des Actes</li>
+    <li>Remise d'un certificat de baptême</li>
+    </ul>
+    </div>
+    
+    <div class="content-section">
+    <h2 class="section-title">Tarifs & Conditions</h2>
+    <p>
+    <strong>50€ par personne :</strong> Ce montant est à payer lors de la réservation (aucun paiement supplémentaire le jour J).
+    </p>
+    <p>
+    <em>Note importante :</em> Fidèle à l'esprit chrétien d'entraide et de solidarité, je propose des baptêmes gratuits pour les personnes en situation financière difficile. Si ce montant est trop élevé, veuillez effectuer la réservation par téléphone.
+    </p>
+    <p>
+    Pour le baptême, prévoyez un parrain et/ou une marraine qui seront les témoins spirituels de cet engagement. Si le baptisé est un enfant, les parents s'engagent à l'élever dans la foi chrétienne.
+    </p>
+    <p>
+    J'officie en soutane et selon un rite œcuménique respectant à la fois la liturgie protestante et catholique, permettant ainsi à des familles de différentes confessions de partager ce moment important.
+    </p>
+    <p>
+    Pour toute question ou précision, n'hésitez pas à me contacter, de préférence par message.
+    </p>
+    </div>
+    
+    <div class="reservation-section">
+    <h3>Réservez votre date</h3>
+    <p>
+    Veuillez choisir une date disponible pour votre cérémonie de baptême.<br>
+    <em>Attention :</em> je suis disponible uniquement les lundis, mercredis et samedis.
+    </p>
+    
+    <div class="form-group">
+    <label for="datePicker">Date souhaitée :</label>
+    <input type="date" id="datePicker">
+    </div>
+    
+    <button id="bookButton" class="btn">Vérifier la disponibilité</button>
+    
+    <div id="message" style="margin-top:20px; font-weight: bold;"></div>
+    
+    <div id="paypalButton" class="paypal-button" style="display:none;">
+    <form action="https://www.paypal.com/ncp/payment/6D668VX27S8WJ" method="post" target="_blank">
+    <input class="pp-6D668VX27S8WJ" type="submit" value="Acompte 50€" />
+    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+    <section style="color: #d4af37;"> Optimisé par <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+    </form>
+    </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="nav-links">
+    <div class="nav-item">Révérend Constant</div>
+    <a href="eglise.html" class="nav-item">Notre Ministère</a>
+    <a href="contact.html" class="nav-item">Contact</a>
+    </div>
+  </div>
+
+  <script src="bapteme-script.js"></script>
+</body>
+</html>
