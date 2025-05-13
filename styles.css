@@ -1,18 +1,87 @@
-/* Réinitialisation complète des styles de service-item pour résoudre le problème de cliquabilité */
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cinzel', serif;
+  background: url("hero_background.png") center/cover fixed;
+  color: #d4af37;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Logo */
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.logo img {
+  height: 120px; /* Taille doublée */
+  width: auto;
+}
+
+/* Main container */
+.main-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Minister container */
+.minister-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Minister photo - déplacée 5% plus à gauche */
+.minister-photo {
+  position: relative;
+  height: 70vh;
+  max-height: 600px;
+  z-index: 2;
+  transform: translateX(-5%); /* Déplace l'image 5% plus à gauche */
+}
+
+.minister-photo img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Services orbitaux */
+.service-orbit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* SOLUTION POUR LES ZONES CLIQUABLES */
 .service-item {
   position: absolute;
-  /* Suppression de toutes les propriétés qui pourraient interférer avec le centrage */
   display: block;
   width: 150px; /* Largeur fixe plus grande que le cercle */
   height: 150px; /* Hauteur fixe plus grande que le cercle */
   text-decoration: none;
   cursor: pointer;
-  z-index: 10; /* Augmenter le z-index pour s'assurer qu'il est au-dessus des autres éléments */
-  /* Centrer le contenu */
+  z-index: 10;
   text-align: center;
 }
 
-/* Conteneur pour le cercle et le texte, centré dans la zone cliquable */
 .service-content {
   position: absolute;
   top: 50%;
@@ -21,69 +90,236 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 120px; /* Largeur du contenu */
-  pointer-events: none; /* Empêche les événements de clic sur les enfants */
-}
-
-/* Ajustement du cercle */
-.service-circle {
   width: 120px;
-  height: 120px;
-  margin: 0 auto 10px; /* Centré horizontalement */
+  pointer-events: none;
 }
 
-/* Ajustement du nom de service */
-.service-name {
-  width: 100%;
-  text-align: center;
+/* Animations de flottement plus aléatoires */
+@keyframes float1 {
+  0% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-8px) translateX(3px); }
+  50% { transform: translateY(-12px) translateX(-2px); }
+  75% { transform: translateY(-5px) translateX(-4px); }
+  100% { transform: translateY(0px) translateX(0px); }
 }
 
-/* Positionnement précis de chaque service */
+@keyframes float2 {
+  0% { transform: translateY(0px) translateX(0px); }
+  30% { transform: translateY(-10px) translateX(-3px); }
+  60% { transform: translateY(-6px) translateX(5px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+@keyframes float3 {
+  0% { transform: translateY(0px) translateX(0px); }
+  40% { transform: translateY(-12px) translateX(4px); }
+  70% { transform: translateY(-7px) translateX(-3px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+@keyframes float4 {
+  0% { transform: translateY(0px) translateX(0px); }
+  20% { transform: translateY(-5px) translateX(-5px); }
+  55% { transform: translateY(-15px) translateX(2px); }
+  85% { transform: translateY(-8px) translateX(4px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+@keyframes float5 {
+  0% { transform: translateY(0px) translateX(0px); }
+  35% { transform: translateY(-9px) translateX(5px); }
+  65% { transform: translateY(-14px) translateX(-4px); }
+  90% { transform: translateY(-4px) translateX(-2px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+/* Application des animations différentes pour chaque service */
 #service-bapteme {
-  top: calc(30% - 75px); /* Moitié de la hauteur de service-item */
-  left: calc(13% - 75px); /* Moitié de la largeur de service-item */
-}
-
-#service-mariage {
-  top: calc(15% - 75px);
-  left: calc(27% - 75px);
+  animation: float1 5s ease-in-out infinite;
+  top: calc(30% - 75px);
+  left: calc(13% - 75px);
 }
 
 #service-confirmation {
+  animation: float2 6s ease-in-out infinite;
   top: calc(53% - 75px);
   left: calc(27% - 75px);
 }
 
+#service-mariage {
+  animation: float3 5.5s ease-in-out infinite;
+  top: calc(15% - 75px);
+  left: calc(27% - 75px);
+}
+
 #service-accompagnement {
+  animation: float4 6.5s ease-in-out infinite;
   top: calc(15% - 75px);
   right: calc(30% - 75px);
 }
 
 #service-funerailles {
+  animation: float5 7s ease-in-out infinite;
   top: calc(30% - 75px);
   right: calc(15% - 75px);
 }
 
-/* Pour le débogage - décommentez pour voir les zones cliquables */
-/* 
-.service-item {
-  background-color: rgba(255, 0, 0, 0.2);
-  border: 1px solid red;
+.service-circle {
+  width: 120px;
+  height: 120px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
 }
-*/
 
-/* Ajustements pour le mode mobile */
+.service-item:hover .service-circle {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+  border-color: #d4af37;
+}
+
+.service-circle img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+/* Style pour les noms des services */
+.service-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem; /* Taille réduite */
+  margin-top: 10px;
+  color: #d4af37; /* Couleur dorée */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+/* Bottom bar */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 30px;
+  z-index: 100;
+}
+
+/* Modification de la navigation pour centrer "Notre Ministère" et décaler de 2% vers la gauche */
+.nav-links {
+  display: flex;
+  justify-content: center; /* Centre les éléments */
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  position: relative; /* Pour le positionnement absolu des éléments latéraux */
+  transform: translateX(-2%); /* Décale tous les onglets de 2% vers la gauche */
+}
+
+/* Style uniforme pour tous les éléments de navigation */
+.nav-item {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #d4af37;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 0 20px; /* Espacement uniforme */
+}
+
+/* Positionnement spécifique pour "Révérend Constant" */
+.nav-links div.nav-item:first-child {
+  position: absolute;
+  left: 0;
+}
+
+/* Positionnement spécifique pour "Contact" */
+.nav-links a.nav-item:last-child {
+  position: absolute;
+  right: 0;
+}
+
+.nav-item:hover {
+  color: #ffff;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .logo img {
+    height: 90px;
+  }
+  
+  .service-circle {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .service-circle img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
 @media (max-width: 768px) {
+  .logo img {
+    height: 80px;
+  }
+  
+  body {
+    overflow-y: auto;
+  }
+  
+  .main-container {
+    height: auto;
+    padding: 80px 0 80px; /* Ajout de padding en bas pour éviter que le contenu soit caché */
+    overflow-y: visible;
+    min-height: calc(100vh - 50px); /* Assure que le contenu a assez d'espace */
+  }
+  
+  .minister-container {
+    height: auto;
+    flex-direction: column;
+    padding-bottom: 60px; /* Espace supplémentaire en bas */
+  }
+  
+  .minister-photo {
+    height: 50vh;
+    transform: translateX(0); /* Réinitialise le décalage sur mobile */
+    margin-bottom: 20px;
+  }
+  
+  .service-orbit {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    padding-bottom: 60px; /* Espace supplémentaire pour éviter la barre du bas */
+  }
+  
+  /* MODIFICATION: Ajustement pour les services en mode mobile */
   .service-item {
     position: relative;
     top: auto !important;
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
+    margin: 10px;
+    animation: none !important; /* Désactive l'animation sur mobile */
     width: 90px;
     height: 90px;
-    margin: 10px;
-    animation: none !important;
   }
   
   .service-content {
@@ -91,7 +327,92 @@
   }
   
   .service-circle {
-    width: 77px;
-    height: 77px;
+    width: 77px; /* Augmenté de 10% par rapport à 70px */
+    height: 77px; /* Augmenté de 10% par rapport à 70px */
+  }
+  
+  .service-circle img {
+    width: 44px; /* Augmenté de 10% par rapport à 40px */
+    height: 44px; /* Augmenté de 10% par rapport à 40px */
+  }
+  
+  .service-name {
+    font-size: 0.7rem;
+  }
+  
+  /* Remplacer ACCOMPAGNEMENT par AIDE sur mobile */
+  #service-accompagnement .service-name {
+    font-size: 0;
+    position: relative;
+  }
+  
+  #service-accompagnement .service-name:after {
+    content: "AIDE";
+    font-size: 0.7rem;
+    color: #d4af37;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  
+  /* Ajustement pour la navigation en mode mobile */
+  .bottom-bar {
+    height: auto;
+    padding: 10px 0;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 0;
+    transform: translateX(0); /* Réinitialise le décalage sur mobile */
+  }
+  
+  .nav-links div.nav-item:first-child,
+  .nav-links a.nav-item:last-child {
+    position: static; /* Réinitialise le positionnement absolu sur mobile */
+  }
+  
+  .nav-item {
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    height: 60px;
+  }
+  
+  .service-circle {
+    width: 66px; /* Augmenté de 10% par rapport à 60px */
+    height: 66px; /* Augmenté de 10% par rapport à 60px */
+  }
+  
+  .service-circle img {
+    width: 38.5px; /* Augmenté de 10% par rapport à 35px */
+    height: 38.5px; /* Augmenté de 10% par rapport à 35px */
+  }
+  
+  .service-orbit {
+    padding: 0 10px 70px; /* Plus d'espace en bas et sur les côtés */
+  }
+  
+  .service-item {
+    margin: 5px;
+    width: 70px;
+    height: 70px;
+  }
+  
+  .bottom-bar {
+    padding: 8px 10px;
+  }
+  
+  .nav-item {
+    font-size: 0.8rem;
+    margin: 3px 0;
   }
 }
