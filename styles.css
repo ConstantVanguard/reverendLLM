@@ -68,27 +68,35 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Pour que les clics passent à travers la div parente */
 }
 
+/* MODIFICATION: Rendre toute la zone du service cliquable */
 .service-item {
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   transition: all 0.3s ease;
   z-index: 1;
-  pointer-events: auto; /* Réactive les clics sur les éléments enfants */
-  text-decoration: none; /* Supprime le soulignement des liens */
-  /* Correction pour les zones de cliquage */
+  text-decoration: none;
   cursor: pointer;
+  /* Ajout d'une zone de clic plus large */
+  padding: 15px;
+  /* Décaler la zone pour compenser le padding */
+  margin: -15px;
 }
 
-/* Correction pour s'assurer que toute la zone est cliquable */
-.service-item .service-circle,
-.service-item .service-name {
-  pointer-events: none; /* Permet aux clics de passer à travers ces éléments vers le lien parent */
+/* MODIFICATION: Pour le débogage - décommentez pour voir les zones cliquables */
+/* .debug-clickable {
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 1px dashed rgba(255, 0, 0, 0.5);
+} */
+
+/* MODIFICATION: S'assurer que les éléments enfants ne bloquent pas les clics */
+.service-item * {
+  pointer-events: none;
 }
 
 /* Animations de flottement plus aléatoires */
@@ -164,9 +172,10 @@ body {
   transition: all 0.3s ease;
 }
 
+/* MODIFICATION: Effet visuel amélioré pour indiquer la cliquabilité */
 .service-item:hover .service-circle {
   transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
   border-color: #d4af37;
 }
 
@@ -185,6 +194,12 @@ body {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   letter-spacing: 1px;
   text-decoration: none;
+}
+
+/* MODIFICATION: Effet visuel pour le texte au survol */
+.service-item:hover .service-name {
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
 }
 
 /* Positionnement spécifique de chaque service - Modifié selon les nouvelles instructions */
@@ -267,7 +282,7 @@ body {
 }
 
 .nav-item:hover {
-  color: #ffffff;
+  color: #ffff;
 }
 
 /* Responsive Design */
@@ -322,12 +337,12 @@ body {
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
-    pointer-events: auto;
     width: 100%;
     height: auto;
     padding-bottom: 60px; /* Espace supplémentaire pour éviter la barre du bas */
   }
   
+  /* MODIFICATION: Ajustement pour les services en mode mobile */
   .service-item {
     position: relative;
     top: auto !important;
@@ -337,6 +352,7 @@ body {
     margin: 10px;
     animation: none !important; /* Désactive l'animation sur mobile */
     width: 80px; /* Largeur fixe */
+    padding: 10px; /* Réduire le padding sur mobile */
   }
   
   .service-circle {
@@ -417,6 +433,7 @@ body {
   .service-item {
     margin: 5px;
     width: 70px;
+    padding: 8px; /* Réduire encore le padding sur les très petits écrans */
   }
   
   .bottom-bar {
