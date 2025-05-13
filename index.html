@@ -23,42 +23,52 @@
     <div class="service-orbit">
     <!-- Baptême -->
     <a href="bapteme.html" class="service-item floating" id="service-bapteme">
-    <div class="service-circle">
-    <img src="icon_bapteme.png" alt="Baptême">
-    </div>
-    <span class="service-name">BAPTÊME</span>
+      <div class="service-content">
+        <div class="service-circle">
+          <img src="icon_bapteme.png" alt="Baptême">
+        </div>
+        <span class="service-name">BAPTÊME</span>
+      </div>
     </a>
     
     <!-- Confirmation -->
     <a href="confirmation.html" class="service-item floating" id="service-confirmation">
-    <div class="service-circle">
-    <img src="icon_confirmation.png" alt="Confirmation">
-    </div>
-    <span class="service-name">CONFIRMATION</span>
+      <div class="service-content">
+        <div class="service-circle">
+          <img src="icon_confirmation.png" alt="Confirmation">
+        </div>
+        <span class="service-name">CONFIRMATION</span>
+      </div>
     </a>
     
     <!-- Mariage -->
     <a href="mariage.html" class="service-item floating" id="service-mariage">
-    <div class="service-circle">
-    <img src="icon_mariage.png" alt="Mariage">
-    </div>
-    <span class="service-name">MARIAGE</span>
+      <div class="service-content">
+        <div class="service-circle">
+          <img src="icon_mariage.png" alt="Mariage">
+        </div>
+        <span class="service-name">MARIAGE</span>
+      </div>
     </a>
     
     <!-- Accompagnement -->
     <a href="guidance.html" class="service-item floating" id="service-accompagnement">
-    <div class="service-circle">
-    <img src="icon_guidance.png" alt="Accompagnement">
-    </div>
-    <span class="service-name">ACCOMPAGNEMENT</span>
+      <div class="service-content">
+        <div class="service-circle">
+          <img src="icon_guidance.png" alt="Accompagnement">
+        </div>
+        <span class="service-name">ACCOMPAGNEMENT</span>
+      </div>
     </a>
     
     <!-- Funérailles -->
     <a href="enterrement.html" class="service-item floating" id="service-funerailles">
-    <div class="service-circle">
-    <img src="icon_enterrement.png" alt="Funérailles">
-    </div>
-    <span class="service-name">FUNÉRAILLES</span>
+      <div class="service-content">
+        <div class="service-circle">
+          <img src="icon_enterrement.png" alt="Funérailles">
+        </div>
+        <span class="service-name">FUNÉRAILLES</span>
+      </div>
     </a>
     </div>
     </div>
@@ -72,7 +82,7 @@
     </div>
   </div>
 
-  <!-- Script pour améliorer la détection des clics -->
+  <!-- Script pour vérifier les clics -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Sélectionner tous les éléments de service
@@ -80,14 +90,7 @@
       
       // Ajouter un gestionnaire d'événements à chaque élément
       serviceItems.forEach(item => {
-        // Pour le débogage - décommentez pour voir les zones cliquables
-        // item.style.outline = '1px solid red';
-        
-        // Ajouter un gestionnaire de clic pour s'assurer que toute la zone est cliquable
         item.addEventListener('click', function(e) {
-          // Empêcher le comportement par défaut
-          e.preventDefault();
-          
           // Obtenir l'URL de destination
           const href = this.getAttribute('href');
           
@@ -95,7 +98,7 @@
           window.location.href = href;
           
           // Pour le débogage
-          // console.log('Clicked on:', this.querySelector('.service-name').textContent);
+          console.log('Clicked on:', this.querySelector('.service-name').textContent);
         });
       });
     });
