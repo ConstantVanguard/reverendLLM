@@ -278,6 +278,10 @@ body {
   color: #d4af37;
 }
 
+.reservation-section p em {
+  color: #FFD140; /* Couleur du texte d'attention */
+}
+
 .form-group {
   margin-bottom: 25px;
 }
@@ -296,7 +300,7 @@ body {
   background-color: rgba(10, 5, 2, 0.7);
   border-radius: 5px;
   font-size: 16px;
-  color: #fff;
+  color: #FFD140; /* Même couleur que le texte d'attention */
 }
 
 /* Personnalisation du sélecteur de date */
@@ -308,11 +312,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 input[type="date"]::-webkit-calendar-picker-indicator:hover {
   opacity: 1;
-}
-
-/* Couleur du texte à l'intérieur du champ date */
-input[type="date"] {
-  color: #FFD140; /* Même couleur que le texte d'attention */
 }
 
 /* Pour Firefox */
