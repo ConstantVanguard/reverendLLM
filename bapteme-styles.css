@@ -34,37 +34,22 @@ body {
 }
 
 .page-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: 72px;
+  font-family: 'Harrington', 'Brush Script MT', cursive; /* Changement pour Harrington */
+  font-size: 52px; /* Légèrement plus grand pour correspondre au style Harrington */
   color: #d4af37;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin-bottom: 15px;
-  text-shadow: 
-    0 0 5px rgba(255, 215, 0, 0.3),
-    0 0 10px rgba(255, 215, 0, 0.2),
-    0 0 15px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(to bottom, #f0d78c 0%, #d4af37 50%, #b7953a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
 }
 
 .page-subtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
   color: #f5e7c1;
   max-width: 800px;
   margin: 0 auto;
-  font-weight: 400;
-  letter-spacing: 2px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(to bottom, #f0d78c 0%, #d4af37 50%, #b7953a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
 }
 
 /* Hamburger Menu */
@@ -202,18 +187,13 @@ body {
 }
 
 .section-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: 42px;
+  font-family: 'Cinzel', serif;
+  font-size: 32px;
   color: #d4af37;
   margin-bottom: 25px;
   position: relative;
   padding-bottom: 15px;
-  background: linear-gradient(to bottom, #f0d78c 0%, #d4af37 50%, #b7953a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .section-title:after {
@@ -223,11 +203,11 @@ body {
   left: 0;
   width: 80px;
   height: 3px;
-  background: linear-gradient(to right, #f0d78c, #d4af37, #b7953a);
+  background-color: #d4af37;
 }
 
 .content-section p {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 18px;
   line-height: 1.8;
   margin-bottom: 20px;
@@ -237,7 +217,7 @@ body {
 }
 
 .content-section ul {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   margin-left: 25px;
   margin-bottom: 25px;
 }
@@ -292,21 +272,14 @@ body {
 }
 
 .reservation-section h3 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 36px;
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
   margin-bottom: 25px;
-  background: linear-gradient(to bottom, #f0d78c 0%, #d4af37 50%, #b7953a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+  color: #d4af37;
 }
 
 .reservation-section p {
   color: #fff;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
 }
 
 .reservation-section p em {
@@ -323,8 +296,6 @@ body {
   margin-bottom: 10px;
   font-weight: bold;
   color: #d4af37;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
 }
 
 .form-group input {
@@ -335,7 +306,6 @@ body {
   border-radius: 5px;
   font-size: 16px;
   color: #fff; /* Même couleur que le texte standard */
-  font-family: 'Cormorant Garamond', serif;
 }
 
 /* Personnalisation du sélecteur de date */
@@ -364,7 +334,6 @@ input[type="date"]::-moz-calendar-picker-indicator {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Cormorant Garamond', serif;
 }
 
 .btn:hover {
@@ -433,7 +402,7 @@ input[type="date"]::-moz-calendar-picker-indicator {
 }
 
 .nav-item {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cinzel', serif;
   font-size: 1rem;
   letter-spacing: 1px;
   color: #d4af37;
@@ -463,11 +432,11 @@ input[type="date"]::-moz-calendar-picker-indicator {
   }
   
   .page-title {
-    font-size: 60px;
+    font-size: 42px;
   }
   
   .page-subtitle {
-    font-size: 20px;
+    font-size: 18px;
   }
   
   .image-gallery {
@@ -482,10 +451,6 @@ input[type="date"]::-moz-calendar-picker-indicator {
   
   .page-header {
     padding: 60px 0 20px;
-  }
-  
-  .page-title {
-    font-size: 48px;
   }
   
   .image-gallery {
@@ -507,11 +472,11 @@ input[type="date"]::-moz-calendar-picker-indicator {
   }
   
   .page-subtitle {
-    font-size: 16px;
+    font-size: 18px;
   }
   
   .section-title {
-    font-size: 32px;
+    font-size: 24px;
   }
   
   .reservation-section {
