@@ -131,11 +131,31 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 50px 20px;
-  background-color: rgba(40, 24, 12, 0.9); /* Brun foncé assombri de 20% */
-  background-image: linear-gradient(to right, rgba(32, 20, 8, 0.95), rgba(56, 36, 16, 0.9)); /* Dégradé assombri de 20% */
+  background: url("dark_parchment.png") center/cover; /* Image de fond texturée */
+  background-color: rgba(20, 10, 5, 0.9); /* Couleur de secours si l'image ne charge pas */
   border-radius: 10px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(212, 175, 55, 0.3);
+  position: relative;
+}
+
+/* Overlay pour assombrir l'image de fond */
+.main-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(20, 10, 5, 0.5); /* Overlay semi-transparent */
+  border-radius: 10px;
+  z-index: 0;
+}
+
+/* S'assurer que tout le contenu est au-dessus de l'overlay */
+.main-container > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Image gallery */
@@ -193,6 +213,7 @@ body {
   margin-bottom: 20px;
   color: #f0f0f0;
   letter-spacing: 0.3px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3); /* Ombre légère pour améliorer la lisibilité */
 }
 
 .content-section ul {
@@ -204,6 +225,7 @@ body {
 .content-section li {
   margin-bottom: 12px;
   color: #f0f0f0;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
 
 .content-section strong, .content-section em {
@@ -212,7 +234,7 @@ body {
 
 /* Reservation section */
 .reservation-section {
-  background: linear-gradient(to right, rgba(28, 16, 4, 0.95), rgba(44, 28, 12, 0.95)); /* Brun plus foncé assombri de 20% */
+  background: url("dark_parchment.png") center/cover; /* Même image que le conteneur principal */
   padding: 40px;
   border-radius: 10px;
   margin: 60px 0 30px;
@@ -222,7 +244,18 @@ body {
   border: 1px solid rgba(212, 175, 55, 0.5);
 }
 
-.reservation-section:before {
+.reservation-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 8, 3, 0.7); /* Overlay plus sombre que celui du conteneur principal */
+  z-index: 0;
+}
+
+.reservation-section::after {
   content: "";
   position: absolute;
   top: 0;
@@ -230,6 +263,12 @@ body {
   width: 100%;
   height: 5px;
   background: linear-gradient(to right, #d4af37, transparent);
+  z-index: 1;
+}
+
+.reservation-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 .reservation-section h3 {
@@ -254,7 +293,7 @@ body {
   width: 100%;
   padding: 12px;
   border: 1px solid rgba(212, 175, 55, 0.3);
-  background-color: rgba(24, 12, 4, 0.5); /* Brun très foncé assombri de 20% */
+  background-color: rgba(10, 5, 2, 0.7);
   border-radius: 5px;
   font-size: 16px;
   color: #fff;
@@ -320,7 +359,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(32, 20, 8, 0.9); /* Brun foncé assombri de 20% */
+  background-color: rgba(15, 8, 3, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
