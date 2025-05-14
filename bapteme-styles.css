@@ -299,6 +299,27 @@ body {
   color: #fff;
 }
 
+/* Personnalisation du sélecteur de date */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(80%) sepia(75%) saturate(500%) hue-rotate(360deg) brightness(100%) contrast(95%);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Couleur du texte à l'intérieur du champ date */
+input[type="date"] {
+  color: #FFD140; /* Même couleur que le texte d'attention */
+}
+
+/* Pour Firefox */
+input[type="date"]::-moz-calendar-picker-indicator {
+  filter: invert(80%) sepia(75%) saturate(500%) hue-rotate(360deg) brightness(100%) contrast(95%);
+}
+
 .btn {
   background-color: #FFD140; /* Couleur du texte d'attention */
   color: #000;
