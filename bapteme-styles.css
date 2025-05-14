@@ -131,10 +131,10 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 50px 20px;
-  background-color: rgba(50, 30, 15, 0.85); /* Brun foncé semi-transparent */
-  background-image: linear-gradient(to right, rgba(40, 25, 10, 0.9), rgba(70, 45, 20, 0.85)); /* Dégradé brun foncé à brun moyen */
+  background-color: rgba(40, 24, 12, 0.9); /* Brun foncé assombri de 20% */
+  background-image: linear-gradient(to right, rgba(32, 20, 8, 0.95), rgba(56, 36, 16, 0.9)); /* Dégradé assombri de 20% */
   border-radius: 10px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
@@ -212,7 +212,7 @@ body {
 
 /* Reservation section */
 .reservation-section {
-  background: linear-gradient(to right, rgba(35, 20, 5, 0.95), rgba(55, 35, 15, 0.95)); /* Brun plus foncé */
+  background: linear-gradient(to right, rgba(28, 16, 4, 0.95), rgba(44, 28, 12, 0.95)); /* Brun plus foncé assombri de 20% */
   padding: 40px;
   border-radius: 10px;
   margin: 60px 0 30px;
@@ -254,7 +254,7 @@ body {
   width: 100%;
   padding: 12px;
   border: 1px solid rgba(212, 175, 55, 0.3);
-  background-color: rgba(30, 15, 5, 0.5); /* Brun très foncé pour les champs */
+  background-color: rgba(24, 12, 4, 0.5); /* Brun très foncé assombri de 20% */
   border-radius: 5px;
   font-size: 16px;
   color: #fff;
@@ -320,7 +320,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(40, 25, 10, 0.9); /* Brun foncé pour la barre du bas */
+  background-color: rgba(32, 20, 8, 0.9); /* Brun foncé assombri de 20% */
   display: flex;
   justify-content: center;
   align-items: center;
