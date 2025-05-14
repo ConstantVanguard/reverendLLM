@@ -278,8 +278,13 @@ body {
   color: #d4af37;
 }
 
+.reservation-section p {
+  color: #fff;
+}
+
 .reservation-section p em {
-  color: #FFD140; /* Couleur du texte d'attention */
+  color: #fff; /* Même couleur que le texte standard */
+  font-style: italic;
 }
 
 .form-group {
@@ -300,12 +305,12 @@ body {
   background-color: rgba(10, 5, 2, 0.7);
   border-radius: 5px;
   font-size: 16px;
-  color: #FFD140; /* Même couleur que le texte d'attention */
+  color: #fff; /* Même couleur que le texte standard */
 }
 
 /* Personnalisation du sélecteur de date */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(80%) sepia(75%) saturate(500%) hue-rotate(360deg) brightness(100%) contrast(95%);
+  filter: invert(100%); /* Blanc */
   cursor: pointer;
   opacity: 0.8;
 }
@@ -316,7 +321,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 
 /* Pour Firefox */
 input[type="date"]::-moz-calendar-picker-indicator {
-  filter: invert(80%) sepia(75%) saturate(500%) hue-rotate(360deg) brightness(100%) contrast(95%);
+  filter: invert(100%); /* Blanc */
 }
 
 .btn {
