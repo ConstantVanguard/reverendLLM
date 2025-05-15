@@ -2,9 +2,9 @@
 function isDateAvailable(date) {
   const selectedDate = new Date(date);
   const today = new Date();
-  // Appliquer le délai de 63 jours
+  // Appliquer le délai de 47 jours (au lieu de 63)
   const minDate = new Date();
-  minDate.setDate(today.getDate() + 63);
+  minDate.setDate(today.getDate() + 47);
 
   // Vérifier le délai minimal
   if (selectedDate < minDate) {
@@ -31,7 +31,7 @@ function isDateAvailable(date) {
 document.addEventListener('DOMContentLoaded', function() {
   const today = new Date();
   const minDate = new Date();
-  minDate.setDate(today.getDate() + 63);
+  minDate.setDate(today.getDate() + 47); // 47 jours au lieu de 63
   document.getElementById("datePicker").min = minDate.toISOString().split('T')[0];
   
   document.getElementById("bookButton").addEventListener("click", function() {
