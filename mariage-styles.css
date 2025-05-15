@@ -29,30 +29,30 @@ body {
 /* Header - hauteur réduite de 50% */
 .page-header {
   text-align: center;
-  padding: 75px 0 25px; /* Réduit de 150px 0 50px à 75px 0 25px */
+  padding: 75px 0 25px;
   position: relative;
 }
 
 .page-title {
   font-family: 'Cinzel', serif;
-  font-size: 42px; /* Légèrement réduit de 48px à 42px */
+  font-size: 42px;
   color: #d4af37;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  margin-bottom: 15px; /* Réduit de 20px à 15px */
+  margin-bottom: 15px;
 }
 
 .page-subtitle {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
-  color: #f5e7c1; /* Beige clair */
+  color: #f5e7c1;
   max-width: 800px;
   margin: 0 auto;
-  font-weight: 600; /* Pour une meilleure lisibilité */
+  font-weight: 600;
   letter-spacing: 0.5px;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Légère ombre pour améliorer la lisibilité */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Hamburger Menu */
+/* Hamburger Menu - MODIFIÉ pour correspondre à la page baptême */
 .hamburger-menu {
   position: absolute;
   top: 30px;
@@ -76,7 +76,7 @@ body {
 #hamburger-button span {
   width: 100%;
   height: 3px;
-  background-color: #000000; /* Changé de #d4af37 (doré) à #000000 (noir) */
+  background-color: #f5e7c1; /* Changé pour correspondre à la page baptême */
   border-radius: 3px;
   transition: all 0.3s linear;
 }
@@ -126,14 +126,17 @@ body {
   color: #fff;
 }
 
-/* Main content */
+/* Main content - MODIFIÉ pour correspondre à la page baptême */
 .main-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 50px 20px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background: url("dark_parchment.png") center/cover; /* Ajout de l'image de fond */
+  background-color: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent par-dessus l'image */
   border-radius: 10px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border: 1px solid rgba(212, 175, 55, 0.3); /* Bordure dorée subtile */
 }
 
 /* Image gallery */
@@ -201,18 +204,34 @@ body {
   color: #444;
 }
 
-/* Reservation section */
+.content-section strong, .content-section em {
+  color: #d4af37; /* Ajout pour correspondre à la page baptême */
+}
+
+/* Reservation section - MODIFIÉ pour correspondre à la page baptême */
 .reservation-section {
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.8));
+  background: url("dark_parchment.png") center/cover;
   padding: 40px;
   border-radius: 10px;
   margin: 60px 0 30px;
   color: #fff;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.5);
 }
 
-.reservation-section:before {
+.reservation-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 8, 3, 0.7);
+  z-index: 0;
+}
+
+.reservation-section::after {
   content: "";
   position: absolute;
   top: 0;
@@ -220,6 +239,12 @@ body {
   width: 100%;
   height: 5px;
   background: linear-gradient(to right, #d4af37, transparent);
+  z-index: 1;
+}
+
+.reservation-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 .reservation-section h3 {
@@ -227,6 +252,15 @@ body {
   font-size: 28px;
   margin-bottom: 25px;
   color: #d4af37;
+}
+
+.reservation-section p {
+  color: #fff;
+}
+
+.reservation-section p em {
+  color: #fff;
+  font-style: italic;
 }
 
 .form-group {
@@ -244,14 +278,30 @@ body {
   width: 100%;
   padding: 12px;
   border: 1px solid rgba(212, 175, 55, 0.3);
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(10, 5, 2, 0.7);
   border-radius: 5px;
   font-size: 16px;
   color: #fff;
 }
 
+/* Personnalisation du sélecteur de date */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Pour Firefox */
+input[type="date"]::-moz-calendar-picker-indicator {
+  filter: invert(100%);
+}
+
 .btn {
-  background-color: #d4af37;
+  background-color: #FFD140;
   color: #000;
   border: none;
   padding: 14px 30px;
@@ -263,7 +313,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #c4a030;
+  background-color: #e6bc3a;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -290,7 +340,7 @@ body {
   height: 50px;
   font-weight: bold;
   background-color: #FFD140;
-  color: #000000;
+  color: #0000;
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.25rem;
@@ -348,13 +398,13 @@ body {
 }
 
 .nav-item:hover {
-  color: #ffffff;
+  color: #ffff;
 }
 
 /* Responsive Design */
 @media (max-width: 992px) {
   .page-header {
-    padding: 60px 0 20px; /* Ajusté pour les écrans moyens */
+    padding: 60px 0 20px;
   }
   
   .page-title {
@@ -376,7 +426,7 @@ body {
   }
   
   .page-header {
-    padding: 60px 0 20px; /* Ajusté pour les petits écrans */
+    padding: 60px 0 20px;
   }
   
   .image-gallery {
