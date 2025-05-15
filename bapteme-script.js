@@ -2,7 +2,7 @@
 function isDateAvailable(date) {
   const selectedDate = new Date(date);
   const today = new Date();
-  // Appliquer le délai de 13 jours (au lieu de 26)
+  // Appliquer le délai de 13 jours
   const minDate = new Date();
   minDate.setDate(today.getDate() + 13);
 
@@ -11,8 +11,8 @@ function isDateAvailable(date) {
     return false;
   }
 
-  // Jours autorisés: Lundi (1), Mercredi (3) et Samedi (6)
-  const allowedDays = [1, 3, 6];
+  // Jours autorisés: Lundi (1), Jeudi (4) et Samedi (6)
+  const allowedDays = [1, 4, 6];
   if (!allowedDays.includes(selectedDate.getDay())) {
     return false;
   }
@@ -31,7 +31,7 @@ function isDateAvailable(date) {
 document.addEventListener('DOMContentLoaded', function() {
   const today = new Date();
   const minDate = new Date();
-  minDate.setDate(today.getDate() + 13); // 13 jours au lieu de 26
+  minDate.setDate(today.getDate() + 13);
   document.getElementById("datePicker").min = minDate.toISOString().split('T')[0];
   
   document.getElementById("bookButton").addEventListener("click", function() {
