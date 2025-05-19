@@ -36,23 +36,32 @@ document.addEventListener('DOMContentLoaded', function() {
   
   document.getElementById("bookButton").addEventListener("click", function() {
     const dateValue = document.getElementById("datePicker").value;
+    const sessionType = document.getElementById("sessionType").value;
     const messageDiv = document.getElementById("message");
+    
+    // Cacher les deux boutons de paiement par défaut
+    document.getElementById("paypalButtonSingle").style.display = "none";
+    document.getElementById("paypalButtonGuidance").style.display = "none";
 
     if (!dateValue) {
       messageDiv.textContent = "Veuillez sélectionner une date.";
       messageDiv.style.color = "#FFD140";
-      document.getElementById("paypalButton").style.display = "none";
       return;
     }
 
     if (isDateAvailable(dateValue)) {
       messageDiv.style.color = "#d4af37";
-      messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 100€.";
-      document.getElementById("paypalButton").style.display = "block";
+      
+      if (sessionType === "single") {
+        messageDiv.textContent = "Date disponible pour une rencontre ponctuelle. Veuillez procéder au paiement de l'acompte de 70€.";
+        document.getElementById("paypalButtonSingle").style.display = "block";
+      } else {
+        messageDiv.textContent = "Date disponible pour la première séance de guidance spirituelle. Veuillez procéder au paiement de l'acompte de 100€.";
+        document.getElementById("paypalButtonGuidance").style.display = "block";
+      }
     } else {
       messageDiv.style.color = "#FFD140";
       messageDiv.textContent = "La date sélectionnée n'est pas disponible. Veuillez choisir une autre date.";
-      document.getElementById("paypalButton").style.display = "none";
     }
   });
 
