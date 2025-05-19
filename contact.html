@@ -8,11 +8,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
   <style>
     /* Styles spécifiques à la page contact */
+    body {
+      overflow-y: auto !important; /* Permet le défilement vertical */
+    }
+    
     .contact-container {
       display: flex;
       flex-wrap: wrap;
       gap: 30px;
-      margin-top: 40px;
+      margin-top: 20px; /* Réduit de 40px à 20px pour remonter les encadrés */
     }
     
     .contact-info {
@@ -124,7 +128,7 @@
     
     .page-header {
       text-align: center;
-      padding: 75px 0 25px;
+      padding: 75px 0 15px; /* Réduit le padding bottom de 25px à 15px */
       position: relative;
     }
     
@@ -150,13 +154,14 @@
     .main-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 50px 20px;
+      padding: 30px 20px 50px; /* Réduit le padding top de 50px à 30px */
       background: url("dark_parchment.png") center/cover;
       background-color: rgba(0, 0, 0, 0.7);
       border-radius: 10px;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
       position: relative;
       border: 1px solid rgba(212, 175, 55, 0.3);
+      margin-bottom: 60px; /* Ajoute une marge en bas pour éviter que le contenu soit caché par la barre de navigation */
     }
     
     /* Hamburger Menu */
