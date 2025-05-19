@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Révérend Constant</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    /* Styles spécifiques à la page contact */
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-left: 4px solid #d4af37;
+    }
+    
+    .contact-form {
+      flex: 2;
+      min-width: 300px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-left: 4px solid #d4af37;
+    }
+    
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #d4af37;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .section-title:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background-color: #d4af37;
+    }
+    
+    .contact-info p {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+    
+    .contact-info .contact-method {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .contact-info .contact-method i {
+      margin-right: 10px;
+      color: #d4af37;
+      font-size: 20px;
+    }
+    
+    /* Form styling */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #d4af37;
+    }
+    
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      background-color: rgba(10, 5, 2, 0.7);
+      border-radius: 5px;
+      font-size: 16px;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .btn {
+      background-color: #d4af37;
+      color: #000;
+      border: none;
+      padding: 14px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Cinzel', serif;
+    }
+    
+    .btn:hover {
+      background-color: #c4a030;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .page-header {
+      text-align: center;
+      padding: 75px 0 25px;
+      position: relative;
+    }
+    
+    .page-title {
+      font-family: 'Cinzel', serif;
+      font-size: 42px;
+      color: #d4af37;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      margin-bottom: 15px;
+    }
+    
+    .page-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: #f5e7c1;
+      max-width: 800px;
+      margin: 0 auto;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+    
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 20px;
+      background: url("dark_parchment.png") center/cover;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    
+    /* Hamburger Menu */
+    .hamburger-menu {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      z-index: 100;
+    }
+    
+    #hamburger-button {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 10;
+    }
+    
+    #hamburger-button span {
+      width: 100%;
+      height: 3px;
+      background-color: #f5e7c1;
+      border-radius: 3px;
+      transition: all 0.3s linear;
+    }
+    
+    #mobile-menu {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      padding: 20px;
+      z-index: 5;
+      min-width: 250px;
+    }
+    
+    #mobile-menu.hidden {
+      display: none;
+    }
+    
+    #mobile-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    #mobile-menu li {
+      margin: 15px 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      padding-bottom: 10px;
+    }
+    
+    #mobile-menu li:last-child {
+      border-bottom: none;
+    }
+    
+    #mobile-menu a {
+      text-decoration: none;
+      color: #d4af37;
+      font-weight: 500;
+      display: block;
+      padding: 5px 10px;
+      transition: all 0.3s ease;
+    }
+    
+    #mobile-menu a:hover {
+      color: #fff;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+      
+      .contact-info, 
+      .contact-form {
+        flex: 1 1 100%;
+      }
+      
+      .bottom-bar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <a href="index.html">
+      <img src="logo.png" alt="Logo Révérend Constant">
+    </a>
+  </div>
+
+  <div class="hamburger-menu">
+    <button id="hamburger-button" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="mobile-menu" class="hidden">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="bapteme.html">Baptême</a></li>
+        <li><a href="mariage.html">Mariage</a></li>
+        <li><a href="enterrement.html">Funérailles</a></li>
+        <li><a href="confirmation.html">Confirmation</a></li>
+        <li><a href="guidance.html">Accompagnement Spirituel</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <header class="page-header">
+    <h1 class="page-title">Contact</h1>
+    <p class="page-subtitle">N'hésitez pas à me contacter pour toute question ou information concernant mes services</p>
+  </header>
+
+  <div class="main-container">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3 class="section-title">Coordonnées</h3>
+        <div class="contact-method">
+          <i class="fas fa-phone"></i>
+          <p><strong>Téléphone :</strong> 0470 78 18 34</p>
+        </div>
+        <div class="contact-method">
+          <i class="fas fa-envelope"></i>
+          <p><strong>Email :</strong> constantvanguard@gmail.com</p>
+        </div>
+        <p style="margin-top: 20px;">
+          <strong>Services disponibles :</strong>
+        </p>
+        <p>• à mon presbytère (Octave Michotlaan 1, 1640 Rhode-Saint-Genèse, à 10 minutes de Waterloo)</p>
+        <p>• en déplacement (toute la Belgique)</p>
+        <p>• par visioconférence (whatsapp video)</p>
+      </div>
+      
+      <div class="contact-form">
+        <h3 class="section-title">Formulaire de contact</h3>
+        <form action="https://formspree.io/f/xjkyzbek" method="POST">
+          <div class="form-group">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message :</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="nav-links">
+      <div class="nav-item">Révérend Constant</div>
+      <a href="eglise.html" class="nav-item">Notre Ministère</a>
+      <a href="contact.html" class="nav-item">Contact</a>
+    </div>
+  </div>
+
+  <!-- Script pour le menu hamburger -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Script pour le menu hamburger
+      document.getElementById('hamburger-button').addEventListener('click', function(event) {
+        event.stopPropagation();
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+      });
+      
+      document.addEventListener('click', function(event) {
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (!hamburgerButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+  
+  <!-- Font Awesome pour les icônes -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
