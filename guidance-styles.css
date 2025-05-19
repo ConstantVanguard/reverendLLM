@@ -354,7 +354,7 @@ input[type="date"]::-moz-calendar-picker-indicator {
   height: 50px;
   font-weight: bold;
   background-color: #FFD140;
-  color: #000;
+  color: #000; /* Changé de #0000 à #000 pour rendre le texte visible */
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.25rem;
