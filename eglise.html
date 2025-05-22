@@ -427,8 +427,10 @@
         font-size: 24px;
       }
       
+      /* Uniformisation de la taille des textes UNIQUEMENT sur mobile */
       .content-section p,
-      .content-section ul {
+      .content-section ul,
+      .quote-box {
         font-size: 16px;
       }
       
@@ -468,6 +470,11 @@
         margin: 5px 0;
         font-size: 0.9rem;
       }
+      
+      /* Masquer la navigation interne UNIQUEMENT sur mobile */
+      .internal-nav {
+        display: none;
+      }
     }
 
     @media (max-width: 480px) {
@@ -487,22 +494,14 @@
         font-size: 16px;
       }
       
-      .internal-nav {
-        flex-direction: column;
-        gap: 10px;
-      }
-      
-      .internal-nav a {
-        width: 100%;
-        text-align: center;
-      }
-      
       .section-title {
         font-size: 22px;
       }
       
+      /* Uniformisation de la taille des textes sur petit mobile */
       .content-section p,
-      .content-section ul {
+      .content-section ul,
+      .quote-box {
         font-size: 15px;
       }
       
