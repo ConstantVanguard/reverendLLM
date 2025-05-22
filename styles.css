@@ -184,8 +184,8 @@ body {
 }
 
 .service-circle img {
-  width: 70px;
-  height: 70px;
+  width: 77px; /* Augmenté de 10% par rapport à 70px */
+  height: 77px; /* Augmenté de 10% par rapport à 70px */
   object-fit: contain;
 }
 
@@ -237,7 +237,7 @@ body {
 }
 
 /* Positionnement spécifique pour "Révérend Constant" */
-.nav-links div.nav-item:first-child {
+.nav-links a.nav-item:first-child {
   position: absolute;
   left: 0;
 }
@@ -245,7 +245,7 @@ body {
 /* Positionnement spécifique pour "Contact" */
 .nav-links a.nav-item:last-child {
   position: absolute;
-  right: 0;
+  right: 3%; /* Déplacé 3% plus à gauche */
 }
 
 .nav-item:hover {
@@ -264,8 +264,8 @@ body {
   }
   
   .service-circle img {
-    width: 60px;
-    height: 60px;
+    width: 66px; /* Augmenté de 10% par rapport à 60px */
+    height: 66px; /* Augmenté de 10% par rapport à 60px */
   }
 }
 
@@ -332,8 +332,8 @@ body {
   }
   
   .service-circle img {
-    width: 44px; /* Augmenté de 10% par rapport à 40px */
-    height: 44px; /* Augmenté de 10% par rapport à 40px */
+    width: 48.4px; /* Augmenté de 10% par rapport à 44px */
+    height: 48.4px; /* Augmenté de 10% par rapport à 44px */
   }
   
   .service-name {
@@ -371,7 +371,7 @@ body {
     transform: translateX(0); /* Réinitialise le décalage sur mobile */
   }
   
-  .nav-links div.nav-item:first-child,
+  .nav-links a.nav-item:first-child,
   .nav-links a.nav-item:last-child {
     position: static; /* Réinitialise le positionnement absolu sur mobile */
   }
@@ -393,8 +393,8 @@ body {
   }
   
   .service-circle img {
-    width: 38.5px; /* Augmenté de 10% par rapport à 35px */
-    height: 38.5px; /* Augmenté de 10% par rapport à 35px */
+    width: 42.35px; /* Augmenté de 10% par rapport à 38.5px */
+    height: 42.35px; /* Augmenté de 10% par rapport à 38.5px */
   }
   
   .service-orbit {
