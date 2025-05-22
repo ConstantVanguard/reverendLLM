@@ -11,8 +11,8 @@ function isDateAvailable(date) {
     return false;
   }
 
-  // Jours autorisés: Lundi (1), Mercredi (3) et Samedi (6)
-  const allowedDays = [1, 3, 6];
+  // Jours autorisés: Lundi (1), Jeudi (4) et Samedi (6)
+  const allowedDays = [1, 4, 6];
   if (!allowedDays.includes(selectedDate.getDay())) {
     return false;
   }
