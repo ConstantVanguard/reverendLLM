@@ -166,7 +166,7 @@ body {
   right: calc(17% - 75px);
 }
 
-/* MODIFICATION: Suppression de l'arrière-plan des icônes */
+/* MODIFICATION: Suppression de l'arrière-plan des icônes et bordure plus épaisse pour PC */
 .service-circle {
   width: 120px;
   height: 120px;
@@ -176,7 +176,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-  border: 1px solid rgba(200, 176, 113, 0.3); /* Nouvelle couleur exacte avec transparence */
+  border: 2px solid #C8B071; /* Bordure plus épaisse (2px au lieu de 1px) et couleur exacte sans transparence */
   transition: all 0.3s ease;
 }
 
@@ -191,7 +191,6 @@ body {
   height: 77px; /* Augmenté de 10% par rapport à 70px */
   object-fit: contain;
   /* Suppression du filtre de couleur */
-  /* filter: brightness(0) invert(0.8) sepia(0.4) saturate(1.5) hue-rotate(25deg); */
 }
 
 /* Style pour les noms des services */
@@ -329,7 +328,8 @@ body {
     width: 77px; /* Augmenté de 10% par rapport à 70px */
     height: 77px; /* Augmenté de 10% par rapport à 70px */
     margin-bottom: 5px; /* Réduit pour rapprocher le texte de l'icône */
-    /* Suppression de background-color pour mobile aussi */
+    /* Retour à une bordure normale pour mobile */
+    border: 1px solid #C8B071;
   }
   
   .service-circle img {
@@ -409,7 +409,6 @@ body {
   .service-circle {
     width: 66px; /* Augmenté de 10% par rapport à 60px */
     height: 66px; /* Augmenté de 10% par rapport à 60px */
-    /* Suppression de background-color pour les petits écrans aussi */
   }
   
   .service-circle img {
