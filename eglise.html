@@ -346,7 +346,7 @@
       flex: 1;
     }
 
-    /* Style pour les images du centre */
+    /* Style pour les images du centre - SANS EFFET DE ZOOM */
     .centre-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -359,6 +359,11 @@
       object-fit: cover;
       image-rendering: -webkit-optimize-contrast; /* Améliore la netteté sur Chrome */
       image-rendering: crisp-edges; /* Améliore la netteté sur Firefox */
+      transition: none; /* Suppression de la transition pour éviter l'effet de zoom */
+    }
+
+    .centre-container .gallery-image:hover {
+      transform: none; /* Suppression de l'effet de zoom au survol */
     }
 
     /* Responsive design */
