@@ -294,7 +294,7 @@
 
     .gallery-image {
       width: 100%;
-      max-height: 180px; /* Hauteur maximale réduite */
+      height: 180px; /* Hauteur fixe pour ratio 16:9 */
       display: block;
       border-radius: 8px;
       transition: transform 0.3s ease;
@@ -317,7 +317,31 @@
 
     .multi-image-container .gallery-image {
       margin-bottom: 0;
-      height: 120px; /* Hauteur fixe réduite */
+      height: 120px; /* Hauteur fixe pour ratio 16:9 */
+      object-fit: cover;
+    }
+
+    /* Style spécial pour l'image du pasteur */
+    .pastor-image {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      display: block;
+      margin: 0 auto 20px;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    /* Style pour les images du centre */
+    .centre-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .centre-container .gallery-image {
+      height: 160px;
       object-fit: cover;
     }
 
@@ -336,7 +360,7 @@
       }
       
       .gallery-image {
-        max-height: 160px;
+        height: 160px;
       }
       
       .multi-image-container {
@@ -345,6 +369,10 @@
       
       .multi-image-container .gallery-image {
         height: 110px;
+      }
+      
+      .centre-container {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -371,7 +399,7 @@
       }
       
       .gallery-image {
-        max-height: 140px;
+        height: 140px;
       }
       
       .multi-image-container {
@@ -441,7 +469,7 @@
       }
       
       .gallery-image {
-        max-height: 120px;
+        height: 120px;
       }
       
       .multi-image-container {
@@ -567,10 +595,9 @@
     <div id="notre-pasteur" class="content-section">
     <h2 class="section-title">Notre Pasteur</h2>
     
-    <!-- Note: Vous devrez ajouter l'image reverend_portrait.jpg quand elle sera disponible -->
-    <!-- <div class="image-gallery">
-    <img src="reverend_portrait.jpg" alt="Révérend Constant - Notre pasteur" class="gallery-image">
-    </div> -->
+    <div class="image-gallery">
+    <img src="reverend_portrait.jpg" alt="Révérend Constant - Notre pasteur" class="pastor-image">
+    </div>
     
     <p>
     Le Révérend Constant exerce son ministère avec une conviction profonde et un sincère désir d'accompagner autrui dans les moments déterminants de l'existence. Formé dans la tradition protestante tout en restant réceptif aux influences œcuméniques, il officie avec la volonté d'amener chacun vers le Royaume des Cieux.
@@ -588,13 +615,12 @@
     <div id="centre-protestant" class="content-section">
     <h2 class="section-title">Centre Protestant de Rhode-Saint-Genèse</h2>
     
-    <!-- Note: Vous devrez ajouter les images centre_exterieur.jpg et centre_interieur.jpg quand elles seront disponibles -->
-    <!-- <div class="image-gallery">
-    <div class="multi-image-container">
+    <div class="image-gallery">
+    <div class="centre-container">
     <img src="centre_exterieur.jpg" alt="Centre Protestant - Vue extérieure" class="gallery-image">
     <img src="centre_interieur.jpg" alt="Centre Protestant - Vue intérieure" class="gallery-image">
     </div>
-    </div> -->
+    </div>
     
     <p>
     Le Centre Protestant de Rhode-Saint-Genèse constitue notre lieu d'accueil et de rassemblement. Situé dans un environnement paisible, cet espace fait office de presbytère et de lieu de recueillement.
