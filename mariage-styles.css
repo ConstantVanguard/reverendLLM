@@ -36,7 +36,7 @@ body {
 .page-title {
   font-family: 'Cinzel', serif;
   font-size: 42px;
-  color: #d4af37;
+  color: #C8B071;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin-bottom: 15px;
 }
@@ -52,7 +52,7 @@ body {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Hamburger Menu - MODIFIÉ pour correspondre à la page baptême */
+/* Hamburger Menu */
 .hamburger-menu {
   position: absolute;
   top: 30px;
@@ -76,7 +76,7 @@ body {
 #hamburger-button span {
   width: 100%;
   height: 3px;
-  background-color: #f5e7c1; /* Changé pour correspondre à la page baptême */
+  background-color: #C8B071;
   border-radius: 3px;
   transition: all 0.3s linear;
 }
@@ -105,7 +105,7 @@ body {
 
 #mobile-menu li {
   margin: 15px 0;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  border-bottom: 1px solid rgba(200, 176, 113, 0.3);
   padding-bottom: 10px;
 }
 
@@ -115,7 +115,7 @@ body {
 
 #mobile-menu a {
   text-decoration: none;
-  color: #d4af37;
+  color: #C8B071;
   font-weight: 500;
   display: block;
   padding: 5px 10px;
@@ -126,17 +126,17 @@ body {
   color: #fff;
 }
 
-/* Main content - MODIFIÉ pour correspondre à la page baptême */
+/* Main content */
 .main-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 50px 20px;
-  background: url("dark_parchment.png") center/cover; /* Ajout de l'image de fond */
-  background-color: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent par-dessus l'image */
+  background: url("dark_parchment.png") center/cover;
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
   position: relative;
-  border: 1px solid rgba(212, 175, 55, 0.3); /* Bordure dorée subtile */
+  border: 1px solid rgba(200, 176, 113, 0.3);
 }
 
 /* Image gallery */
@@ -152,7 +152,7 @@ body {
   height: 250px;
   object-fit: cover;
   border-radius: 8px;
-  border: 3px solid #d4af37;
+  border: 3px solid #C8B071;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
@@ -169,7 +169,7 @@ body {
 .section-title {
   font-family: 'Cinzel', serif;
   font-size: 32px;
-  color: #d4af37;
+  color: #C8B071;
   margin-bottom: 25px;
   position: relative;
   padding-bottom: 15px;
@@ -182,7 +182,7 @@ body {
   left: 0;
   width: 80px;
   height: 3px;
-  background-color: #d4af37;
+  background-color: #C8B071;
 }
 
 .content-section p {
@@ -205,10 +205,10 @@ body {
 }
 
 .content-section strong, .content-section em {
-  color: #d4af37; /* Ajout pour correspondre à la page baptême */
+  color: #C8B071;
 }
 
-/* Reservation section - MODIFIÉ pour correspondre à la page baptême */
+/* Reservation section */
 .reservation-section {
   background: url("dark_parchment.png") center/cover;
   padding: 40px;
@@ -217,7 +217,7 @@ body {
   color: #fff;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(212, 175, 55, 0.5);
+  border: 1px solid rgba(200, 176, 113, 0.5);
 }
 
 .reservation-section::before {
@@ -238,7 +238,7 @@ body {
   left: 0;
   width: 100%;
   height: 5px;
-  background: linear-gradient(to right, #d4af37, transparent);
+  background: linear-gradient(to right, #C8B071, transparent);
   z-index: 1;
 }
 
@@ -251,7 +251,7 @@ body {
   font-family: 'Cinzel', serif;
   font-size: 28px;
   margin-bottom: 25px;
-  color: #d4af37;
+  color: #C8B071;
 }
 
 .reservation-section p {
@@ -271,17 +271,23 @@ body {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
-  color: #d4af37;
+  color: #C8B071;
+}
+
+.date-picker-container {
+  position: relative;
+  width: 100%;
 }
 
 .form-group input {
   width: 100%;
   padding: 12px;
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(200, 176, 113, 0.3);
   background-color: rgba(10, 5, 2, 0.7);
   border-radius: 5px;
   font-size: 16px;
   color: #fff;
+  cursor: pointer;
 }
 
 /* Personnalisation du sélecteur de date */
@@ -289,6 +295,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(100%);
   cursor: pointer;
   opacity: 0.8;
+  width: 20px;
+  height: 20px;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator:hover {
@@ -340,7 +348,7 @@ input[type="date"]::-moz-calendar-picker-indicator {
   height: 50px;
   font-weight: bold;
   background-color: #FFD140;
-  color: #0000;
+  color: #000;
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.25rem;
@@ -381,13 +389,13 @@ input[type="date"]::-moz-calendar-picker-indicator {
   font-family: 'Cinzel', serif;
   font-size: 1rem;
   letter-spacing: 1px;
-  color: #d4af37;
+  color: #C8B071;
   text-decoration: none;
   transition: all 0.3s ease;
   margin: 0 20px;
 }
 
-.nav-links div.nav-item:first-child {
+.nav-links a.nav-item:first-child {
   position: absolute;
   left: 0;
 }
