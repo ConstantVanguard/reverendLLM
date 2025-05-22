@@ -155,13 +155,13 @@ body {
 #service-accompagnement {
   animation: float4 6.5s ease-in-out infinite;
   top: calc(15% - 75px);
-  right: calc(30% - 75px);
+  right: calc(32% - 75px); /* Déplacé 2% plus à gauche (de 30% à 32%) */
 }
 
 #service-funerailles {
   animation: float5 7s ease-in-out infinite;
   top: calc(30% - 75px);
-  right: calc(15% - 75px);
+  right: calc(17% - 75px); /* Déplacé 2% plus à gauche (de 15% à 17%) */
 }
 
 .service-circle {
