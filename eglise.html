@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notre Ministère - Révérend Constant</title>
+  <title>Église Réformée du Christ Roi - Révérend Constant</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
   <style>
     /* Base styles */
@@ -35,7 +35,7 @@
       width: auto;
     }
 
-    /* Hamburger Menu */
+    /* Hamburger Menu - MODIFIÉ pour correspondre à la page mariage */
     .hamburger-menu {
       position: absolute;
       top: 30px;
@@ -59,7 +59,7 @@
     #hamburger-button span {
       width: 100%;
       height: 3px;
-      background-color: #f5e7c1;
+      background-color: #f5e7c1; /* Couleur identique à celle de la page mariage */
       border-radius: 3px;
       transition: all 0.3s linear;
     }
@@ -109,11 +109,26 @@
       color: #fff;
     }
 
-    /* Page header */
+    /* Page header - MODIFIÉ pour inclure le nouveau logo */
     .page-header {
       text-align: center;
       padding: 120px 0 40px;
       position: relative;
+    }
+
+    /* Nouveau style pour le conteneur du titre et du logo */
+    .title-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .church-logo {
+      width: 72px; /* 60% de la taille du logo principal (120px) */
+      height: auto;
+      margin-bottom: 10px;
     }
 
     .page-title {
@@ -121,13 +136,12 @@
       font-size: 42px;
       color: #d4af37;
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      margin-bottom: 15px;
     }
 
     .page-subtitle {
       font-family: 'Playfair Display', serif;
       font-size: 20px;
-      color: #f5e7c1;
+      color: #d4af37; /* Modifié pour avoir la même couleur que "Notre Église" */
       max-width: 800px;
       margin: 0 auto;
       font-weight: 600;
@@ -222,6 +236,15 @@
 
     .content-section li {
       margin-bottom: 8px;
+    }
+
+    /* Ajout d'une classe spécifique pour le dernier paragraphe du pasteur */
+    .pastor-last-paragraph {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: #fff;
     }
 
     /* Quote box */
@@ -381,6 +404,10 @@
         height: 90px;
       }
       
+      .church-logo {
+        width: 54px; /* 60% de 90px */
+      }
+      
       .page-title {
         font-size: 36px;
       }
@@ -424,6 +451,10 @@
         height: 80px;
       }
       
+      .church-logo {
+        width: 48px; /* 60% de 80px */
+      }
+      
       .page-header {
         padding: 100px 0 30px;
       }
@@ -442,6 +473,11 @@
       .pastor-text p,
       .quote-box {
         font-size: 16px !important; /* Force la taille avec !important */
+      }
+      
+      /* Taille spécifique pour le dernier paragraphe du pasteur sur mobile */
+      .pastor-last-paragraph {
+        font-size: 15px !important; /* Une taille plus petite que les autres paragraphes */
       }
       
       .gallery-image {
@@ -492,6 +528,10 @@
         height: 60px;
       }
       
+      .church-logo {
+        width: 36px; /* 60% de 60px */
+      }
+      
       .page-header {
         padding: 80px 0 20px;
       }
@@ -514,6 +554,11 @@
       .pastor-text p,
       .quote-box {
         font-size: 15px !important; /* Force la taille avec !important */
+      }
+      
+      /* Taille spécifique pour le dernier paragraphe du pasteur sur petit mobile */
+      .pastor-last-paragraph {
+        font-size: 14px !important; /* Une taille plus petite que les autres paragraphes */
       }
       
       .gallery-image {
@@ -565,7 +610,10 @@
   </div>
 
   <header class="page-header">
-    <h1 class="page-title">Notre Ministère</h1>
+    <div class="title-container">
+      <img src="logo2.png" alt="Logo Église Réformée du Christ Roi" class="church-logo">
+      <h1 class="page-title">Église Réformée du Christ Roi</h1>
+    </div>
     <p class="page-subtitle">Une communauté de foi, de partage et de réflexion</p>
   </header>
 
@@ -660,7 +708,7 @@
       </div>
     </div>
     
-    <p>
+    <p class="pastor-last-paragraph">
     Le Révérend a écrit plusieurs ouvrages religieux liés à la guidance spirituelle et à la formation au Christianisme, partageant ainsi sa vision et ses enseignements au-delà des cérémonies.
     </p>
     </div>
