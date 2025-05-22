@@ -134,34 +134,34 @@ body {
 }
 
 /* Application des animations différentes pour chaque service */
-/* Déplacement de 1% vers le bas pour tous les services */
+/* Déplacement de 2% vers le bas pour tous les services (1% supplémentaire) */
 #service-bapteme {
   animation: float1 5s ease-in-out infinite;
-  top: calc(31% - 75px); /* Déplacé 1% plus bas (de 30% à 31%) */
+  top: calc(32% - 75px); /* Déplacé 2% plus bas (de 30% à 32%) */
   left: calc(13% - 75px);
 }
 
 #service-confirmation {
   animation: float2 6s ease-in-out infinite;
-  top: calc(54% - 75px); /* Déplacé 1% plus bas (de 53% à 54%) */
+  top: calc(55% - 75px); /* Déplacé 2% plus bas (de 53% à 55%) */
   left: calc(27% - 75px);
 }
 
 #service-mariage {
   animation: float3 5.5s ease-in-out infinite;
-  top: calc(16% - 75px); /* Déplacé 1% plus bas (de 15% à 16%) */
+  top: calc(17% - 75px); /* Déplacé 2% plus bas (de 15% à 17%) */
   left: calc(27% - 75px);
 }
 
 #service-accompagnement {
   animation: float4 6.5s ease-in-out infinite;
-  top: calc(16% - 75px); /* Déplacé 1% plus bas (de 15% à 16%) */
+  top: calc(17% - 75px); /* Déplacé 2% plus bas (de 15% à 17%) */
   right: calc(32% - 75px);
 }
 
 #service-funerailles {
   animation: float5 7s ease-in-out infinite;
-  top: calc(31% - 75px); /* Déplacé 1% plus bas (de 30% à 31%) */
+  top: calc(32% - 75px); /* Déplacé 2% plus bas (de 30% à 32%) */
   right: calc(17% - 75px);
 }
 
@@ -248,7 +248,7 @@ body {
 /* Positionnement spécifique pour "Contact" */
 .nav-links a.nav-item:last-child {
   position: absolute;
-  right: 3%; /* Déplacé 3% plus à gauche */
+  right: 5%; /* Déplacé 5% plus à gauche (modifié de 3% à 5%) */
 }
 
 .nav-item:hover {
