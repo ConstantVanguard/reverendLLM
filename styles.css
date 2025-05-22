@@ -264,7 +264,7 @@ body {
 
 @media (max-width: 768px) {
   .logo img {
-    height: 80px;
+    height: 120px; /* Augmenté de 50% par rapport à 80px */
   }
   
   body {
@@ -400,7 +400,7 @@ body {
 
 @media (max-width: 480px) {
   .logo img {
-    height: 60px;
+    height: 90px; /* Augmenté de 50% par rapport à 60px */
   }
   
   .service-circle {
