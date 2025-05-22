@@ -270,9 +270,15 @@
       margin: 0 20px;
     }
 
+    /* Suppression du soulignement pour tous les liens */
+    .nav-links a.nav-item {
+      text-decoration: none;
+    }
+
     .nav-links div.nav-item:first-child {
       position: absolute;
       left: 0;
+      cursor: pointer; /* Ajout du curseur pointer pour indiquer que c'est cliquable */
     }
 
     .nav-links a.nav-item:last-child {
@@ -322,14 +328,22 @@
     }
 
     /* Style spécial pour l'image du pasteur */
+    .pastor-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
     .pastor-image {
-      width: 100%;
-      max-width: 300px;
+      width: 210px; /* 30% plus petite que précédemment */
       height: auto;
-      display: block;
-      margin: 0 auto 20px;
       border-radius: 8px;
       object-fit: contain;
+    }
+
+    .pastor-text {
+      flex: 1;
     }
 
     /* Style pour les images du centre */
@@ -341,8 +355,10 @@
     }
 
     .centre-container .gallery-image {
-      height: 160px;
+      height: 220px; /* Augmentation de la hauteur pour améliorer la qualité */
       object-fit: cover;
+      image-rendering: -webkit-optimize-contrast; /* Améliore la netteté sur Chrome */
+      image-rendering: crisp-edges; /* Améliore la netteté sur Firefox */
     }
 
     /* Responsive design */
@@ -373,6 +389,19 @@
       
       .centre-container {
         grid-template-columns: 1fr;
+      }
+      
+      .centre-container .gallery-image {
+        height: 180px;
+      }
+      
+      .pastor-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .pastor-image {
+        margin-bottom: 15px;
       }
     }
 
@@ -408,6 +437,10 @@
       
       .multi-image-container .gallery-image {
         height: 100px;
+      }
+      
+      .centre-container .gallery-image {
+        height: 160px;
       }
       
       .bottom-bar {
@@ -478,6 +511,10 @@
       
       .multi-image-container .gallery-image {
         height: 120px;
+      }
+      
+      .centre-container .gallery-image {
+        height: 140px;
       }
       
       .nav-item {
@@ -595,17 +632,18 @@
     <div id="notre-pasteur" class="content-section">
     <h2 class="section-title">Notre Pasteur</h2>
     
-    <div class="image-gallery">
-    <img src="reverend_portrait.jpg" alt="Révérend Constant - Notre pasteur" class="pastor-image">
+    <div class="pastor-container">
+      <img src="reverend_portrait.jpg" alt="Révérend Constant - Notre pasteur" class="pastor-image">
+      <div class="pastor-text">
+        <p>
+        Le Révérend Constant exerce son ministère avec une conviction profonde et un sincère désir d'accompagner autrui dans les moments déterminants de l'existence. Formé dans la tradition protestante tout en restant réceptif aux influences œcuméniques, il officie avec la volonté d'amener chacun vers le Royaume des Cieux.
+        </p>
+        
+        <p>
+        Sa philosophie pastorale repose sur la tradition et l'accessibilité des services. Il considère que les cérémonies doivent refléter l'identité de chacun, c'est pourquoi il s'attache à créer des services qui résonnent avec l'histoire des fidèles qu'il accompagne.
+        </p>
+      </div>
     </div>
-    
-    <p>
-    Le Révérend Constant exerce son ministère avec une conviction profonde et un sincère désir d'accompagner autrui dans les moments déterminants de l'existence. Formé dans la tradition protestante tout en restant réceptif aux influences œcuméniques, il officie avec la volonté d'amener chacun vers le Royaume des Cieux.
-    </p>
-    
-    <p>
-    Sa philosophie pastorale repose sur la tradition et l'accessibilité des services. Il considère que les cérémonies doivent refléter l'identité de chacun, c'est pourquoi il s'attache à créer des services qui résonnent avec l'histoire des fidèles qu'il accompagne.
-    </p>
     
     <p>
     Le Révérend a écrit plusieurs ouvrages religieux liés à la guidance spirituelle et à la formation au Christianisme, partageant ainsi sa vision et ses enseignements au-delà des cérémonies.
@@ -648,7 +686,7 @@
 
   <div class="bottom-bar">
     <div class="nav-links">
-    <div class="nav-item">Révérend Constant</div>
+    <div class="nav-item" id="reverend-link">Révérend Constant</div>
     <a href="eglise.html" class="nav-item">Notre Ministère</a>
     <a href="contact.html" class="nav-item">Contact</a>
     </div>
@@ -685,6 +723,11 @@
     behavior: 'smooth'
     });
     });
+    });
+    
+    // Ajouter un événement de clic pour "Révérend Constant" dans la barre du bas
+    document.getElementById('reverend-link').addEventListener('click', function() {
+      window.location.href = 'index.html';
     });
     });
   </script>
