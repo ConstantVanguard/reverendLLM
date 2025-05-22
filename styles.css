@@ -240,7 +240,7 @@ body {
 }
 
 /* Positionnement spécifique pour "Révérend Constant" */
-.nav-links a.nav-item:first-child {
+.nav-links div.nav-item:first-child {
   position: absolute;
   left: 0;
 }
@@ -327,6 +327,10 @@ body {
   
   .service-content {
     width: 80px;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
   }
   
   .service-circle {
@@ -343,44 +347,46 @@ body {
   .service-name {
     font-size: 0.7rem;
     margin-top: 5px; /* Réduit pour rapprocher le texte de l'icône */
+    position: static;
+    display: block;
   }
   
   /* Remplacer ACCOMPAGNEMENT par AIDE sur mobile */
   #service-accompagnement .service-name {
-    font-size: 0;
-    position: relative;
+    font-size: 0.7rem;
   }
   
   #service-accompagnement .service-name:after {
+    content: none;
+  }
+  
+  #service-accompagnement .service-name {
+    visibility: hidden;
+    position: relative;
+  }
+  
+  #service-accompagnement .service-name:before {
     content: "AIDE";
-    font-size: 0.7rem;
-    color: #d4af37;
+    visibility: visible;
     position: absolute;
-    left: 50%;
-    top: 0; /* Assure que le texte est aligné avec les autres */
-    transform: translateX(-50%);
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-    letter-spacing: 1px;
-    white-space: nowrap;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
   
   /* Remplacer CONFIRMATION par ÉTUDE sur mobile */
   #service-confirmation .service-name {
-    font-size: 0;
+    visibility: hidden;
     position: relative;
   }
   
-  #service-confirmation .service-name:after {
+  #service-confirmation .service-name:before {
     content: "ÉTUDE";
-    font-size: 0.7rem;
-    color: #d4af37;
+    visibility: visible;
     position: absolute;
-    left: 50%;
-    top: 0; /* Assure que le texte est aligné avec les autres */
-    transform: translateX(-50%);
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-    letter-spacing: 1px;
-    white-space: nowrap;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
   
   /* Ajustement pour la navigation en mode mobile */
@@ -396,7 +402,7 @@ body {
     transform: translateX(0); /* Réinitialise le décalage sur mobile */
   }
   
-  .nav-links a.nav-item:first-child,
+  .nav-links div.nav-item:first-child,
   .nav-links a.nav-item:last-child {
     position: static; /* Réinitialise le positionnement absolu sur mobile */
   }
@@ -425,31 +431,63 @@ body {
   .service-orbit {
     padding: 0 10px 70px; /* Plus d'espace en bas et sur les côtés */
     gap: 20px; /* Encore plus d'espace entre les éléments */
-  }
-  
-  .service-item {
-    margin: 8px;
-    width: 70px;
-    height: 80px; /* Augmenté pour donner plus d'espace au texte */
-  }
-  
-  /* Disposition spécifique pour les petits écrans */
-  .service-orbit {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Force 3 éléments par ligne */
     justify-items: center;
   }
   
-  /* Assurer que tous les textes sont à la même hauteur */
-  .service-name, 
-  #service-accompagnement .service-name:after,
-  #service-confirmation .service-name:after {
-    position: absolute;
-    top: 70px; /* Position fixe sous l'icône */
-    left: 50%;
-    transform: translateX(-50%);
+  .service-item {
+    margin: 8px;
+    width: 70px;
+    height: 90px; /* Augmenté pour donner plus d'espace au texte */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .service-content {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
+  }
+  
+  .service-name {
+    position: static;
+    margin-top: 5px;
     text-align: center;
+    width: 100%;
+  }
+  
+  /* Ordre spécifique pour les éléments sur mobile */
+  .service-orbit {
+    display: grid;
+    grid-template-areas: 
+      "bapteme mariage accompagnement"
+      "confirmation funerailles empty";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
+  
+  #service-bapteme {
+    grid-area: bapteme;
+  }
+  
+  #service-mariage {
+    grid-area: mariage;
+  }
+  
+  #service-accompagnement {
+    grid-area: accompagnement;
+  }
+  
+  #service-confirmation {
+    grid-area: confirmation;
+  }
+  
+  #service-funerailles {
+    grid-area: funerailles;
   }
   
   .bottom-bar {
@@ -465,19 +503,16 @@ body {
 /* Ajustement spécifique pour les très petits écrans */
 @media (max-width: 360px) {
   .service-orbit {
-    grid-template-columns: repeat(2, 1fr); /* Force 2 éléments par ligne sur très petits écrans */
-    gap: 25px; /* Encore plus d'espace entre les éléments */
+    grid-template-areas: 
+      "bapteme mariage"
+      "accompagnement confirmation"
+      "funerailles empty";
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px;
   }
   
   .service-item {
     margin: 5px;
-    height: 85px; /* Plus d'espace pour le texte */
-  }
-  
-  /* Assurer que tous les textes sont à la même hauteur */
-  .service-name, 
-  #service-accompagnement .service-name:after,
-  #service-confirmation .service-name:after {
-    top: 75px; /* Position fixe sous l'icône */
+    height: 85px;
   }
 }
