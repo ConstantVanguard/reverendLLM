@@ -217,7 +217,7 @@ body {
   z-index: 100;
 }
 
-/* Modification de la navigation pour centrer "Notre Ministère" et décaler de 2% vers la gauche */
+/* Modification de la navigation pour centrer "Notre Ministère" et positionner les autres éléments */
 .nav-links {
   display: flex;
   justify-content: center; /* Centre les éléments */
@@ -225,7 +225,6 @@ body {
   width: 100%;
   max-width: 800px;
   position: relative; /* Pour le positionnement absolu des éléments latéraux */
-  transform: translateX(-2%); /* Décale tous les onglets de 2% vers la gauche */
 }
 
 /* Style uniforme pour tous les éléments de navigation */
@@ -242,7 +241,14 @@ body {
 /* Positionnement spécifique pour "Révérend Constant" */
 .nav-links div.nav-item:first-child {
   position: absolute;
-  left: 0;
+  left: calc(50% - 5% - 100px); /* 5% à gauche du centre, ajusté pour la largeur du texte */
+}
+
+/* Positionnement spécifique pour "Notre Ministère" */
+.nav-links a.nav-item:nth-child(2) {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* Centre parfaitement */
 }
 
 /* Positionnement spécifique pour "Contact" */
@@ -403,8 +409,10 @@ body {
   }
   
   .nav-links div.nav-item:first-child,
+  .nav-links a.nav-item:nth-child(2),
   .nav-links a.nav-item:last-child {
     position: static; /* Réinitialise le positionnement absolu sur mobile */
+    transform: none;
   }
   
   .nav-item {
