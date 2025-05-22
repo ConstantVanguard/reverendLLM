@@ -276,20 +276,23 @@ body {
   color: #fff;
 }
 
-/* Galerie d'images */
+/* Galerie d'images - SOLUTION OPTIMISÉE */
 .image-gallery {
   margin-bottom: 20px;
   border-radius: 8px;
   overflow: hidden;
+  max-width: 100%;
 }
 
 .gallery-image {
   width: 100%;
-  height: auto;
+  max-height: 200px; /* Hauteur maximale réduite */
   display: block;
   border-radius: 8px;
   transition: transform 0.3s ease;
   margin-bottom: 15px;
+  object-fit: cover; /* Maintient les proportions */
+  object-position: center; /* Centre l'image */
 }
 
 .gallery-image:hover {
@@ -299,14 +302,14 @@ body {
 /* Pour afficher plusieurs images côte à côte dans la section communauté */
 .multi-image-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(3, 1fr); /* Force 3 colonnes */
+  gap: 10px;
   margin-bottom: 15px;
 }
 
 .multi-image-container .gallery-image {
   margin-bottom: 0;
-  height: 200px;
+  height: 150px; /* Hauteur fixe réduite */
   object-fit: cover;
 }
 
@@ -322,6 +325,18 @@ body {
   
   .page-subtitle {
     font-size: 18px;
+  }
+  
+  .gallery-image {
+    max-height: 180px;
+  }
+  
+  .multi-image-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette */
+  }
+  
+  .multi-image-container .gallery-image {
+    height: 140px;
   }
 }
 
@@ -347,12 +362,16 @@ body {
     font-size: 16px;
   }
   
+  .gallery-image {
+    max-height: 160px;
+  }
+  
   .multi-image-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .multi-image-container .gallery-image {
-    height: auto;
+    height: 120px;
   }
   
   .bottom-bar {
@@ -411,6 +430,18 @@ body {
   .content-section p,
   .content-section ul {
     font-size: 15px;
+  }
+  
+  .gallery-image {
+    max-height: 140px;
+  }
+  
+  .multi-image-container {
+    grid-template-columns: 1fr; /* 1 colonne sur mobile */
+  }
+  
+  .multi-image-container .gallery-image {
+    height: 140px;
   }
   
   .nav-item {
