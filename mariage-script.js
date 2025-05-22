@@ -2,17 +2,17 @@
 function isDateAvailable(date) {
   const selectedDate = new Date(date);
   const today = new Date();
-  // Appliquer le délai de 47 jours
+  // Appliquer le délai de 63 jours
   const minDate = new Date();
-  minDate.setDate(today.getDate() + 47);
+  minDate.setDate(today.getDate() + 63);
 
   // Vérifier le délai minimal
   if (selectedDate < minDate) {
     return false;
   }
 
-  // Jours autorisés: Lundi (1), Jeudi (4) et Samedi (6)
-  const allowedDays = [1, 4, 6];
+  // Jours autorisés: Lundi (1), Mercredi (3) et Samedi (6)
+  const allowedDays = [1, 3, 6];
   if (!allowedDays.includes(selectedDate.getDay())) {
     return false;
   }
@@ -31,8 +31,14 @@ function isDateAvailable(date) {
 document.addEventListener('DOMContentLoaded', function() {
   const today = new Date();
   const minDate = new Date();
-  minDate.setDate(today.getDate() + 47);
+  minDate.setDate(today.getDate() + 63);
   document.getElementById("datePicker").min = minDate.toISOString().split('T')[0];
+  
+  // Améliorer l'interaction avec le sélecteur de date
+  const datePicker = document.getElementById("datePicker");
+  datePicker.addEventListener("click", function() {
+    this.showPicker();
+  });
   
   document.getElementById("bookButton").addEventListener("click", function() {
     const dateValue = document.getElementById("datePicker").value;
@@ -46,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (isDateAvailable(dateValue)) {
-      messageDiv.style.color = "#d4af37";
+      messageDiv.style.color = "#C8B071";
       messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 100€.";
       document.getElementById("paypalButton").style.display = "block";
     } else {
