@@ -305,7 +305,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 15px; /* Augmenté de 10px à 15px pour plus d'espacement */
     margin-top: 20px;
     width: 100%;
     height: auto;
@@ -319,7 +319,7 @@ body {
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
-    margin: 10px;
+    margin: 10px 15px; /* Augmenté la marge horizontale */
     animation: none !important; /* Désactive l'animation sur mobile */
     width: 90px;
     height: 90px;
@@ -332,6 +332,7 @@ body {
   .service-circle {
     width: 77px; /* Augmenté de 10% par rapport à 70px */
     height: 77px; /* Augmenté de 10% par rapport à 70px */
+    margin-bottom: 5px; /* Réduit pour rapprocher le texte de l'icône */
   }
   
   .service-circle img {
@@ -341,6 +342,7 @@ body {
   
   .service-name {
     font-size: 0.7rem;
+    margin-top: 5px; /* Réduit pour rapprocher le texte de l'icône */
   }
   
   /* Remplacer ACCOMPAGNEMENT par AIDE sur mobile */
@@ -355,6 +357,26 @@ body {
     color: #d4af37;
     position: absolute;
     left: 50%;
+    top: 0; /* Assure que le texte est aligné avec les autres */
+    transform: translateX(-50%);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  
+  /* Remplacer CONFIRMATION par ÉTUDE sur mobile */
+  #service-confirmation .service-name {
+    font-size: 0;
+    position: relative;
+  }
+  
+  #service-confirmation .service-name:after {
+    content: "ÉTUDE";
+    font-size: 0.7rem;
+    color: #d4af37;
+    position: absolute;
+    left: 50%;
+    top: 0; /* Assure que le texte est aligné avec les autres */
     transform: translateX(-50%);
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     letter-spacing: 1px;
@@ -402,12 +424,32 @@ body {
   
   .service-orbit {
     padding: 0 10px 70px; /* Plus d'espace en bas et sur les côtés */
+    gap: 20px; /* Encore plus d'espace entre les éléments */
   }
   
   .service-item {
-    margin: 5px;
+    margin: 8px;
     width: 70px;
-    height: 70px;
+    height: 80px; /* Augmenté pour donner plus d'espace au texte */
+  }
+  
+  /* Disposition spécifique pour les petits écrans */
+  .service-orbit {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Force 3 éléments par ligne */
+    justify-items: center;
+  }
+  
+  /* Assurer que tous les textes sont à la même hauteur */
+  .service-name, 
+  #service-accompagnement .service-name:after,
+  #service-confirmation .service-name:after {
+    position: absolute;
+    top: 70px; /* Position fixe sous l'icône */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
   }
   
   .bottom-bar {
@@ -417,5 +459,25 @@ body {
   .nav-item {
     font-size: 0.8rem;
     margin: 3px 0;
+  }
+}
+
+/* Ajustement spécifique pour les très petits écrans */
+@media (max-width: 360px) {
+  .service-orbit {
+    grid-template-columns: repeat(2, 1fr); /* Force 2 éléments par ligne sur très petits écrans */
+    gap: 25px; /* Encore plus d'espace entre les éléments */
+  }
+  
+  .service-item {
+    margin: 5px;
+    height: 85px; /* Plus d'espace pour le texte */
+  }
+  
+  /* Assurer que tous les textes sont à la même hauteur */
+  .service-name, 
+  #service-accompagnement .service-name:after,
+  #service-confirmation .service-name:after {
+    top: 75px; /* Position fixe sous l'icône */
   }
 }
