@@ -346,6 +346,15 @@
       flex: 1;
     }
 
+    /* CORRECTION: S'assurer que tous les paragraphes ont la même taille */
+    .pastor-text p {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
     /* Style pour les images du centre - SANS EFFET DE ZOOM */
     .centre-container {
       display: grid;
@@ -432,7 +441,7 @@
       .content-section ul,
       .pastor-text p,
       .quote-box {
-        font-size: 16px;
+        font-size: 16px !important; /* Force la taille avec !important */
       }
       
       .gallery-image {
@@ -504,7 +513,7 @@
       .content-section ul,
       .pastor-text p,
       .quote-box {
-        font-size: 15px;
+        font-size: 15px !important; /* Force la taille avec !important */
       }
       
       .gallery-image {
