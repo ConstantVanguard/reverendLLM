@@ -190,8 +190,8 @@ body {
   width: 77px; /* Augmenté de 10% par rapport à 70px */
   height: 77px; /* Augmenté de 10% par rapport à 70px */
   object-fit: contain;
-  /* Filtres pour uniformiser la couleur selon la couleur exacte */
-  filter: brightness(0) invert(0.8) sepia(0.4) saturate(1.5) hue-rotate(25deg);
+  /* Suppression du filtre de couleur */
+  /* filter: brightness(0) invert(0.8) sepia(0.4) saturate(1.5) hue-rotate(25deg); */
 }
 
 /* Style pour les noms des services */
