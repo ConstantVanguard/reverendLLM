@@ -217,14 +217,13 @@ body {
   z-index: 100;
 }
 
-/* Modification de la navigation pour centrer "Notre Ministère" et positionner les autres éléments */
+/* NOUVELLE SOLUTION: Utilisation de flexbox pour la navigation */
 .nav-links {
   display: flex;
-  justify-content: center; /* Centre les éléments */
+  justify-content: space-between; /* Répartit les éléments de manière égale */
   align-items: center;
-  width: 100%;
-  max-width: 800px;
-  position: relative; /* Pour le positionnement absolu des éléments latéraux */
+  width: 80%; /* Contrôle la largeur totale de la navigation */
+  max-width: 1000px;
 }
 
 /* Style uniforme pour tous les éléments de navigation */
@@ -235,26 +234,11 @@ body {
   color: #d4af37;
   text-decoration: none;
   transition: all 0.3s ease;
-  margin: 0 20px; /* Espacement uniforme */
 }
 
-/* Positionnement spécifique pour "Révérend Constant" */
-.nav-links div.nav-item:first-child {
-  position: absolute;
-  left: calc(50% - 5% - 100px); /* 5% à gauche du centre, ajusté pour la largeur du texte */
-}
-
-/* Positionnement spécifique pour "Notre Ministère" */
+/* Style spécifique pour l'élément du milieu */
 .nav-links a.nav-item:nth-child(2) {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%); /* Centre parfaitement */
-}
-
-/* Positionnement spécifique pour "Contact" */
-.nav-links a.nav-item:last-child {
-  position: absolute;
-  right: 5%; /* Déplacé 5% plus à gauche (modifié de 3% à 5%) */
+  text-align: center;
 }
 
 .nav-item:hover {
@@ -405,14 +389,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 5px 0;
-    transform: translateX(0); /* Réinitialise le décalage sur mobile */
-  }
-  
-  .nav-links div.nav-item:first-child,
-  .nav-links a.nav-item:nth-child(2),
-  .nav-links a.nav-item:last-child {
-    position: static; /* Réinitialise le positionnement absolu sur mobile */
-    transform: none;
+    width: 100%;
   }
   
   .nav-item {
