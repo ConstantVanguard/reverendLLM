@@ -134,34 +134,35 @@ body {
 }
 
 /* Application des animations différentes pour chaque service */
+/* Déplacement de 1% vers le bas pour tous les services */
 #service-bapteme {
   animation: float1 5s ease-in-out infinite;
-  top: calc(30% - 75px);
+  top: calc(31% - 75px); /* Déplacé 1% plus bas (de 30% à 31%) */
   left: calc(13% - 75px);
 }
 
 #service-confirmation {
   animation: float2 6s ease-in-out infinite;
-  top: calc(53% - 75px);
+  top: calc(54% - 75px); /* Déplacé 1% plus bas (de 53% à 54%) */
   left: calc(27% - 75px);
 }
 
 #service-mariage {
   animation: float3 5.5s ease-in-out infinite;
-  top: calc(15% - 75px);
+  top: calc(16% - 75px); /* Déplacé 1% plus bas (de 15% à 16%) */
   left: calc(27% - 75px);
 }
 
 #service-accompagnement {
   animation: float4 6.5s ease-in-out infinite;
-  top: calc(15% - 75px);
-  right: calc(32% - 75px); /* Déplacé 2% plus à gauche (de 30% à 32%) */
+  top: calc(16% - 75px); /* Déplacé 1% plus bas (de 15% à 16%) */
+  right: calc(32% - 75px);
 }
 
 #service-funerailles {
   animation: float5 7s ease-in-out infinite;
-  top: calc(30% - 75px);
-  right: calc(17% - 75px); /* Déplacé 2% plus à gauche (de 15% à 17%) */
+  top: calc(31% - 75px); /* Déplacé 1% plus bas (de 30% à 31%) */
+  right: calc(17% - 75px);
 }
 
 .service-circle {
@@ -187,6 +188,8 @@ body {
   width: 77px; /* Augmenté de 10% par rapport à 70px */
   height: 77px; /* Augmenté de 10% par rapport à 70px */
   object-fit: contain;
+  /* Filtres pour uniformiser la couleur en doré */
+  filter: brightness(0) invert(0.8) sepia(0.5) saturate(5) hue-rotate(30deg);
 }
 
 /* Style pour les noms des services */
