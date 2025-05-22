@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Notre Ministère - Révérend Constant</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="eglise-styles.css">
 </head>
 <body>
@@ -40,7 +39,6 @@
   </header>
 
   <div class="main-container">
-    <!-- Menu de navigation interne -->
     <nav class="internal-nav">
       <a href="#notre-eglise">Notre Église</a>
       <a href="#nos-croyances">Nos Croyances</a>
@@ -49,7 +47,6 @@
       <a href="#centre-protestant">Centre Protestant</a>
     </nav>
     
-    <!-- Section Notre Église -->
     <div id="notre-eglise" class="content-section">
       <h2 class="section-title">Notre Église</h2>
       
@@ -66,7 +63,6 @@
       </div>
     </div>
     
-    <!-- Section Nos Croyances -->
     <div id="nos-croyances" class="content-section">
       <h2 class="section-title">Nos Croyances</h2>
       
@@ -89,7 +85,6 @@
       </p>
     </div>
     
-    <!-- Section Notre Communauté -->
     <div id="notre-communaute" class="content-section">
       <h2 class="section-title">Notre Communauté</h2>
       
@@ -102,7 +97,6 @@
       </p>
     </div>
     
-    <!-- Section Notre Pasteur -->
     <div id="notre-pasteur" class="content-section">
       <h2 class="section-title">Notre Pasteur</h2>
       
@@ -119,7 +113,6 @@
       </p>
     </div>
     
-    <!-- Section Centre Protestant -->
     <div id="centre-protestant" class="content-section">
       <h2 class="section-title">Centre Protestant de Rhode-Saint-Genèse</h2>
       
@@ -155,7 +148,6 @@
     </div>
   </div>
 
-  <!-- Script pour le menu hamburger et la navigation interne -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Script pour le menu hamburger
@@ -174,7 +166,7 @@
         }
       });
       
-      // Défilement fluide pour les ancres de navigation interne
+      // Navigation interne avec défilement fluide
       document.querySelectorAll('.internal-nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
