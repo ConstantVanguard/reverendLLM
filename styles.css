@@ -219,10 +219,10 @@ body {
   text-decoration: none;
 }
 
-/* Bottom bar - Modifié de fixed à relative */
+/* Bottom bar - Restauré à fixed pour desktop */
 .bottom-bar {
-  position: relative; /* Changé de fixed à relative */
-  bottom: auto; /* Supprimé la position bottom: 0 */
+  position: fixed; /* Restauré à fixed pour desktop */
+  bottom: 0; /* Restauré pour desktop */
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
@@ -231,7 +231,6 @@ body {
   align-items: center;
   padding: 15px 30px;
   z-index: 100;
-  margin-top: 20px; /* Ajouté une marge en haut pour l'espacement */
 }
 
 /* NOUVELLE SOLUTION: Utilisation de flexbox pour la navigation */
@@ -310,7 +309,7 @@ body {
   .minister-container {
     height: auto;
     flex-direction: column;
-    padding-bottom: 30px; /* Réduit l'espace en bas */
+    padding-bottom: 0; /* Réduit à 0 pour rapprocher le bandeau */
     max-width: 100%; /* S'assure que le conteneur ne dépasse pas la largeur de l'écran */
   }
   
@@ -335,7 +334,7 @@ body {
     margin-top: calc(10% + 20px); /* Déplacé 10% plus bas + marge existante */
     width: 100%;
     height: auto;
-    padding-bottom: 20px; /* Réduit le padding en bas */
+    padding-bottom: 0; /* Réduit à 0 pour rapprocher le bandeau */
   }
   
   /* MODIFICATION: Ajustement pour les services en mode mobile */
@@ -421,11 +420,12 @@ body {
   
   /* MODIFICATION: Bandeau bas en position relative sur mobile */
   .bottom-bar {
-    position: relative;
+    position: relative; /* Changé à relative uniquement pour mobile */
     height: auto;
     padding: 10px 0;
     background-color: transparent; /* Fond transparent pour mobile */
-    margin-top: calc(20% + 10px); /* Déplacé 20% plus haut + marge existante */
+    margin-top: 10px; /* Réduit à 10px pour rapprocher le bandeau des icônes */
+    bottom: auto; /* Supprimé la position bottom pour mobile */
   }
   
   .nav-links {
@@ -457,7 +457,7 @@ body {
   }
   
   .service-orbit {
-    padding: 0 10px 30px; /* Réduit l'espace en bas */
+    padding: 0 10px 0; /* Réduit à 0 pour rapprocher le bandeau */
     gap: 20px; /* Encore plus d'espace entre les éléments */
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Force 3 éléments par ligne */
@@ -521,7 +521,7 @@ body {
   
   .bottom-bar {
     padding: 8px 10px;
-    margin-top: calc(20% + 15px); /* Maintient le décalage de 20% vers le haut */
+    margin-top: 10px; /* Réduit à 10px pour rapprocher le bandeau des icônes */
   }
   
   .nav-item {
@@ -540,6 +540,7 @@ body {
     grid-template-columns: 1fr 1fr;
     grid-gap: 25px;
     margin-top: calc(10% + 15px); /* Ajusté pour les très petits écrans */
+    padding-bottom: 0; /* Réduit à 0 pour rapprocher le bandeau */
   }
   
   .service-item {
@@ -548,6 +549,6 @@ body {
   }
   
   .bottom-bar {
-    margin-top: calc(20% + 20px); /* Ajusté pour les très petits écrans */
+    margin-top: 10px; /* Réduit à 10px pour rapprocher le bandeau des icônes */
   }
 }
