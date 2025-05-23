@@ -1,4 +1,4 @@
-/* mariage-styles.css */
+/* mariage-styles.css - Uniquement les modifications pour le bandeau bas */
 /* Base styles */
 * {
   margin: 0;
@@ -291,6 +291,16 @@ body {
   cursor: pointer;
 }
 
+/* Format de date */
+.date-format {
+  position: absolute;
+  bottom: -22px;
+  left: 0;
+  color: #fff;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
 /* Personnalisation du sélecteur de date */
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(100%);
@@ -442,22 +452,24 @@ input[type="date"]::-moz-calendar-picker-indicator {
     grid-template-columns: 1fr;
   }
   
-  /* Modification: Garder le bandeau de navigation visible sur mobile */
+  /* Modification: Bandeau bas plus compact et plus transparent sur mobile */
   .bottom-bar {
     display: flex;
-    padding: 10px 15px;
+    padding: 8px 15px;
+    background-color: rgba(0, 0, 0, 0.6);
   }
   
   .nav-links {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    width: 100%;
   }
   
   .nav-links a.nav-item {
     position: static !important;
-    margin: 5px 0;
-    font-size: 0.9rem;
+    margin: 0;
+    font-size: 0.85rem;
   }
 }
 
@@ -484,10 +496,11 @@ input[type="date"]::-moz-calendar-picker-indicator {
   
   /* Ajustement supplémentaire pour très petits écrans */
   .bottom-bar {
-    padding: 8px 10px;
+    padding: 6px 10px;
+    background-color: rgba(0, 0, 0, 0.5);
   }
   
   .nav-links a.nav-item {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 }
