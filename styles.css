@@ -83,7 +83,7 @@ body {
 .fixed-phrase {
   position: absolute;
   top: 60%;
-  left: 80%;
+  left: 90%; /* Déplacé encore plus à droite (de 80% à 90%) */
   transform: translate(-50%, -50%);
   font-family: 'Tangerine', cursive;
   font-weight: 700;
