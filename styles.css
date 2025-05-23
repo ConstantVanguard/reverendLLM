@@ -82,12 +82,12 @@ body {
 /* Style pour la phrase fixe */
 .fixed-phrase {
   position: absolute;
-  top: calc(55% - 75px); /* Même position verticale que "CONFIRMATION" */
-  right: calc(32% - 75px); /* Même position horizontale que "ACCOMPAGNEMENT" */
+  top: calc(55% - 75px + 10%); /* Position verticale de CONFIRMATION + 10% plus bas */
+  right: calc(32% - 75px - 20%); /* Position horizontale de ACCOMPAGNEMENT - 20% (plus à droite) */
   font-family: 'Tangerine', cursive;
   font-weight: 700;
   font-size: 2.4rem; /* 4 tailles supérieures à la taille standard */
-  color: rgba(200, 176, 113, 0.9);
+  color: rgba(200, 176, 113, 0.6); /* Même transparence que les cercles (60%) */
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   white-space: nowrap; /* Garde le texte sur une seule ligne */
   z-index: 5; /* S'assure que le texte est visible */
