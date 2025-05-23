@@ -83,13 +83,13 @@ body {
 .fixed-phrase {
   position: absolute;
   top: 60%;
-  left: 70%; /* Déplacé plus à droite (de 60% à 70%) */
+  left: 80%;
   transform: translate(-50%, -50%);
   font-family: 'Tangerine', cursive;
   font-weight: 700;
   font-size: 2.8rem;
-  color: rgba(200, 176, 113, 0.5); /* Transparence à 50% */
-  text-shadow: 0 0 20px rgba(200, 176, 113, 0.6), 0 0 30px rgba(200, 176, 113, 0.4); /* Halo doré plus prononcé avec double effet */
+  color: rgba(200, 176, 113, 0.3);
+  text-shadow: 0 0 20px rgba(200, 176, 113, 0.4), 0 0 30px rgba(200, 176, 113, 0.3);
   white-space: nowrap;
   z-index: 5;
   letter-spacing: 1px;
