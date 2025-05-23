@@ -492,22 +492,21 @@
       }
       
       .nav-links {
-        flex-direction: row; /* Changé de column à row pour aligner horizontalement */
+        flex-direction: column; /* Maintient la disposition verticale */
         align-items: center;
-        justify-content: space-between; /* Répartit les éléments uniformément */
         padding: 0;
         transform: translateX(0);
       }
       
       .nav-links div.nav-item:first-child,
       .nav-links a.nav-item:last-child {
-        position: static;
+        position: static; /* Éléments positionnés normalement dans le flux */
       }
       
       .nav-item {
-        margin: 0 10px; /* Réduit les marges horizontales */
-        font-size: 0.85rem; /* Légèrement plus petit */
-        line-height: 1.2; /* Réduit l'espacement vertical */
+        margin: 2px 0; /* Réduit les marges verticales de 5px à 2px */
+        font-size: 0.8rem; /* Taille de police réduite */
+        line-height: 1; /* Interligne minimal */
       }
       
       /* Masquer la navigation interne UNIQUEMENT sur mobile */
@@ -575,7 +574,8 @@
       /* MODIFICATION: Bandeau bas encore plus compact sur petit mobile */
       .nav-item {
         font-size: 0.75rem; /* Encore plus petit */
-        margin: 0 5px; /* Marges horizontales réduites */
+        margin: 1px 0; /* Marges verticales minimales */
+        letter-spacing: 0; /* Supprime l'espacement entre les lettres */
       }
       
       /* Ajustement pour éviter le chevauchement sur très petits écrans */
