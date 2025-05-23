@@ -1,4 +1,4 @@
-/* mariage-styles.css - Uniquement les modifications pour le bandeau bas */
+/* mariage-styles.css */
 /* Base styles */
 * {
   margin: 0;
@@ -291,14 +291,28 @@ body {
   cursor: pointer;
 }
 
-/* Format de date */
-.date-format {
-  position: absolute;
-  bottom: -22px;
-  left: 0;
+/* Personnalisation du placeholder pour le format de date */
+input[type="date"]::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Hack pour afficher le placeholder sur les navigateurs qui masquent le placeholder sur les inputs de type date */
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: transparent;
+}
+
+input[type="date"]:focus::-webkit-datetime-edit-text,
+input[type="date"]:focus::-webkit-datetime-edit-month-field,
+input[type="date"]:focus::-webkit-datetime-edit-day-field,
+input[type="date"]:focus::-webkit-datetime-edit-year-field,
+input[type="date"]:valid::-webkit-datetime-edit-text,
+input[type="date"]:valid::-webkit-datetime-edit-month-field,
+input[type="date"]:valid::-webkit-datetime-edit-day-field,
+input[type="date"]:valid::-webkit-datetime-edit-year-field {
   color: #fff;
-  font-size: 14px;
-  opacity: 0.8;
 }
 
 /* Personnalisation du sélecteur de date */
