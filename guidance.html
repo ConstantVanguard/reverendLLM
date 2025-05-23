@@ -84,18 +84,20 @@
     Veuillez choisir une date disponible pour votre séance.<br>
     <em>Attention :</em> je suis disponible uniquement les lundis, jeudis et samedis.
     </p>
-    
+    <br>
     <div class="form-group">
     <label for="sessionType">Type de séance :</label>
     <select id="sessionType" class="form-select">
-      <option value="single">Rencontre ponctuelle (1 heure)</option>
-      <option value="guidance">Guidance spirituelle (première séance de 2 heures)</option>
+    <option value="single">Rencontre ponctuelle (1 heure)</option>
+    <option value="guidance">Guidance spirituelle (première séance de 2 heures)</option>
     </select>
     </div>
     
     <div class="form-group">
     <label for="datePicker">Date souhaitée :</label>
-    <input type="date" id="datePicker">
+    <div class="date-picker-container">
+    <input type="date" id="datePicker" placeholder="jj/mm/aaaa">
+    </div>
     </div>
     
     <button id="bookButton" class="btn">Vérifier la disponibilité</button>
@@ -103,18 +105,18 @@
     <div id="message" style="margin-top:20px; font-weight: bold;"></div>
     
     <div id="paypalButtonSingle" class="paypal-button" style="display:none;">
-    <form action="https://www.paypal.com/ncp/payment/NKB3GZY692Y5U" method="post" target="_blank">
-      <input class="pp-NKB3GZY692Y5U" type="submit" value="Acompte 70€" />
-      <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-      <section style="color: #d4af37;"> Optimisé par <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+    <form action="https://www.paypal.com/ncp/payment/3ZYHGZNFD4FWW" method="post" target="_blank">
+    <input type="submit" value="Je réserve" class="pp-button" />
+    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+    <section style="color: #C8B071;"> Optimisé par <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
     </form>
     </div>
     
     <div id="paypalButtonGuidance" class="paypal-button" style="display:none;">
-    <form action="https://www.paypal.com/ncp/payment/NKB3GZY692Y5U" method="post" target="_blank">
-      <input class="pp-NKB3GZY692Y5U" type="submit" value="Acompte 100€" />
-      <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-      <section style="color: #d4af37;"> Optimisé par <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+    <form action="https://www.paypal.com/ncp/payment/8FG3325MHWANA" method="post" target="_blank">
+    <input type="submit" value="Je réserve" class="pp-button" />
+    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+    <section style="color: #C8B071;"> Optimisé par <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
     </form>
     </div>
     </div>
@@ -122,7 +124,7 @@
 
   <div class="bottom-bar">
     <div class="nav-links">
-    <div class="nav-item">Révérend Constant</div>
+    <a href="index.html" class="nav-item">Révérend Constant</a>
     <a href="eglise.html" class="nav-item">Notre Ministère</a>
     <a href="contact.html" class="nav-item">Contact</a>
     </div>
