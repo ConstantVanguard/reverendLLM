@@ -56,13 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
       messageDiv.style.color = "#C8B071";
       messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 100€.";
       paypalButton.style.display = "block";
-      
-      // Rendre le bouton PayPal s'il n'est pas déjà rendu
-      if (!document.querySelector('#paypal-container-FVPSC6NV9WY28 iframe')) {
-        paypal.HostedButtons({
-          hostedButtonId: "FVPSC6NV9WY28",
-        }).render("#paypal-container-FVPSC6NV9WY28");
-      }
     } else {
       messageDiv.style.color = "#FFD140";
       messageDiv.textContent = "La date sélectionnée n'est pas disponible. Veuillez choisir une autre date.";
