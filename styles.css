@@ -82,15 +82,16 @@ body {
 /* Style pour la phrase fixe */
 .fixed-phrase {
   position: absolute;
-  top: calc(55% - 75px + 40%); /* Position verticale de CONFIRMATION + 40% plus bas */
-  right: calc(32% - 75px - 50%); /* Position horizontale de ACCOMPAGNEMENT - 50% (plus à droite) */
+  top: 40%; /* Centré verticalement, légèrement au-dessus de CONFIRMATION */
+  left: 50%; /* Centré horizontalement */
+  transform: translateX(-50%); /* Centrage parfait */
   font-family: 'Tangerine', cursive;
   font-weight: 700;
-  font-size: 2.4rem; /* 4 tailles supérieures à la taille standard */
-  color: rgba(200, 176, 113, 0.5); /* Transparence accrue (50%) */
-  text-shadow: 0 0 15px rgba(200, 176, 113, 0.4); /* Léger halo doré autour du texte */
-  white-space: nowrap; /* Garde le texte sur une seule ligne */
-  z-index: 5; /* S'assure que le texte est visible */
+  font-size: 2.4rem;
+  color: rgba(200, 176, 113, 0.5); /* Transparence à 50% */
+  text-shadow: 0 0 15px rgba(200, 176, 113, 0.4); /* Halo doré autour du texte */
+  white-space: nowrap;
+  z-index: 5;
   letter-spacing: 1px;
 }
 
