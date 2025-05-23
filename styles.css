@@ -79,18 +79,17 @@ body {
   height: 100%;
 }
 
-/* Style pour la phrase fixe - plus à droite et halo augmenté */
-.fixed-phrase {
+/* Style pour la phrase fixe */
 .fixed-phrase {
   position: absolute;
   top: 60%;
-  left: 80%; /* Déplacé encore plus à droite */
+  left: 90%;
   transform: translate(-50%, -50%);
   font-family: 'Tangerine', cursive;
   font-weight: 700;
   font-size: 2.8rem;
-  color: rgba(200, 176, 113, 0.4); /* Transparence réduite de 0.3 à 0.4 */
-  text-shadow: 0 0 20px rgba(200, 176, 113, 0.5), 0 0 30px rgba(200, 176, 113, 0.4); /* Halo également moins transparent */
+  color: rgba(200, 176, 113, 0.4);
+  text-shadow: 0 0 20px rgba(200, 176, 113, 0.5), 0 0 30px rgba(200, 176, 113, 0.4);
   white-space: nowrap;
   z-index: 5;
   letter-spacing: 1px;
@@ -160,34 +159,33 @@ body {
 }
 
 /* Application des animations différentes pour chaque service */
-/* Déplacement de 2% vers le bas pour tous les services (1% supplémentaire) */
 #service-bapteme {
   animation: float1 5s ease-in-out infinite;
-  top: calc(32% - 75px); /* Déplacé 2% plus bas (de 30% à 32%) */
+  top: calc(32% - 75px);
   left: calc(13% - 75px);
 }
 
 #service-confirmation {
   animation: float2 6s ease-in-out infinite;
-  top: calc(55% - 75px); /* Déplacé 2% plus bas (de 53% à 55%) */
+  top: calc(55% - 75px);
   left: calc(27% - 75px);
 }
 
 #service-mariage {
   animation: float3 5.5s ease-in-out infinite;
-  top: calc(17% - 75px); /* Déplacé 2% plus bas (de 15% à 17%) */
+  top: calc(17% - 75px);
   left: calc(27% - 75px);
 }
 
 #service-accompagnement {
   animation: float4 6.5s ease-in-out infinite;
-  top: calc(17% - 75px); /* Déplacé 2% plus bas (de 15% à 17%) */
+  top: calc(17% - 75px);
   right: calc(32% - 75px);
 }
 
 #service-funerailles {
   animation: float5 7s ease-in-out infinite;
-  top: calc(32% - 75px); /* Déplacé 2% plus bas (de 30% à 32%) */
+  top: calc(32% - 75px);
   right: calc(17% - 75px);
 }
 
@@ -195,29 +193,28 @@ body {
 .service-circle {
   width: 120px;
   height: 120px;
-  /* Suppression de background-color: rgba(0, 0, 0, 0.7); */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-  border: 2px solid rgba(200, 176, 113, 0.6); /* Bordure de 2px avec 60% d'opacité */
+  border: 2px solid rgba(200, 176, 113, 0.6);
   transition: all 0.3s ease;
 }
 
 .service-item:hover .service-circle {
   transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(200, 176, 113, 0.6); /* Nouvelle couleur exacte avec transparence */
-  border-color: #C8B071; /* Bordure pleine opacité au survol */
+  box-shadow: 0 0 20px rgba(200, 176, 113, 0.6);
+  border-color: #C8B071;
 }
 
 /* AJOUT: Opacité de 0.8 sur les icônes avec transition au survol */
 .service-circle img {
-  width: 77px; /* Augmenté de 10% par rapport à 70px */
-  height: 77px; /* Augmenté de 10% par rapport à 70px */
+  width: 77px;
+  height: 77px;
   object-fit: contain;
-  opacity: 0.8; /* Ajout d'une légère transparence (80% d'opacité) */
-  transition: opacity 0.3s ease; /* Transition douce pour l'opacité */
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 /* Les icônes retrouvent leur pleine opacité au survol */
@@ -228,9 +225,9 @@ body {
 /* Style pour les noms des services */
 .service-name {
   font-family: 'Cinzel', serif;
-  font-size: 0.85rem; /* Taille réduite */
+  font-size: 0.85rem;
   margin-top: 10px;
-  color: #C8B071; /* Nouvelle couleur exacte */
+  color: #C8B071;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   letter-spacing: 1px;
   text-decoration: none;
@@ -238,8 +235,8 @@ body {
 
 /* Bottom bar - Restauré à fixed pour desktop */
 .bottom-bar {
-  position: fixed; /* Restauré à fixed pour desktop */
-  bottom: 0; /* Restauré pour desktop */
+  position: fixed;
+  bottom: 0;
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
@@ -253,18 +250,18 @@ body {
 /* NOUVELLE SOLUTION: Utilisation de flexbox pour la navigation */
 .nav-links {
   display: flex;
-  justify-content: space-between; /* Répartit les éléments de manière égale */
+  justify-content: space-between;
   align-items: center;
-  width: 80%; /* Contrôle la largeur totale de la navigation */
+  width: 80%;
   max-width: 1000px;
 }
 
 /* Style uniforme pour tous les éléments de navigation avec taille augmentée */
 .nav-item {
   font-family: 'Cinzel', serif;
-  font-size: 1.2rem; /* Taille augmentée de 1rem à 1.2rem */
+  font-size: 1.2rem;
   letter-spacing: 1px;
-  color: #C8B071; /* Nouvelle couleur exacte */
+  color: #C8B071;
   text-decoration: none;
   transition: all 0.3s ease;
 }
@@ -281,7 +278,7 @@ body {
 /* Responsive Design */
 @media (max-width: 992px) {
   .logo img {
-    height: 108px; /* Augmenté de 20% (90px * 1.2 = 108px) */
+    height: 108px;
   }
   
   .service-circle {
@@ -290,56 +287,56 @@ body {
   }
   
   .service-circle img {
-    width: 66px; /* Augmenté de 10% par rapport à 60px */
-    height: 66px; /* Augmenté de 10% par rapport à 60px */
+    width: 66px;
+    height: 66px;
   }
 }
 
 @media (max-width: 768px) {
   /* MODIFICATION: Changement de l'arrière-plan pour mobile */
   body {
-    background: url("hero_background.png") center top/cover no-repeat; /* Suppression de fixed pour mobile */
-    background-attachment: scroll; /* Utilisation de scroll au lieu de fixed */
-    background-color: #0A0504; /* Couleur de fond unie qui apparaîtra après l'image */
-    overflow-y: auto; /* Permet le défilement vertical */
-    min-height: 100vh; /* Assure que la couleur de fond s'étend sur toute la hauteur */
+    background: url("hero_background.png") center top/cover no-repeat;
+    background-attachment: scroll;
+    background-color: #0A0504;
+    overflow-y: auto;
+    min-height: 100vh;
   }
   
   html {
-    background-color: #0A0504; /* Assure que même le html a la couleur de fond */
+    background-color: #0A0504;
   }
   
   .logo img {
-    height: 144px; /* Augmenté de 20% (120px * 1.2 = 144px) */
+    height: 144px;
   }
   
   .main-container {
     height: auto;
-    padding: 80px 0 0; /* Supprimé le padding en bas */
+    padding: 80px 0 0;
     overflow-y: visible;
-    min-height: auto; /* Changé de calc(100vh - 50px) à auto */
-    max-width: 100%; /* S'assure que le conteneur ne dépasse pas la largeur de l'écran */
+    min-height: auto;
+    max-width: 100%;
     display: flex;
-    flex-direction: column; /* Assure que les éléments s'empilent verticalement */
+    flex-direction: column;
   }
   
   .minister-container {
     height: auto;
     flex-direction: column;
-    padding-bottom: 0; /* Réduit à 0 pour rapprocher le bandeau */
-    max-width: 100%; /* S'assure que le conteneur ne dépasse pas la largeur de l'écran */
+    padding-bottom: 0;
+    max-width: 100%;
   }
   
   .minister-photo {
     height: 50vh;
-    transform: translateX(0); /* Réinitialise le décalage sur mobile */
+    transform: translateX(0);
     margin-bottom: 20px;
-    max-width: 100%; /* S'assure que l'image ne dépasse pas la largeur de l'écran */
+    max-width: 100%;
   }
   
   .minister-photo img {
-    max-width: 100%; /* S'assure que l'image ne dépasse pas la largeur de l'écran */
-    height: auto; /* Maintient le ratio d'aspect */
+    max-width: 100%;
+    height: auto;
   }
   
   /* Masquer la phrase fixe sur mobile */
@@ -352,11 +349,11 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px; /* Augmenté de 10px à 15px pour plus d'espacement */
-    margin-top: calc(10% + 20px); /* Déplacé 10% plus bas + marge existante */
+    gap: 15px;
+    margin-top: calc(10% + 20px);
     width: 100%;
     height: auto;
-    padding-bottom: 0; /* Réduit à 0 pour rapprocher le bandeau */
+    padding-bottom: 0;
   }
   
   /* MODIFICATION: Ajustement pour les services en mode mobile */
@@ -366,8 +363,8 @@ body {
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
-    margin: 10px 15px; /* Augmenté la marge horizontale */
-    animation: none !important; /* Désactive l'animation sur mobile */
+    margin: 10px 15px;
+    animation: none !important;
     width: 90px;
     height: 90px;
   }
@@ -381,23 +378,21 @@ body {
   }
   
   .service-circle {
-    width: 77px; /* Augmenté de 10% par rapport à 70px */
-    height: 77px; /* Augmenté de 10% par rapport à 70px */
-    margin-bottom: 5px; /* Réduit pour rapprocher le texte de l'icône */
-    /* Conservation de la bordure d'origine pour mobile */
+    width: 77px;
+    height: 77px;
+    margin-bottom: 5px;
     border: 1px solid #C8B071;
   }
   
   .service-circle img {
-    width: 48.4px; /* Augmenté de 10% par rapport à 44px */
-    height: 48.4px; /* Augmenté de 10% par rapport à 44px */
-    /* Maintien de l'opacité sur mobile */
+    width: 48.4px;
+    height: 48.4px;
     opacity: 0.8;
   }
   
   .service-name {
     font-size: 0.7rem;
-    margin-top: 5px; /* Réduit pour rapprocher le texte de l'icône */
+    margin-top: 5px;
     position: static;
     display: block;
   }
@@ -442,12 +437,12 @@ body {
   
   /* MODIFICATION: Bandeau bas en position relative sur mobile */
   .bottom-bar {
-    position: relative; /* Changé à relative uniquement pour mobile */
+    position: relative;
     height: auto;
     padding: 10px 0;
-    background-color: transparent; /* Fond transparent pour mobile */
-    margin-top: 10px; /* Réduit à 10px pour rapprocher le bandeau des icônes */
-    bottom: auto; /* Supprimé la position bottom pour mobile */
+    background-color: transparent;
+    margin-top: 10px;
+    bottom: auto;
   }
   
   .nav-links {
@@ -459,38 +454,38 @@ body {
   
   .nav-item {
     margin: 5px 0;
-    font-size: 1.1rem; /* Taille augmentée pour mobile aussi (de 0.9rem à 1.1rem) */
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 480px) {
   .logo img {
-    height: 108px; /* Augmenté de 20% (90px * 1.2 = 108px) */
+    height: 108px;
   }
   
   .service-circle {
-    width: 66px; /* Augmenté de 10% par rapport à 60px */
-    height: 66px; /* Augmenté de 10% par rapport à 60px */
+    width: 66px;
+    height: 66px;
   }
   
   .service-circle img {
-    width: 42.35px; /* Augmenté de 10% par rapport à 38.5px */
-    height: 42.35px; /* Augmenté de 10% par rapport à 38.5px */
+    width: 42.35px;
+    height: 42.35px;
   }
   
   .service-orbit {
-    padding: 0 10px 0; /* Réduit à 0 pour rapprocher le bandeau */
-    gap: 20px; /* Encore plus d'espace entre les éléments */
+    padding: 0 10px 0;
+    gap: 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Force 3 éléments par ligne */
+    grid-template-columns: repeat(3, 1fr);
     justify-items: center;
-    margin-top: calc(10% + 20px); /* Maintient le décalage de 10% vers le bas */
+    margin-top: calc(10% + 20px);
   }
   
   .service-item {
     margin: 8px;
     width: 70px;
-    height: 90px; /* Augmenté pour donner plus d'espace au texte */
+    height: 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -543,11 +538,11 @@ body {
   
   .bottom-bar {
     padding: 8px 10px;
-    margin-top: 10px; /* Réduit à 10px pour rapprocher le bandeau des icônes */
+    margin-top: 10px;
   }
   
   .nav-item {
-    font-size: 1rem; /* Taille augmentée pour petits écrans aussi (de 0.8rem à 1rem) */
+    font-size: 1rem;
     margin: 3px 0;
   }
 }
@@ -561,8 +556,8 @@ body {
     "funerailles empty";
     grid-template-columns: 1fr 1fr;
     grid-gap: 25px;
-    margin-top: calc(10% + 15px); /* Ajusté pour les très petits écrans */
-    padding-bottom: 0; /* Réduit à 0 pour rapprocher le bandeau */
+    margin-top: calc(10% + 15px);
+    padding-bottom: 0;
   }
   
   .service-item {
@@ -571,6 +566,6 @@ body {
   }
   
   .bottom-bar {
-    margin-top: 10px; /* Réduit à 10px pour rapprocher le bandeau des icônes */
+    margin-top: 10px;
   }
 }
