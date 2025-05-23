@@ -9,6 +9,7 @@
 body {
   font-family: 'Cinzel', serif;
   background: url("hero_background.png") center/cover fixed;
+  background-color: #0A0504; /* Ajout de la couleur de fond unie */
   color: #C8B071; /* Couleur exacte demandée */
   height: 100vh;
   overflow: hidden;
@@ -273,8 +274,14 @@ body {
 @media (max-width: 768px) {
   /* MODIFICATION: Changement de l'arrière-plan pour mobile */
   body {
-    background: url("hero_background.png") center/cover no-repeat; /* Suppression de fixed pour mobile */
+    background: url("hero_background.png") center top/cover no-repeat; /* Suppression de fixed pour mobile et positionnement en haut */
+    background-color: #0A0504; /* Couleur de fond unie qui apparaîtra après l'image */
     overflow-y: auto;
+    min-height: 100vh; /* Assure que la couleur de fond s'étend sur toute la hauteur */
+  }
+  
+  html {
+    background-color: #0A0504; /* Assure que même le html a la couleur de fond */
   }
   
   .logo img {
