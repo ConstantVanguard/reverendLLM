@@ -249,7 +249,7 @@
       margin: 20px 0;
     }
 
-    /* Bottom bar - MODIFIÉ: toujours visible */
+    /* Bottom bar - MODIFIÉ: style identique à la page mariage */
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -271,7 +271,6 @@
       width: 100%;
       max-width: 800px;
       position: relative;
-      transform: translateX(-2%);
     }
 
     .nav-item {
@@ -289,10 +288,9 @@
       text-decoration: none;
     }
 
-    .nav-links div.nav-item:first-child {
+    .nav-links a.nav-item:first-child {
       position: absolute;
       left: 0;
-      cursor: pointer;
     }
 
     .nav-links a.nav-item:last-child {
@@ -485,28 +483,26 @@
         height: 160px;
       }
       
-      /* MODIFICATION: Bandeau bas plus compact et plus transparent sur mobile */
+      /* MODIFICATION: Bandeau bas identique à la page mariage sur mobile */
       .bottom-bar {
-        padding: 5px 0; /* Réduit de 10px à 5px */
-        background-color: rgba(0, 0, 0, 0.6); /* Plus transparent */
+        display: flex;
+        padding: 8px 15px;
+        background-color: rgba(0, 0, 0, 0.6);
       }
       
       .nav-links {
-        flex-direction: column; /* Maintient la disposition verticale */
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        padding: 0;
-        transform: translateX(0);
+        width: 100%;
+        transform: none;
       }
       
-      .nav-links div.nav-item:first-child,
-      .nav-links a.nav-item:last-child {
-        position: static; /* Éléments positionnés normalement dans le flux */
-      }
-      
-      .nav-item {
-        margin: 2px 0; /* Réduit les marges verticales de 5px à 2px */
-        font-size: 0.8rem; /* Taille de police réduite */
-        line-height: 1; /* Interligne minimal */
+      .nav-links a.nav-item,
+      .nav-links div.nav-item {
+        position: static !important;
+        margin: 0;
+        font-size: 0.85rem;
       }
       
       /* Masquer la navigation interne UNIQUEMENT sur mobile */
@@ -571,16 +567,15 @@
         height: 140px;
       }
       
-      /* MODIFICATION: Bandeau bas encore plus compact sur petit mobile */
-      .nav-item {
-        font-size: 0.75rem; /* Encore plus petit */
-        margin: 1px 0; /* Marges verticales minimales */
-        letter-spacing: 0; /* Supprime l'espacement entre les lettres */
+      /* MODIFICATION: Bandeau bas identique à la page mariage sur petit mobile */
+      .bottom-bar {
+        padding: 6px 10px;
+        background-color: rgba(0, 0, 0, 0.5);
       }
       
-      /* Ajustement pour éviter le chevauchement sur très petits écrans */
-      .bottom-bar {
-        padding: 3px 0; /* Encore plus compact */
+      .nav-links a.nav-item,
+      .nav-links div.nav-item {
+        font-size: 0.75rem;
       }
     }
   </style>
@@ -745,7 +740,7 @@
 
   <div class="bottom-bar">
     <div class="nav-links">
-    <div class="nav-item" id="reverend-link">Révérend Constant</div>
+    <a href="index.html" class="nav-item">Révérend Constant</a>
     <a href="eglise.html" class="nav-item">Notre Ministère</a>
     <a href="contact.html" class="nav-item">Contact</a>
     </div>
@@ -782,11 +777,6 @@
     behavior: 'smooth'
     });
     });
-    });
-    
-    // Ajouter un événement de clic pour "Révérend Constant" dans la barre du bas
-    document.getElementById('reverend-link').addEventListener('click', function() {
-      window.location.href = 'index.html';
     });
     });
   </script>
