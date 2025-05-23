@@ -356,36 +356,6 @@ input[type="date"]::-moz-calendar-picker-indicator {
   text-align: center;
 }
 
-.paypal-button form {
-  display: inline-grid;
-  justify-items: center;
-  align-content: start;
-  gap: 0.5rem;
-}
-
-.pp-NKB3GZY692Y5U {
-  text-align: center;
-  border: none;
-  border-radius: 5px;
-  min-width: 200px;
-  padding: 0 2rem;
-  height: 50px;
-  font-weight: bold;
-  background-color: #FFD140;
-  color: #000;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 1rem;
-  line-height: 1.25rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.pp-NKB3GZY692Y5U:hover {
-  background-color: #e6bc3a;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
 /* Bottom bar */
 .bottom-bar {
   position: fixed;
