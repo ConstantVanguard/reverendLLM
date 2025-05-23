@@ -6,13 +6,19 @@
   box-sizing: border-box;
 }
 
+/* Empêcher le défilement horizontal sur tous les appareils */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   font-family: 'Cinzel', serif;
   background: url("hero_background.png") center/cover fixed;
   background-color: #0A0504; /* Ajout de la couleur de fond unie */
   color: #C8B071; /* Couleur exacte demandée */
   height: 100vh;
-  overflow: hidden;
+  overflow-y: hidden; /* Garde le overflow-y: hidden pour desktop */
   position: relative;
 }
 
@@ -35,6 +41,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%; /* Assure que le conteneur n'est pas plus large que l'écran */
 }
 
 /* Minister container */
@@ -274,9 +281,10 @@ body {
 @media (max-width: 768px) {
   /* MODIFICATION: Changement de l'arrière-plan pour mobile */
   body {
-    background: url("hero_background.png") center top/cover no-repeat; /* Suppression de fixed pour mobile et positionnement en haut */
+    background: url("hero_background.png") center top/cover no-repeat; /* Suppression de fixed pour mobile */
+    background-attachment: scroll; /* Utilisation de scroll au lieu de fixed */
     background-color: #0A0504; /* Couleur de fond unie qui apparaîtra après l'image */
-    overflow-y: auto;
+    overflow-y: auto; /* Permet le défilement vertical */
     min-height: 100vh; /* Assure que la couleur de fond s'étend sur toute la hauteur */
   }
   
@@ -293,18 +301,26 @@ body {
     padding: 80px 0 80px; /* Ajout de padding en bas pour éviter que le contenu soit caché */
     overflow-y: visible;
     min-height: calc(100vh - 50px); /* Assure que le contenu a assez d'espace */
+    max-width: 100%; /* S'assure que le conteneur ne dépasse pas la largeur de l'écran */
   }
   
   .minister-container {
     height: auto;
     flex-direction: column;
     padding-bottom: 60px; /* Espace supplémentaire en bas */
+    max-width: 100%; /* S'assure que le conteneur ne dépasse pas la largeur de l'écran */
   }
   
   .minister-photo {
     height: 50vh;
     transform: translateX(0); /* Réinitialise le décalage sur mobile */
     margin-bottom: 20px;
+    max-width: 100%; /* S'assure que l'image ne dépasse pas la largeur de l'écran */
+  }
+  
+  .minister-photo img {
+    max-width: 100%; /* S'assure que l'image ne dépasse pas la largeur de l'écran */
+    height: auto; /* Maintient le ratio d'aspect */
   }
   
   .service-orbit {
