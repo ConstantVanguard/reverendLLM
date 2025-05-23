@@ -274,11 +274,6 @@ body {
   color: #C8B071;
 }
 
-.date-picker-container {
-  position: relative;
-  width: 100%;
-}
-
 .form-group input {
   width: 100%;
   padding: 12px;
@@ -304,22 +299,6 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 /* Pour Firefox */
 input[type="date"]::-moz-calendar-picker-indicator {
   filter: invert(100%);
-}
-
-/* Placeholder pour le champ de date */
-input[type="date"]::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* Pour Firefox */
-input[type="date"]::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.7);
-  opacity: 1;
-}
-
-/* Pour Chrome */
-input[type="date"]::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.7);
 }
 
 .btn {
@@ -353,7 +332,7 @@ input[type="date"]::-webkit-input-placeholder {
   gap: 0.5rem;
 }
 
-.pp-BAPTEME123 {
+.pp-BAPTEME50 {
   text-align: center;
   border: none;
   border-radius: 5px;
@@ -370,7 +349,7 @@ input[type="date"]::-webkit-input-placeholder {
   transition: all 0.3s ease;
 }
 
-.pp-BAPTEME123:hover {
+.pp-BAPTEME50:hover {
   background-color: #e6bc3a;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
