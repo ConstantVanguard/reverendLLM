@@ -1,506 +1,810 @@
-/* styles.css */
-/* Base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notre Ministère - Révérend Constant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: 'Cinzel', serif;
-  background: url("hero_background.png") center/cover fixed;
-  color: #C8B071; /* Couleur exacte demandée */
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-}
+    body {
+      font-family: 'Cinzel', serif;
+      background: url("hero_background.png") center/cover fixed;
+      color: #C8B071;
+      min-height: 100vh;
+      position: relative;
+      overflow-y: auto !important;
+    }
 
-/* Logo */
-.logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 10;
-}
+    /* Logo */
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+    }
 
-.logo img {
-  height: 144px; /* Taille augmentée de 20% (120px * 1.2 = 144px) */
-  width: auto;
-}
+    .logo img {
+      height: 120px;
+      width: auto;
+    }
 
-/* Main container */
-.main-container {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    /* Hamburger Menu */
+    .hamburger-menu {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      z-index: 100;
+    }
 
-/* Minister container */
-.minister-container {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    #hamburger-button {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 10;
+    }
 
-/* Minister photo - déplacée 5% plus à gauche */
-.minister-photo {
-  position: relative;
-  height: 70vh;
-  max-height: 600px;
-  z-index: 2;
-  transform: translateX(-5%); /* Déplace l'image 5% plus à gauche */
-}
+    #hamburger-button span {
+      width: 100%;
+      height: 3px;
+      background-color: #C8B071;
+      border-radius: 3px;
+      transition: all 0.3s linear;
+    }
 
-.minister-photo img {
-  height: 100%;
-  width: auto;
-  object-fit: contain;
-}
+    #mobile-menu {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      padding: 20px;
+      z-index: 5;
+      min-width: 250px;
+    }
 
-/* Services orbitaux */
-.service-orbit {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+    #mobile-menu.hidden {
+      display: none;
+    }
 
-/* SOLUTION POUR LES ZONES CLIQUABLES */
-.service-item {
-  position: absolute;
-  display: block;
-  width: 150px; /* Largeur fixe plus grande que le cercle */
-  height: 150px; /* Hauteur fixe plus grande que le cercle */
-  text-decoration: none;
-  cursor: pointer;
-  z-index: 10;
-  text-align: center;
-}
+    #mobile-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-.service-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 120px;
-  pointer-events: none;
-}
+    #mobile-menu li {
+      margin: 15px 0;
+      border-bottom: 1px solid rgba(200, 176, 113, 0.3);
+      padding-bottom: 10px;
+    }
 
-/* Animations de flottement plus aléatoires */
-@keyframes float1 {
-  0% { transform: translateY(0px) translateX(0px); }
-  25% { transform: translateY(-8px) translateX(3px); }
-  50% { transform: translateY(-12px) translateX(-2px); }
-  75% { transform: translateY(-5px) translateX(-4px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
+    #mobile-menu li:last-child {
+      border-bottom: none;
+    }
 
-@keyframes float2 {
-  0% { transform: translateY(0px) translateX(0px); }
-  30% { transform: translateY(-10px) translateX(-3px); }
-  60% { transform: translateY(-6px) translateX(5px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
+    #mobile-menu a {
+      text-decoration: none;
+      color: #C8B071;
+      font-weight: 500;
+      display: block;
+      padding: 5px 10px;
+      transition: all 0.3s ease;
+    }
 
-@keyframes float3 {
-  0% { transform: translateY(0px) translateX(0px); }
-  40% { transform: translateY(-12px) translateX(4px); }
-  70% { transform: translateY(-7px) translateX(-3px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
+    #mobile-menu a:hover {
+      color: #fff;
+    }
 
-@keyframes float4 {
-  0% { transform: translateY(0px) translateX(0px); }
-  20% { transform: translateY(-5px) translateX(-5px); }
-  55% { transform: translateY(-15px) translateX(2px); }
-  85% { transform: translateY(-8px) translateX(4px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
+    /* Page header */
+    .page-header {
+      text-align: center;
+      padding: 120px 0 40px;
+      position: relative;
+    }
 
-@keyframes float5 {
-  0% { transform: translateY(0px) translateX(0px); }
-  35% { transform: translateY(-9px) translateX(5px); }
-  65% { transform: translateY(-14px) translateX(-4px); }
-  90% { transform: translateY(-4px) translateX(-2px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
+    /* Conteneur du titre et du logo */
+    .title-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
 
-/* Application des animations différentes pour chaque service */
-/* Déplacement de 2% vers le bas pour tous les services (1% supplémentaire) */
-#service-bapteme {
-  animation: float1 5s ease-in-out infinite;
-  top: calc(32% - 75px); /* Déplacé 2% plus bas (de 30% à 32%) */
-  left: calc(13% - 75px);
-}
+    .church-logo {
+      width: 72px;
+      height: auto;
+      margin-bottom: 10px;
+    }
 
-#service-confirmation {
-  animation: float2 6s ease-in-out infinite;
-  top: calc(55% - 75px); /* Déplacé 2% plus bas (de 53% à 55%) */
-  left: calc(27% - 75px);
-}
+    .page-title {
+      font-family: 'Cinzel', serif;
+      font-size: 42px;
+      color: #C8B071;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
 
-#service-mariage {
-  animation: float3 5.5s ease-in-out infinite;
-  top: calc(17% - 75px); /* Déplacé 2% plus bas (de 15% à 17%) */
-  left: calc(27% - 75px);
-}
+    .page-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: #C8B071;
+      max-width: 800px;
+      margin: 0 auto;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
 
-#service-accompagnement {
-  animation: float4 6.5s ease-in-out infinite;
-  top: calc(17% - 75px); /* Déplacé 2% plus bas (de 15% à 17%) */
-  right: calc(32% - 75px);
-}
+    /* Main container */
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 20px;
+      background: url("dark_parchment.png") center/cover;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      border: 1px solid rgba(200, 176, 113, 0.3);
+    }
 
-#service-funerailles {
-  animation: float5 7s ease-in-out infinite;
-  top: calc(32% - 75px); /* Déplacé 2% plus bas (de 30% à 32%) */
-  right: calc(17% - 75px);
-}
+    /* Internal navigation */
+    .internal-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 40px;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      border: 1px solid rgba(200, 176, 113, 0.3);
+    }
 
-/* MODIFICATION: Suppression de l'arrière-plan des icônes et retour à la bordure de 1px */
-.service-circle {
-  width: 120px;
-  height: 120px;
-  /* Suppression de background-color: rgba(0, 0, 0, 0.7); */
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  border: 1px solid #C8B071; /* Retour à 1px pour éviter l'effet pixellisé */
-  transition: all 0.3s ease;
-}
+    .internal-nav a {
+      color: #C8B071;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
 
-.service-item:hover .service-circle {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(200, 176, 113, 0.6); /* Nouvelle couleur exacte avec transparence */
-  border-color: #C8B071; /* Nouvelle couleur exacte */
-}
+    .internal-nav a:hover {
+      background-color: rgba(200, 176, 113, 0.2);
+      color: #fff;
+    }
 
-.service-circle img {
-  width: 77px; /* Augmenté de 10% par rapport à 70px */
-  height: 77px; /* Augmenté de 10% par rapport à 70px */
-  object-fit: contain;
-  /* Suppression du filtre de couleur */
-}
+    /* Content sections */
+    .content-section {
+      margin-bottom: 60px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      border: 1px solid rgba(200, 176, 113, 0.3);
+    }
 
-/* Style pour les noms des services */
-.service-name {
-  font-family: 'Cinzel', serif;
-  font-size: 0.85rem; /* Taille réduite */
-  margin-top: 10px;
-  color: #C8B071; /* Nouvelle couleur exacte */
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-  letter-spacing: 1px;
-  text-decoration: none;
-}
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #C8B071;
+      position: relative;
+      padding-bottom: 10px;
+    }
 
-/* Bottom bar */
-.bottom-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px 30px;
-  z-index: 100;
-}
+    .section-title:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background-color: #C8B071;
+    }
 
-/* NOUVELLE SOLUTION: Utilisation de flexbox pour la navigation */
-.nav-links {
-  display: flex;
-  justify-content: space-between; /* Répartit les éléments de manière égale */
-  align-items: center;
-  width: 80%; /* Contrôle la largeur totale de la navigation */
-  max-width: 1000px;
-}
+    .content-section p {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: #fff;
+    }
 
-/* Style uniforme pour tous les éléments de navigation avec taille augmentée */
-.nav-item {
-  font-family: 'Cinzel', serif;
-  font-size: 1.2rem; /* Taille augmentée de 1rem à 1.2rem */
-  letter-spacing: 1px;
-  color: #C8B071; /* Nouvelle couleur exacte */
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
+    .content-section ul {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: #fff;
+      padding-left: 20px;
+    }
 
-/* Style spécifique pour l'élément du milieu */
-.nav-links a.nav-item:nth-child(2) {
-  text-align: center;
-}
+    .content-section li {
+      margin-bottom: 8px;
+    }
 
-.nav-item:hover {
-  color: #ffffff;
-}
+    /* Paragraphe du pasteur */
+    .pastor-last-paragraph {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: #fff;
+    }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-  .logo img {
-    height: 108px; /* Augmenté de 20% (90px * 1.2 = 108px) */
-  }
-  
-  .service-circle {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .service-circle img {
-    width: 66px; /* Augmenté de 10% par rapport à 60px */
-    height: 66px; /* Augmenté de 10% par rapport à 60px */
-  }
-}
+    /* Quote box */
+    .quote-box {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      line-height: 1.6;
+      color: #C8B071;
+      padding: 20px;
+      border-left: 3px solid #C8B071;
+      background-color: rgba(0, 0, 0, 0.3);
+      margin: 20px 0;
+    }
 
-@media (max-width: 768px) {
-  .logo img {
-    height: 144px; /* Augmenté de 20% (120px * 1.2 = 144px) */
-  }
-  
-  body {
-    overflow-y: auto;
-  }
-  
-  .main-container {
-    height: auto;
-    padding: 80px 0 80px; /* Ajout de padding en bas pour éviter que le contenu soit caché */
-    overflow-y: visible;
-    min-height: calc(100vh - 50px); /* Assure que le contenu a assez d'espace */
-  }
-  
-  .minister-container {
-    height: auto;
-    flex-direction: column;
-    padding-bottom: 60px; /* Espace supplémentaire en bas */
-  }
-  
-  .minister-photo {
-    height: 50vh;
-    transform: translateX(0); /* Réinitialise le décalage sur mobile */
-    margin-bottom: 20px;
-  }
-  
-  .service-orbit {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px; /* Augmenté de 10px à 15px pour plus d'espacement */
-    margin-top: 20px;
-    width: 100%;
-    height: auto;
-    padding-bottom: 60px; /* Espace supplémentaire pour éviter la barre du bas */
-  }
-  
-  /* MODIFICATION: Ajustement pour les services en mode mobile */
-  .service-item {
-    position: relative;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    margin: 10px 15px; /* Augmenté la marge horizontale */
-    animation: none !important; /* Désactive l'animation sur mobile */
-    width: 90px;
-    height: 90px;
-  }
-  
-  .service-content {
-    width: 80px;
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: none;
-  }
-  
-  .service-circle {
-    width: 77px; /* Augmenté de 10% par rapport à 70px */
-    height: 77px; /* Augmenté de 10% par rapport à 70px */
-    margin-bottom: 5px; /* Réduit pour rapprocher le texte de l'icône */
-    /* Bordure de 1px pour mobile aussi */
-    border: 1px solid #C8B071;
-  }
-  
-  .service-circle img {
-    width: 48.4px; /* Augmenté de 10% par rapport à 44px */
-    height: 48.4px; /* Augmenté de 10% par rapport à 44px */
-  }
-  
-  .service-name {
-    font-size: 0.7rem;
-    margin-top: 5px; /* Réduit pour rapprocher le texte de l'icône */
-    position: static;
-    display: block;
-  }
-  
-  /* Remplacer ACCOMPAGNEMENT par AIDE sur mobile */
-  #service-accompagnement .service-name {
-    font-size: 0.7rem;
-  }
-  
-  #service-accompagnement .service-name:after {
-    content: none;
-  }
-  
-  #service-accompagnement .service-name {
-    visibility: hidden;
-    position: relative;
-  }
-  
-  #service-accompagnement .service-name:before {
-    content: "AIDE";
-    visibility: visible;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-  
-  /* Remplacer CONFIRMATION par ÉTUDE sur mobile */
-  #service-confirmation .service-name {
-    visibility: hidden;
-    position: relative;
-  }
-  
-  #service-confirmation .service-name:before {
-    content: "ÉTUDE";
-    visibility: visible;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-  
-  /* Ajustement pour la navigation en mode mobile */
-  .bottom-bar {
-    height: auto;
-    padding: 10px 0;
-  }
-  
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-    padding: 5px 0;
-    width: 100%;
-  }
-  
-  .nav-item {
-    margin: 5px 0;
-    font-size: 1.1rem; /* Taille augmentée pour mobile aussi (de 0.9rem à 1.1rem) */
-  }
-}
+    /* Bottom bar */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 30px;
+      z-index: 100;
+    }
 
-@media (max-width: 480px) {
-  .logo img {
-    height: 108px; /* Augmenté de 20% (90px * 1.2 = 108px) */
-  }
-  
-  .service-circle {
-    width: 66px; /* Augmenté de 10% par rapport à 60px */
-    height: 66px; /* Augmenté de 10% par rapport à 60px */
-  }
-  
-  .service-circle img {
-    width: 42.35px; /* Augmenté de 10% par rapport à 38.5px */
-    height: 42.35px; /* Augmenté de 10% par rapport à 38.5px */
-  }
-  
-  .service-orbit {
-    padding: 0 10px 70px; /* Plus d'espace en bas et sur les côtés */
-    gap: 20px; /* Encore plus d'espace entre les éléments */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Force 3 éléments par ligne */
-    justify-items: center;
-  }
-  
-  .service-item {
-    margin: 8px;
-    width: 70px;
-    height: 90px; /* Augmenté pour donner plus d'espace au texte */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .service-content {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .service-name {
-    position: static;
-    margin-top: 5px;
-    text-align: center;
-    width: 100%;
-  }
-  
-  /* Ordre spécifique pour les éléments sur mobile */
-  .service-orbit {
-    display: grid;
-    grid-template-areas: 
-      "bapteme mariage accompagnement"
-      "confirmation funerailles empty";
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
-  }
-  
-  #service-bapteme {
-    grid-area: bapteme;
-  }
-  
-  #service-mariage {
-    grid-area: mariage;
-  }
-  
-  #service-accompagnement {
-    grid-area: accompagnement;
-  }
-  
-  #service-confirmation {
-    grid-area: confirmation;
-  }
-  
-  #service-funerailles {
-    grid-area: funerailles;
-  }
-  
-  .bottom-bar {
-    padding: 8px 10px;
-  }
-  
-  .nav-item {
-    font-size: 1rem; /* Taille augmentée pour petits écrans aussi (de 0.8rem à 1rem) */
-    margin: 3px 0;
-  }
-}
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 800px;
+      position: relative;
+      transform: translateX(-2%);
+    }
 
-/* Ajustement spécifique pour les très petits écrans */
-@media (max-width: 360px) {
-  .service-orbit {
-    grid-template-areas: 
-      "bapteme mariage"
-      "accompagnement confirmation"
-      "funerailles empty";
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 25px;
-  }
-  
-  .service-item {
-    margin: 5px;
-    height: 85px;
-  }
-}
+    .nav-item {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: #C8B071;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin: 0 20px;
+    }
+
+    /* Suppression du soulignement pour tous les liens */
+    .nav-links a.nav-item {
+      text-decoration: none;
+    }
+
+    .nav-links div.nav-item:first-child {
+      position: absolute;
+      left: 0;
+      cursor: pointer;
+    }
+
+    .nav-links a.nav-item:last-child {
+      position: absolute;
+      right: 0;
+    }
+
+    .nav-item:hover {
+      color: #fff;
+    }
+
+    /* Galerie d'images */
+    .image-gallery {
+      margin-bottom: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 180px;
+      display: block;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      margin-bottom: 15px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .gallery-image:hover {
+      transform: scale(1.02);
+    }
+
+    /* Pour afficher plusieurs images côte à côte dans la section communauté */
+    .multi-image-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .multi-image-container .gallery-image {
+      margin-bottom: 0;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    /* Style spécial pour l'image du pasteur */
+    .pastor-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .pastor-image {
+      width: 210px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .pastor-text {
+      flex: 1;
+    }
+
+    /* Style pour les paragraphes du pasteur */
+    .pastor-text p {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    /* Style pour les images du centre - SANS EFFET DE ZOOM */
+    .centre-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .centre-container .gallery-image {
+      height: 220px;
+      object-fit: cover;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      transition: none;
+    }
+
+    .centre-container .gallery-image:hover {
+      transform: none;
+    }
+
+    /* Responsive design */
+    @media (max-width: 992px) {
+      .logo img {
+        height: 90px;
+      }
+      
+      .church-logo {
+        width: 54px;
+      }
+      
+      .page-title {
+        font-size: 36px;
+      }
+      
+      .page-subtitle {
+        font-size: 18px;
+      }
+      
+      .gallery-image {
+        height: 160px;
+      }
+      
+      .multi-image-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .multi-image-container .gallery-image {
+        height: 110px;
+      }
+      
+      .centre-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .centre-container .gallery-image {
+        height: 180px;
+      }
+      
+      .pastor-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .pastor-image {
+        margin-bottom: 15px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .logo img {
+        height: 80px;
+      }
+      
+      .church-logo {
+        width: 48px;
+      }
+      
+      .page-header {
+        padding: 100px 0 30px;
+      }
+      
+      .page-title {
+        font-size: 32px;
+      }
+      
+      .section-title {
+        font-size: 24px;
+      }
+      
+      /* Uniformisation de la taille des textes UNIQUEMENT sur mobile */
+      .content-section p,
+      .content-section ul,
+      .quote-box {
+        font-size: 16px !important;
+      }
+      
+      /* MODIFICATION: Augmentation de la taille des deux premiers paragraphes du pasteur */
+      .pastor-text p {
+        font-size: 18px !important; /* Augmenté de 16px à 18px */
+        font-weight: 500; /* Légèrement plus gras pour renforcer la différence */
+      }
+      
+      /* Taille plus petite pour le dernier paragraphe du pasteur */
+      .pastor-last-paragraph {
+        font-size: 15px !important;
+        font-weight: normal;
+      }
+      
+      .gallery-image {
+        height: 140px;
+      }
+      
+      .multi-image-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .multi-image-container .gallery-image {
+        height: 100px;
+      }
+      
+      .centre-container .gallery-image {
+        height: 160px;
+      }
+      
+      .bottom-bar {
+        padding: 10px 0;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 0;
+        transform: translateX(0);
+      }
+      
+      .nav-links div.nav-item:first-child,
+      .nav-links a.nav-item:last-child {
+        position: static;
+      }
+      
+      .nav-item {
+        margin: 5px 0;
+        font-size: 0.9rem;
+      }
+      
+      /* Masquer la navigation interne UNIQUEMENT sur mobile */
+      .internal-nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo img {
+        height: 60px;
+      }
+      
+      .church-logo {
+        width: 36px;
+      }
+      
+      .page-header {
+        padding: 80px 0 20px;
+      }
+      
+      .page-title {
+        font-size: 28px;
+      }
+      
+      .page-subtitle {
+        font-size: 16px;
+      }
+      
+      .section-title {
+        font-size: 22px;
+      }
+      
+      /* Uniformisation de la taille des textes sur petit mobile */
+      .content-section p,
+      .content-section ul,
+      .quote-box {
+        font-size: 15px !important;
+      }
+      
+      /* MODIFICATION: Augmentation de la taille des deux premiers paragraphes du pasteur sur petit mobile */
+      .pastor-text p {
+        font-size: 17px !important; /* Augmenté de 15px à 17px */
+        font-weight: 500; /* Légèrement plus gras pour renforcer la différence */
+      }
+      
+      /* Taille plus petite pour le dernier paragraphe du pasteur sur petit mobile */
+      .pastor-last-paragraph {
+        font-size: 14px !important;
+        font-weight: normal;
+      }
+      
+      .gallery-image {
+        height: 120px;
+      }
+      
+      .multi-image-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .multi-image-container .gallery-image {
+        height: 120px;
+      }
+      
+      .centre-container .gallery-image {
+        height: 140px;
+      }
+      
+      .nav-item {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <a href="index.html">
+    <img src="logo.png" alt="Logo Révérend Constant">
+    </a>
+  </div>
+
+  <div class="hamburger-menu">
+    <button id="hamburger-button" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+    </button>
+    <nav id="mobile-menu" class="hidden">
+    <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="bapteme.html">Baptême</a></li>
+    <li><a href="mariage.html">Mariage</a></li>
+    <li><a href="enterrement.html">Funérailles</a></li>
+    <li><a href="confirmation.html">Confirmation</a></li>
+    <li><a href="guidance.html">Accompagnement Spirituel</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    </ul>
+    </nav>
+  </div>
+
+  <header class="page-header">
+    <div class="title-container">
+      <img src="logo2.png" alt="Logo Église Réformée du Christ-Roi" class="church-logo">
+      <h1 class="page-title">Église Réformée du Christ-Roi</h1>
+    </div>
+    <p class="page-subtitle">Une communauté de foi, de partage et de réflexion</p>
+  </header>
+
+  <div class="main-container">
+    <nav class="internal-nav">
+    <a href="#notre-eglise">Notre Église</a>
+    <a href="#nos-croyances">Nos Croyances</a>
+    <a href="#notre-communaute">Notre Communauté</a>
+    <a href="#notre-pasteur">Notre Pasteur</a>
+    <a href="#centre-protestant">Centre Protestant</a>
+    </nav>
+    
+    <div id="notre-eglise" class="content-section">
+    <h2 class="section-title">Notre Église</h2>
+    
+    <div class="image-gallery">
+    <img src="eglise_communaute.jpg" alt="Notre église - Communauté de fidèles" class="gallery-image" loading="lazy">
+    </div>
+    
+    <p>
+    Notre assemblée transcende les structures traditionnelles. Nous considérons que l'église véritable réside non pas dans les édifices, mais dans la communion des fidèles. Cette perspective nous permet d'offrir un espace accessible à tous, quelle que soit l'étape de votre cheminement spirituel.
+    </p>
+    
+    <p>
+    Fondée sur des principes d'ouverture, d'accueil et de développement, notre communauté constitue un lieu où chacun peut explorer sa foi selon son propre rythme. Nous recevons avec bienveillance tous ceux qui recherchent une connexion authentique et sans préjugés.
+    </p>
+    
+    <div class="quote-box">
+    <em>"L'église authentique se manifeste dans les cœurs des croyants, unis par la foi et la quête de justice."</em> (Matthieu 18:20)
+    </div>
+    </div>
+    
+    <div id="nos-croyances" class="content-section">
+    <h2 class="section-title">Nos Croyances</h2>
+    
+    <div class="image-gallery">
+    <img src="croyances_bible.jpg" alt="Nos croyances - Bible et traditions" class="gallery-image" loading="lazy">
+    </div>
+    
+    <p>
+    Nos convictions s'enracinent dans les fondements du christianisme, tout en respectant la diversité des traditions. Nous affirmons la souveraineté du Christ-Roi, qui règne avec justice et miséricorde, guidant les fidèles vers le Royaume des Cieux. Nous suivons Ses enseignements et partageons Sa Paix dans un monde qui en a grand besoin.
+    </p>
+    
+    <p>
+    Nous valorisons:
+    </p>
+    <ul>
+    <li>La bienveillance comme fondement de notre foi</li>
+    <li>L'inclusion de tous, sans distinction d'origine ou de parcours</li>
+    <li>L'évolution spirituelle comme un cheminement individuel</li>
+    <li>Le service envers autrui comme expression concrète de nos valeurs</li>
+    </ul>
+    
+    <p>
+    Notre approche théologique concilie le respect des traditions et l'ouverture aux réflexions contemporaines, offrant à chacun un espace propice à l'épanouissement de sa foi.
+    </p>
+    </div>
+    
+    <div id="notre-communaute" class="content-section">
+    <h2 class="section-title">Notre Communauté</h2>
+    
+    <div class="image-gallery">
+    <div class="multi-image-container">
+    <img src="communaute_partage.jpg" alt="Notre communauté - Moments de partage" class="gallery-image" loading="lazy">
+    <img src="communaute_rencontre.jpg" alt="Notre communauté - Rencontres" class="gallery-image" loading="lazy">
+    <img src="communaute_celebration.jpg" alt="Notre communauté - Célébrations" class="gallery-image" loading="lazy">
+    </div>
+    </div>
+    
+    <p>
+    Notre communauté rassemble des personnes d'horizons divers, unies par leur quête de sens et leur désir d'authenticité. Nous constituons une famille où chacun trouve sa place dans un climat de respect mutuel.
+    </p>
+    
+    <p>
+    Notre spécificité réside dans la liberté accordée à chaque membre de participer à la vie l'église, que ce soit lors des cérémonies importantes ou des rencontres informelles.
+    </p>
+    </div>
+    
+    <div id="notre-pasteur" class="content-section">
+    <h2 class="section-title">Notre Pasteur</h2>
+    
+    <div class="pastor-container">
+      <img src="reverend_portrait.jpg" alt="Révérend Constant - Notre pasteur" class="pastor-image" loading="lazy">
+      <div class="pastor-text">
+        <p>
+        Le Révérend Constant exerce son ministère avec une conviction profonde et un sincère désir d'accompagner autrui dans les moments déterminants de l'existence. Formé dans la tradition protestante tout en restant réceptif aux influences œcuméniques, il officie avec la volonté d'amener chacun vers le Royaume des Cieux.
+        </p>
+        
+        <p>
+        Sa philosophie pastorale repose sur la tradition et l'accessibilité des services. Il considère que les cérémonies doivent refléter l'identité de chacun, c'est pourquoi il s'attache à créer des services qui résonnent avec l'histoire des fidèles qu'il accompagne.
+        </p>
+      </div>
+    </div>
+    
+    <p class="pastor-last-paragraph">
+    Le Révérend a écrit plusieurs ouvrages religieux liés à la guidance spirituelle et à la formation au Christianisme, partageant ainsi sa vision et ses enseignements au-delà des cérémonies.
+    </p>
+    </div>
+    
+    <div id="centre-protestant" class="content-section">
+    <h2 class="section-title">Centre Protestant de Rhode-Saint-Genèse</h2>
+    
+    <div class="image-gallery">
+    <div class="centre-container">
+    <img src="centre_exterieur.jpg" alt="Centre Protestant - Vue extérieure" class="gallery-image" loading="lazy">
+    <img src="centre_interieur.jpg" alt="Centre Protestant - Vue intérieure" class="gallery-image" loading="lazy">
+    </div>
+    </div>
+    
+    <p>
+    Le Centre Protestant de Rhode-Saint-Genèse constitue notre lieu d'accueil et de rassemblement. Situé dans un environnement paisible, cet espace fait office de presbytère et de lieu de recueillement.
+    </p>
+    
+    <p>
+    Adresse: Octave Michotlaan 1, 1640 Rhode-Saint-Genèse
+    </p>
+    
+    <p>
+    Ce centre accueille:
+    </p>
+    <ul>
+    <li>Les préparations de cérémonies</li>
+    <li>Les accompagnements spirituels</li>
+    <li>Certaines cérémonies et activités</li>
+    <li>Les rencontres communautaires</li>
+    </ul>
+    
+    <p>
+    Bien que notre ministère s'étende au-delà de cette enceinte, ce centre représente un point d'ancrage pour ceux qui souhaitent une rencontre personnelle ou un moment de réflexion dans un cadre serein.
+    </p>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="nav-links">
+    <div class="nav-item" id="reverend-link">Révérend Constant</div>
+    <a href="eglise.html" class="nav-item">Notre Ministère</a>
+    <a href="contact.html" class="nav-item">Contact</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Script pour le menu hamburger
+    document.getElementById('hamburger-button').addEventListener('click', function(event) {
+    event.stopPropagation();
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+    });
+    
+    document.addEventListener('click', function(event) {
+    const hamburgerButton = document.getElementById('hamburger-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (!hamburgerButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+    mobileMenu.classList.add('hidden');
+    }
+    });
+    
+    // Navigation interne avec défilement fluide
+    document.querySelectorAll('.internal-nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    
+    window.scrollTo({
+    top: targetElement.offsetTop - 100,
+    behavior: 'smooth'
+    });
+    });
+    });
+    
+    // Ajouter un événement de clic pour "Révérend Constant" dans la barre du bas
+    document.getElementById('reverend-link').addEventListener('click', function() {
+      window.location.href = 'index.html';
+    });
+    });
+  </script>
+</body>
+</html>
