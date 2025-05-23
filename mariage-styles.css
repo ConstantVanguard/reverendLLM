@@ -1,3 +1,4 @@
+/* mariage-styles.css */
 /* Base styles */
 * {
   margin: 0;
@@ -441,8 +442,22 @@ input[type="date"]::-moz-calendar-picker-indicator {
     grid-template-columns: 1fr;
   }
   
+  /* Modification: Garder le bandeau de navigation visible sur mobile */
   .bottom-bar {
-    display: none;
+    display: flex;
+    padding: 10px 15px;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .nav-links a.nav-item {
+    position: static !important;
+    margin: 5px 0;
+    font-size: 0.9rem;
   }
 }
 
@@ -465,5 +480,14 @@ input[type="date"]::-moz-calendar-picker-indicator {
   
   .reservation-section {
     padding: 25px;
+  }
+  
+  /* Ajustement supplémentaire pour très petits écrans */
+  .bottom-bar {
+    padding: 8px 10px;
+  }
+  
+  .nav-links a.nav-item {
+    font-size: 0.8rem;
   }
 }
