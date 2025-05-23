@@ -166,7 +166,7 @@ body {
   right: calc(17% - 75px);
 }
 
-/* MODIFICATION: Suppression de l'arrière-plan des icônes et bordure intermédiaire pour PC */
+/* MODIFICATION: Suppression de l'arrière-plan des icônes et retour à la bordure de 1px */
 .service-circle {
   width: 120px;
   height: 120px;
@@ -176,7 +176,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-  border: 1.5px solid #C8B071; /* Bordure intermédiaire (1.5px au lieu de 2px) et couleur exacte sans transparence */
+  border: 1px solid #C8B071; /* Retour à 1px pour éviter l'effet pixellisé */
   transition: all 0.3s ease;
 }
 
@@ -186,11 +186,18 @@ body {
   border-color: #C8B071; /* Nouvelle couleur exacte */
 }
 
+/* AJOUT: Opacité de 0.8 sur les icônes avec transition au survol */
 .service-circle img {
   width: 77px; /* Augmenté de 10% par rapport à 70px */
   height: 77px; /* Augmenté de 10% par rapport à 70px */
   object-fit: contain;
-  /* Suppression du filtre de couleur */
+  opacity: 0.8; /* Ajout d'une légère transparence (80% d'opacité) */
+  transition: opacity 0.3s ease; /* Transition douce pour l'opacité */
+}
+
+/* Les icônes retrouvent leur pleine opacité au survol */
+.service-item:hover .service-circle img {
+  opacity: 1;
 }
 
 /* Style pour les noms des services */
@@ -227,10 +234,10 @@ body {
   max-width: 1000px;
 }
 
-/* Style uniforme pour tous les éléments de navigation */
+/* Style uniforme pour tous les éléments de navigation avec taille augmentée */
 .nav-item {
   font-family: 'Cinzel', serif;
-  font-size: 1rem;
+  font-size: 1.2rem; /* Taille augmentée de 1rem à 1.2rem */
   letter-spacing: 1px;
   color: #C8B071; /* Nouvelle couleur exacte */
   text-decoration: none;
@@ -328,13 +335,15 @@ body {
     width: 77px; /* Augmenté de 10% par rapport à 70px */
     height: 77px; /* Augmenté de 10% par rapport à 70px */
     margin-bottom: 5px; /* Réduit pour rapprocher le texte de l'icône */
-    /* Retour à une bordure normale pour mobile */
+    /* Bordure de 1px pour mobile aussi */
     border: 1px solid #C8B071;
   }
   
   .service-circle img {
     width: 48.4px; /* Augmenté de 10% par rapport à 44px */
     height: 48.4px; /* Augmenté de 10% par rapport à 44px */
+    /* Maintien de l'opacité sur mobile */
+    opacity: 0.8;
   }
   
   .service-name {
@@ -397,7 +406,7 @@ body {
   
   .nav-item {
     margin: 5px 0;
-    font-size: 0.9rem;
+    font-size: 1.1rem; /* Taille augmentée pour mobile aussi (de 0.9rem à 1.1rem) */
   }
 }
 
@@ -483,7 +492,7 @@ body {
   }
   
   .nav-item {
-    font-size: 0.8rem;
+    font-size: 1rem; /* Taille augmentée pour petits écrans aussi (de 0.8rem à 1rem) */
     margin: 3px 0;
   }
 }
