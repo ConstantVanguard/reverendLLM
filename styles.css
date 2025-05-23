@@ -24,7 +24,7 @@ body {
 }
 
 .logo img {
-  height: 120px; /* Taille doublée */
+  height: 144px; /* Taille augmentée de 20% (120px * 1.2 = 144px) */
   width: auto;
 }
 
@@ -166,7 +166,7 @@ body {
   right: calc(17% - 75px);
 }
 
-/* MODIFICATION: Suppression de l'arrière-plan des icônes et bordure plus épaisse pour PC */
+/* MODIFICATION: Suppression de l'arrière-plan des icônes et bordure intermédiaire pour PC */
 .service-circle {
   width: 120px;
   height: 120px;
@@ -176,7 +176,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-  border: 2px solid #C8B071; /* Bordure plus épaisse (2px au lieu de 1px) et couleur exacte sans transparence */
+  border: 1.5px solid #C8B071; /* Bordure intermédiaire (1.5px au lieu de 2px) et couleur exacte sans transparence */
   transition: all 0.3s ease;
 }
 
@@ -249,7 +249,7 @@ body {
 /* Responsive Design */
 @media (max-width: 992px) {
   .logo img {
-    height: 90px;
+    height: 108px; /* Augmenté de 20% (90px * 1.2 = 108px) */
   }
   
   .service-circle {
@@ -265,7 +265,7 @@ body {
 
 @media (max-width: 768px) {
   .logo img {
-    height: 120px; /* Augmenté de 50% par rapport à 80px */
+    height: 144px; /* Augmenté de 20% (120px * 1.2 = 144px) */
   }
   
   body {
@@ -403,7 +403,7 @@ body {
 
 @media (max-width: 480px) {
   .logo img {
-    height: 90px; /* Augmenté de 50% par rapport à 60px */
+    height: 108px; /* Augmenté de 20% (90px * 1.2 = 108px) */
   }
   
   .service-circle {
