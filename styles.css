@@ -79,6 +79,21 @@ body {
   height: 100%;
 }
 
+/* Style pour la phrase fixe */
+.fixed-phrase {
+  position: absolute;
+  top: calc(55% - 75px); /* Même position verticale que "CONFIRMATION" */
+  right: calc(32% - 75px); /* Même position horizontale que "ACCOMPAGNEMENT" */
+  font-family: 'Tangerine', cursive;
+  font-weight: 700;
+  font-size: 2.4rem; /* 4 tailles supérieures à la taille standard */
+  color: rgba(200, 176, 113, 0.9);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  white-space: nowrap; /* Garde le texte sur une seule ligne */
+  z-index: 5; /* S'assure que le texte est visible */
+  letter-spacing: 1px;
+}
+
 /* SOLUTION POUR LES ZONES CLIQUABLES */
 .service-item {
   position: absolute;
@@ -101,19 +116,6 @@ body {
   align-items: center;
   width: 120px;
   pointer-events: none;
-}
-
-/* Style pour la description du service */
-.service-description {
-  font-family: 'Tangerine', cursive;
-  font-weight: 700;
-  font-size: 1.5rem; /* Taille plus grande pour la police script */
-  color: rgba(200, 176, 113, 0.9);
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-  margin-top: 5px;
-  text-align: center;
-  display: block;
-  letter-spacing: 1px;
 }
 
 /* Animations de flottement plus aléatoires */
@@ -338,6 +340,11 @@ body {
     height: auto; /* Maintient le ratio d'aspect */
   }
   
+  /* Masquer la phrase fixe sur mobile */
+  .fixed-phrase {
+    display: none;
+  }
+  
   .service-orbit {
     position: relative;
     display: flex;
@@ -429,11 +436,6 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-  }
-  
-  /* Masquer la description du service sur mobile */
-  .service-description {
-    display: none;
   }
   
   /* MODIFICATION: Bandeau bas en position relative sur mobile */
