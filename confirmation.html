@@ -6,7 +6,6 @@
   <title>Confirmation - Révérend Constant</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="confirmation-styles.css">
-  <script src="https://www.paypal.com/sdk/js?client-id=BAAJ2Sxl45-4a34xKmj4p8Tyu77Fxh6JlzVqR5ljoh1DbMSFDkJNdHpEoMPiMCUQpwOrRq_F1Eswxb8_QA&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
 </head>
 <body>
   <div class="logo">
@@ -101,7 +100,11 @@
     <div id="message" style="margin-top:20px; font-weight: bold;"></div>
     
     <div id="paypalButton" class="paypal-button" style="display:none;">
-      <div id="paypal-container-FVPSC6NV9WY28"></div>
+      <form action="https://www.paypal.com/ncp/payment/FVPSC6NV9WY28" method="post" target="_blank">
+        <input type="submit" value="Acompte (100€)" class="pp-button" />
+        <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+        <section style="color: #C8B071;"> Optimisé par <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+      </form>
     </div>
     </div>
   </div>
