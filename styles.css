@@ -271,12 +271,14 @@ body {
 }
 
 @media (max-width: 768px) {
-  .logo img {
-    height: 144px; /* Augmenté de 20% (120px * 1.2 = 144px) */
+  /* MODIFICATION: Changement de l'arrière-plan pour mobile */
+  body {
+    background: url("hero_background.png") center/cover no-repeat; /* Suppression de fixed pour mobile */
+    overflow-y: auto;
   }
   
-  body {
-    overflow-y: auto;
+  .logo img {
+    height: 144px; /* Augmenté de 20% (120px * 1.2 = 144px) */
   }
   
   .main-container {
@@ -391,10 +393,11 @@ body {
     width: 100%;
   }
   
-  /* Ajustement pour la navigation en mode mobile */
+  /* MODIFICATION: Bandeau bas transparent sur mobile */
   .bottom-bar {
     height: auto;
     padding: 10px 0;
+    background-color: transparent; /* Fond transparent pour mobile */
   }
   
   .nav-links {
