@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Révérend Constant</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="logo">
@@ -15,95 +16,95 @@
 
   <div class="main-container">
     <div class="minister-container">
-    <div class="minister-photo">
-    <img src="reverend_enhanced.png" alt="Révérend Constant">
-    </div>
-    
-    <!-- Services orbitaux -->
-    <div class="service-orbit">
-    <!-- Baptême -->
-    <a href="bapteme.html" class="service-item floating" id="service-bapteme">
-    <div class="service-content">
-    <div class="service-circle">
-    <img src="icon_bapteme.png" alt="Baptême">
-    </div>
-    <span class="service-name">BAPTÊME</span>
-    </div>
-    </a>
-    
-    <!-- Confirmation -->
-    <a href="confirmation.html" class="service-item floating" id="service-confirmation">
-    <div class="service-content">
-    <div class="service-circle">
-    <img src="icon_confirmation.png" alt="Confirmation">
-    </div>
-    <span class="service-name">CONFIRMATION</span>
-    </div>
-    </a>
-    
-    <!-- Mariage -->
-    <a href="mariage.html" class="service-item floating" id="service-mariage">
-    <div class="service-content">
-    <div class="service-circle">
-    <img src="icon_mariage.png" alt="Mariage">
-    </div>
-    <span class="service-name">MARIAGE</span>
-    </div>
-    </a>
-    
-    <!-- Accompagnement -->
-    <a href="guidance.html" class="service-item floating" id="service-accompagnement">
-    <div class="service-content">
-    <div class="service-circle">
-    <img src="icon_guidance.png" alt="Accompagnement">
-    </div>
-    <span class="service-name">ACCOMPAGNEMENT</span>
-    </div>
-    </a>
-    
-    <!-- Funérailles -->
-    <a href="enterrement.html" class="service-item floating" id="service-funerailles">
-    <div class="service-content">
-    <div class="service-circle">
-    <img src="icon_enterrement.png" alt="Funérailles">
-    </div>
-    <span class="service-name">FUNÉRAILLES</span>
-    </div>
-    </a>
-    
-    <!-- Phrase fixe -->
-    <div class="fixed-phrase">Unitas Lux Christus</div>
-    </div>
+      <div class="minister-photo">
+        <img src="reverend_enhanced.png" alt="Révérend Constant">
+      </div>
+      
+      <!-- Phrase fixe -->
+      <div class="fixed-phrase">Unitas Lux Christus</div>
+      
+      <!-- Services orbitaux -->
+      <div class="service-orbit">
+        <!-- Baptême -->
+        <a href="bapteme.html" class="service-item floating" id="service-bapteme">
+          <div class="service-content">
+            <div class="service-circle">
+              <img src="icon_bapteme.png" alt="Baptême">
+            </div>
+            <span class="service-name">BAPTÊME</span>
+          </div>
+        </a>
+        
+        <!-- Confirmation -->
+        <a href="confirmation.html" class="service-item floating" id="service-confirmation">
+          <div class="service-content">
+            <div class="service-circle">
+              <img src="icon_confirmation.png" alt="Confirmation">
+            </div>
+            <span class="service-name">CONFIRMATION</span>
+          </div>
+        </a>
+        
+        <!-- Mariage -->
+        <a href="mariage.html" class="service-item floating" id="service-mariage">
+          <div class="service-content">
+            <div class="service-circle">
+              <img src="icon_mariage.png" alt="Mariage">
+            </div>
+            <span class="service-name">MARIAGE</span>
+          </div>
+        </a>
+        
+        <!-- Accompagnement -->
+        <a href="guidance.html" class="service-item floating" id="service-accompagnement">
+          <div class="service-content">
+            <div class="service-circle">
+              <img src="icon_guidance.png" alt="Accompagnement">
+            </div>
+            <span class="service-name">ACCOMPAGNEMENT</span>
+          </div>
+        </a>
+        
+        <!-- Funérailles -->
+        <a href="enterrement.html" class="service-item floating" id="service-funerailles">
+          <div class="service-content">
+            <div class="service-circle">
+              <img src="icon_enterrement.png" alt="Funérailles">
+            </div>
+            <span class="service-name">FUNÉRAILLES</span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
   <div class="bottom-bar">
     <div class="nav-links">
-    <a href="index.html" class="nav-item">Révérend Constant</a>
-    <a href="eglise.html" class="nav-item">Notre Ministère</a>
-    <a href="contact.html" class="nav-item">Contact</a>
+      <a href="index.html" class="nav-item">Révérend Constant</a>
+      <a href="eglise.html" class="nav-item">Notre Ministère</a>
+      <a href="contact.html" class="nav-item">Contact</a>
     </div>
   </div>
 
   <!-- Script pour vérifier les clics -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-    // Sélectionner tous les éléments de service
-    const serviceItems = document.querySelectorAll('.service-item');
-    
-    // Ajouter un gestionnaire d'événements à chaque élément
-    serviceItems.forEach(item => {
-    item.addEventListener('click', function(e) {
-    // Obtenir l'URL de destination
-    const href = this.getAttribute('href');
-    
-    // Rediriger vers la page
-    window.location.href = href;
-    
-    // Pour le débogage
-    console.log('Clicked on:', this.querySelector('.service-name').textContent);
-    });
-    });
+      // Sélectionner tous les éléments de service
+      const serviceItems = document.querySelectorAll('.service-item');
+      
+      // Ajouter un gestionnaire d'événements à chaque élément
+      serviceItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          // Obtenir l'URL de destination
+          const href = this.getAttribute('href');
+          
+          // Rediriger vers la page
+          window.location.href = href;
+          
+          // Pour le débogage
+          console.log('Clicked on:', this.querySelector('.service-name').textContent);
+        });
+      });
     });
   </script>
 </body>
