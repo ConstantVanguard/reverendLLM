@@ -3,12 +3,9 @@ function isDateAvailable(date) {
   const selectedDate = new Date(date);
   const today = new Date();
   
-  // Délai d'attente d'un jour
-  const minDate = new Date();
-  minDate.setDate(today.getDate() + 1);
-  
-  // Vérifier le délai minimal
-  if (selectedDate < minDate) {
+  // Pour les funérailles, pas de délai d'attente
+  // Vérifier seulement que la date n'est pas dans le passé
+  if (selectedDate < today) {
     return false;
   }
 
@@ -31,9 +28,8 @@ function isDateAvailable(date) {
 // Définir la date minimale affichée dans le sélecteur
 document.addEventListener('DOMContentLoaded', function() {
   const today = new Date();
-  const minDate = new Date();
-  minDate.setDate(today.getDate() + 1);
-  document.getElementById("datePicker").min = minDate.toISOString().split('T')[0];
+  // Définir la date minimale comme aujourd'hui (pas de délai d'attente)
+  document.getElementById("datePicker").min = today.toISOString().split('T')[0];
   
   // Améliorer l'interaction avec le sélecteur de date
   const datePicker = document.getElementById("datePicker");
@@ -44,23 +40,22 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("bookButton").addEventListener("click", function() {
     const dateValue = document.getElementById("datePicker").value;
     const messageDiv = document.getElementById("message");
-    const paypalButton = document.getElementById("paypalButton");
 
     if (!dateValue) {
       messageDiv.textContent = "Veuillez sélectionner une date.";
       messageDiv.style.color = "#FFD140";
-      paypalButton.style.display = "none";
+      document.getElementById("paypalButton").style.display = "none";
       return;
     }
 
     if (isDateAvailable(dateValue)) {
-      messageDiv.style.color = "#C8B071";
-      messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 50€.";
-      paypalButton.style.display = "block";
+      messageDiv.style.color = "#d4af37";
+      messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 100€.";
+      document.getElementById("paypalButton").style.display = "block";
     } else {
       messageDiv.style.color = "#FFD140";
       messageDiv.textContent = "La date sélectionnée n'est pas disponible. Veuillez choisir une autre date.";
-      paypalButton.style.display = "none";
+      document.getElementById("paypalButton").style.display = "none";
     }
   });
 
