@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (isDateAvailable(dateValue)) {
-      messageDiv.style.color = "#d4af37";
+      messageDiv.style.color = "#C8B071";
       messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 100€.";
       document.getElementById("paypalButton").style.display = "block";
     } else {
