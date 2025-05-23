@@ -1,541 +1,132 @@
-/* styles.css */
-/* Base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baptême - Révérend Constant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bapteme-styles.css">
+</head>
+<body>
+  <div class="logo">
+    <a href="index.html">
+    <img src="logo.png" alt="Logo Révérend Constant">
+    </a>
+  </div>
 
-/* Empêcher le défilement horizontal sur tous les appareils */
-html, body {
-  overflow-x: hidden;
-  width: 100%;
-}
+  <div class="hamburger-menu">
+    <button id="hamburger-button" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+    </button>
+    <nav id="mobile-menu" class="hidden">
+    <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="bapteme.html">Baptême</a></li>
+    <li><a href="mariage.html">Mariage</a></li>
+    <li><a href="enterrement.html">Funérailles</a></li>
+    <li><a href="confirmation.html">Confirmation</a></li>
+    <li><a href="guidance.html">Accompagnement Spirituel</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    </ul>
+    </nav>
+  </div>
 
-body {
-  font-family: 'Cinzel', serif;
-  background: url("hero_background.png") center/cover fixed;
-  background-color: #0A0504; /* Ajout de la couleur de fond unie */
-  color: #C8B071; /* Couleur exacte demandée */
-  height: 100vh;
-  overflow-y: hidden; /* Garde le overflow-y: hidden pour desktop */
-  position: relative;
-}
+  <header class="page-header">
+    <h1 class="page-title">Baptême</h1>
+    <p class="page-subtitle">Une cérémonie personnalisée pour accueillir votre enfant dans la foi</p>
+  </header>
 
-/* Logo */
-.logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 10;
-}
+  <div class="main-container">
+    <div class="image-gallery">
+    <img src="bapteme1.jpg" alt="Baptême – Photo 1" class="gallery-image">
+    <img src="bapteme2.jpg" alt="Baptême – Photo 2" class="gallery-image">
+    <img src="bapteme3.jpg" alt="Baptême – Photo 3" class="gallery-image">
+    </div>
+    
+    <div class="content-section">
+    <h2 class="section-title">Présentation</h2>
+    <p>
+    Le baptême est un moment important dans la vie spirituelle de votre enfant. En tant que pasteur protestant, je propose des cérémonies de baptême personnalisées qui peuvent se dérouler dans le lieu de votre choix : église, jardin, domicile ou tout autre endroit significatif pour votre famille.
+    </p>
+    <p>
+    Chaque baptême est une célébration unique, adaptée à votre histoire familiale et à vos convictions, tout en respectant les fondements de la tradition chrétienne.
+    </p>
+    </div>
+    
+    <div class="content-section">
+    <h2 class="section-title">Déroulement de la cérémonie</h2>
+    <p>
+    La cérémonie de baptême se déroule généralement selon les étapes suivantes :
+    </p>
+    <ul>
+    <li>Accueil et introduction</li>
+    <li>Lecture biblique et message adapté</li>
+    <li>Engagement des parents et parrains/marraines</li>
+    <li>Acte de baptême avec l'eau</li>
+    <li>Prière de bénédiction</li>
+    <li>Remise du certificat de baptême</li>
+    </ul>
+    <p>
+    Une rencontre préalable nous permettra de préparer ensemble cette cérémonie, en choisissant les textes, les chants et en définissant le rôle de chaque participant.
+    </p>
+    </div>
+    
+    <div class="content-section">
+    <h2 class="section-title">Tarifs & Conditions</h2>
+    <p>
+    <strong>150€ :</strong> Cérémonie de baptême incluant la préparation, la célébration et le certificat de baptême.
+    </p>
+    <p>
+    <strong>200€ :</strong> Formule complète avec préparation approfondie, célébration personnalisée et petit livret souvenir pour l'enfant.
+    </p>
+    <p>
+    <em>Note :</em> Un supplément de 50€ peut s'appliquer pour les cérémonies en dehors du Brabant wallon.
+    </p>
+    <p>
+    J'officie en soutane et selon un rite œcuménique respectant les sensibilités protestantes et catholiques, permettant ainsi à toute la famille de se sentir accueillie dans sa foi.
+    </p>
+    </div>
+    
+    <div class="reservation-section">
+    <h3>Réservez votre date</h3>
+    <p>
+    Veuillez choisir une date disponible pour la cérémonie de baptême.<br>
+    <em>Attention :</em> je suis disponible uniquement les lundis, jeudis et samedis.
+    </p>
+    
+    <div class="form-group">
+    <label for="datePicker">Date souhaitée :</label>
+    <div class="date-picker-container">
+      <input type="date" id="datePicker" placeholder="jj/mm/aaaa">
+    </div>
+    </div>
+    
+    <button id="bookButton" class="btn">Vérifier la disponibilité</button>
+    
+    <div id="message" style="margin-top:20px; font-weight: bold;"></div>
+    
+    <div id="paypalButton" class="paypal-button" style="display:none;">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="BAPTEME123">
+    <input class="pp-BAPTEME123" type="submit" value="Acompte 50€" />
+    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+    <section style="color: #C8B071;"> Optimisé par <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+    </form>
+    </div>
+    </div>
+  </div>
 
-.logo img {
-  height: 144px; /* Taille augmentée de 20% (120px * 1.2 = 144px) */
-  width: auto;
-}
+  <div class="bottom-bar">
+    <div class="nav-links">
+    <a href="index.html" class="nav-item">Révérend Constant</a>
+    <a href="eglise.html" class="nav-item">Notre Ministère</a>
+    <a href="contact.html" class="nav-item">Contact</a>
+    </div>
+  </div>
 
-/* Main container */
-.main-container {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%; /* Assure que le conteneur n'est pas plus large que l'écran */
-}
-
-/* Minister container */
-.minister-container {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Minister photo - déplacée 5% plus à gauche */
-.minister-photo {
-  position: relative;
-  height: 70vh;
-  max-height: 600px;
-  z-index: 2;
-  transform: translateX(-5%); /* Déplace l'image 5% plus à gauche */
-}
-
-.minister-photo img {
-  height: 100%;
-  width: auto;
-  object-fit: contain;
-}
-
-/* Services orbitaux */
-.service-orbit {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* SOLUTION POUR LES ZONES CLIQUABLES */
-.service-item {
-  position: absolute;
-  display: block;
-  width: 150px; /* Largeur fixe plus grande que le cercle */
-  height: 150px; /* Hauteur fixe plus grande que le cercle */
-  text-decoration: none;
-  cursor: pointer;
-  z-index: 10;
-  text-align: center;
-}
-
-.service-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 120px;
-  pointer-events: none;
-}
-
-/* Animations de flottement plus aléatoires */
-@keyframes float1 {
-  0% { transform: translateY(0px) translateX(0px); }
-  25% { transform: translateY(-8px) translateX(3px); }
-  50% { transform: translateY(-12px) translateX(-2px); }
-  75% { transform: translateY(-5px) translateX(-4px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
-
-@keyframes float2 {
-  0% { transform: translateY(0px) translateX(0px); }
-  30% { transform: translateY(-10px) translateX(-3px); }
-  60% { transform: translateY(-6px) translateX(5px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
-
-@keyframes float3 {
-  0% { transform: translateY(0px) translateX(0px); }
-  40% { transform: translateY(-12px) translateX(4px); }
-  70% { transform: translateY(-7px) translateX(-3px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
-
-@keyframes float4 {
-  0% { transform: translateY(0px) translateX(0px); }
-  20% { transform: translateY(-5px) translateX(-5px); }
-  55% { transform: translateY(-15px) translateX(2px); }
-  85% { transform: translateY(-8px) translateX(4px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
-
-@keyframes float5 {
-  0% { transform: translateY(0px) translateX(0px); }
-  35% { transform: translateY(-9px) translateX(5px); }
-  65% { transform: translateY(-14px) translateX(-4px); }
-  90% { transform: translateY(-4px) translateX(-2px); }
-  100% { transform: translateY(0px) translateX(0px); }
-}
-
-/* Application des animations différentes pour chaque service */
-/* Déplacement de 2% vers le bas pour tous les services (1% supplémentaire) */
-#service-bapteme {
-  animation: float1 5s ease-in-out infinite;
-  top: calc(32% - 75px); /* Déplacé 2% plus bas (de 30% à 32%) */
-  left: calc(13% - 75px);
-}
-
-#service-confirmation {
-  animation: float2 6s ease-in-out infinite;
-  top: calc(55% - 75px); /* Déplacé 2% plus bas (de 53% à 55%) */
-  left: calc(27% - 75px);
-}
-
-#service-mariage {
-  animation: float3 5.5s ease-in-out infinite;
-  top: calc(17% - 75px); /* Déplacé 2% plus bas (de 15% à 17%) */
-  left: calc(27% - 75px);
-}
-
-#service-accompagnement {
-  animation: float4 6.5s ease-in-out infinite;
-  top: calc(17% - 75px); /* Déplacé 2% plus bas (de 15% à 17%) */
-  right: calc(32% - 75px);
-}
-
-#service-funerailles {
-  animation: float5 7s ease-in-out infinite;
-  top: calc(32% - 75px); /* Déplacé 2% plus bas (de 30% à 32%) */
-  right: calc(17% - 75px);
-}
-
-/* MODIFICATION: Suppression de l'arrière-plan des icônes et retour à la bordure de 1px */
-.service-circle {
-  width: 120px;
-  height: 120px;
-  /* Suppression de background-color: rgba(0, 0, 0, 0.7); */
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  border: 1px solid #C8B071; /* Retour à 1px pour éviter l'effet pixellisé */
-  transition: all 0.3s ease;
-}
-
-.service-item:hover .service-circle {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(200, 176, 113, 0.6); /* Nouvelle couleur exacte avec transparence */
-  border-color: #C8B071; /* Nouvelle couleur exacte */
-}
-
-/* AJOUT: Opacité de 0.8 sur les icônes avec transition au survol */
-.service-circle img {
-  width: 77px; /* Augmenté de 10% par rapport à 70px */
-  height: 77px; /* Augmenté de 10% par rapport à 70px */
-  object-fit: contain;
-  opacity: 0.8; /* Ajout d'une légère transparence (80% d'opacité) */
-  transition: opacity 0.3s ease; /* Transition douce pour l'opacité */
-}
-
-/* Les icônes retrouvent leur pleine opacité au survol */
-.service-item:hover .service-circle img {
-  opacity: 1;
-}
-
-/* Style pour les noms des services */
-.service-name {
-  font-family: 'Cinzel', serif;
-  font-size: 0.85rem; /* Taille réduite */
-  margin-top: 10px;
-  color: #C8B071; /* Nouvelle couleur exacte */
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-  letter-spacing: 1px;
-  text-decoration: none;
-}
-
-/* Bottom bar */
-.bottom-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px 30px;
-  z-index: 100;
-}
-
-/* NOUVELLE SOLUTION: Utilisation de flexbox pour la navigation */
-.nav-links {
-  display: flex;
-  justify-content: space-between; /* Répartit les éléments de manière égale */
-  align-items: center;
-  width: 80%; /* Contrôle la largeur totale de la navigation */
-  max-width: 1000px;
-}
-
-/* Style uniforme pour tous les éléments de navigation avec taille augmentée */
-.nav-item {
-  font-family: 'Cinzel', serif;
-  font-size: 1.2rem; /* Taille augmentée de 1rem à 1.2rem */
-  letter-spacing: 1px;
-  color: #C8B071; /* Nouvelle couleur exacte */
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-/* Style spécifique pour l'élément du milieu */
-.nav-links a.nav-item:nth-child(2) {
-  text-align: center;
-}
-
-.nav-item:hover {
-  color: #ffffff;
-}
-
-/* Responsive Design */
-@media (max-width: 992px) {
-  .logo img {
-    height: 108px; /* Augmenté de 20% (90px * 1.2 = 108px) */
-  }
-  
-  .service-circle {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .service-circle img {
-    width: 66px; /* Augmenté de 10% par rapport à 60px */
-    height: 66px; /* Augmenté de 10% par rapport à 60px */
-  }
-}
-
-@media (max-width: 768px) {
-  /* MODIFICATION: Changement de l'arrière-plan pour mobile */
-  body {
-    background: url("hero_background.png") center top/cover no-repeat; /* Suppression de fixed pour mobile */
-    background-attachment: scroll; /* Utilisation de scroll au lieu de fixed */
-    background-color: #0A0504; /* Couleur de fond unie qui apparaîtra après l'image */
-    overflow-y: auto; /* Permet le défilement vertical */
-    min-height: 100vh; /* Assure que la couleur de fond s'étend sur toute la hauteur */
-  }
-  
-  html {
-    background-color: #0A0504; /* Assure que même le html a la couleur de fond */
-  }
-  
-  .logo img {
-    height: 144px; /* Augmenté de 20% (120px * 1.2 = 144px) */
-  }
-  
-  .main-container {
-    height: auto;
-    padding: 80px 0 80px; /* Ajout de padding en bas pour éviter que le contenu soit caché */
-    overflow-y: visible;
-    min-height: calc(100vh - 50px); /* Assure que le contenu a assez d'espace */
-    max-width: 100%; /* S'assure que le conteneur ne dépasse pas la largeur de l'écran */
-  }
-  
-  .minister-container {
-    height: auto;
-    flex-direction: column;
-    padding-bottom: 60px; /* Espace supplémentaire en bas */
-    max-width: 100%; /* S'assure que le conteneur ne dépasse pas la largeur de l'écran */
-  }
-  
-  .minister-photo {
-    height: 50vh;
-    transform: translateX(0); /* Réinitialise le décalage sur mobile */
-    margin-bottom: 20px;
-    max-width: 100%; /* S'assure que l'image ne dépasse pas la largeur de l'écran */
-  }
-  
-  .minister-photo img {
-    max-width: 100%; /* S'assure que l'image ne dépasse pas la largeur de l'écran */
-    height: auto; /* Maintient le ratio d'aspect */
-  }
-  
-  .service-orbit {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px; /* Augmenté de 10px à 15px pour plus d'espacement */
-    margin-top: 20px;
-    width: 100%;
-    height: auto;
-    padding-bottom: 60px; /* Espace supplémentaire pour éviter la barre du bas */
-  }
-  
-  /* MODIFICATION: Ajustement pour les services en mode mobile */
-  .service-item {
-    position: relative;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    margin: 10px 15px; /* Augmenté la marge horizontale */
-    animation: none !important; /* Désactive l'animation sur mobile */
-    width: 90px;
-    height: 90px;
-  }
-  
-  .service-content {
-    width: 80px;
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: none;
-  }
-  
-  .service-circle {
-    width: 77px; /* Augmenté de 10% par rapport à 70px */
-    height: 77px; /* Augmenté de 10% par rapport à 70px */
-    margin-bottom: 5px; /* Réduit pour rapprocher le texte de l'icône */
-    /* Bordure de 1px pour mobile aussi */
-    border: 1px solid #C8B071;
-  }
-  
-  .service-circle img {
-    width: 48.4px; /* Augmenté de 10% par rapport à 44px */
-    height: 48.4px; /* Augmenté de 10% par rapport à 44px */
-    /* Maintien de l'opacité sur mobile */
-    opacity: 0.8;
-  }
-  
-  .service-name {
-    font-size: 0.7rem;
-    margin-top: 5px; /* Réduit pour rapprocher le texte de l'icône */
-    position: static;
-    display: block;
-  }
-  
-  /* Remplacer ACCOMPAGNEMENT par AIDE sur mobile */
-  #service-accompagnement .service-name {
-    font-size: 0.7rem;
-  }
-  
-  #service-accompagnement .service-name:after {
-    content: none;
-  }
-  
-  #service-accompagnement .service-name {
-    visibility: hidden;
-    position: relative;
-  }
-  
-  #service-accompagnement .service-name:before {
-    content: "AIDE";
-    visibility: visible;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-  
-  /* Remplacer CONFIRMATION par ÉTUDE sur mobile */
-  #service-confirmation .service-name {
-    visibility: hidden;
-    position: relative;
-  }
-  
-  #service-confirmation .service-name:before {
-    content: "ÉTUDE";
-    visibility: visible;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-  
-  /* MODIFICATION: Bandeau bas transparent sur mobile */
-  .bottom-bar {
-    height: auto;
-    padding: 10px 0;
-    background-color: transparent; /* Fond transparent pour mobile */
-  }
-  
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-    padding: 5px 0;
-    width: 100%;
-  }
-  
-  .nav-item {
-    margin: 5px 0;
-    font-size: 1.1rem; /* Taille augmentée pour mobile aussi (de 0.9rem à 1.1rem) */
-  }
-}
-
-@media (max-width: 480px) {
-  .logo img {
-    height: 108px; /* Augmenté de 20% (90px * 1.2 = 108px) */
-  }
-  
-  .service-circle {
-    width: 66px; /* Augmenté de 10% par rapport à 60px */
-    height: 66px; /* Augmenté de 10% par rapport à 60px */
-  }
-  
-  .service-circle img {
-    width: 42.35px; /* Augmenté de 10% par rapport à 38.5px */
-    height: 42.35px; /* Augmenté de 10% par rapport à 38.5px */
-  }
-  
-  .service-orbit {
-    padding: 0 10px 70px; /* Plus d'espace en bas et sur les côtés */
-    gap: 20px; /* Encore plus d'espace entre les éléments */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Force 3 éléments par ligne */
-    justify-items: center;
-  }
-  
-  .service-item {
-    margin: 8px;
-    width: 70px;
-    height: 90px; /* Augmenté pour donner plus d'espace au texte */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .service-content {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .service-name {
-    position: static;
-    margin-top: 5px;
-    text-align: center;
-    width: 100%;
-  }
-  
-  /* Ordre spécifique pour les éléments sur mobile */
-  .service-orbit {
-    display: grid;
-    grid-template-areas: 
-      "bapteme mariage accompagnement"
-      "confirmation funerailles empty";
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
-  }
-  
-  #service-bapteme {
-    grid-area: bapteme;
-  }
-  
-  #service-mariage {
-    grid-area: mariage;
-  }
-  
-  #service-accompagnement {
-    grid-area: accompagnement;
-  }
-  
-  #service-confirmation {
-    grid-area: confirmation;
-  }
-  
-  #service-funerailles {
-    grid-area: funerailles;
-  }
-  
-  .bottom-bar {
-    padding: 8px 10px;
-  }
-  
-  .nav-item {
-    font-size: 1rem; /* Taille augmentée pour petits écrans aussi (de 0.8rem à 1rem) */
-    margin: 3px 0;
-  }
-}
-
-/* Ajustement spécifique pour les très petits écrans */
-@media (max-width: 360px) {
-  .service-orbit {
-    grid-template-areas: 
-      "bapteme mariage"
-      "accompagnement confirmation"
-      "funerailles empty";
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 25px;
-  }
-  
-  .service-item {
-    margin: 5px;
-    height: 85px;
-  }
-}
+  <script src="bapteme-script.js"></script>
+</body>
+</html>
