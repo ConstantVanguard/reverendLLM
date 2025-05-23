@@ -174,7 +174,7 @@ body {
   right: calc(17% - 75px);
 }
 
-/* MODIFICATION: Suppression de l'arrière-plan des icônes et retour à la bordure de 1px */
+/* MODIFICATION: Bordure de 2px avec transparence accrue UNIQUEMENT pour desktop */
 .service-circle {
   width: 120px;
   height: 120px;
@@ -184,14 +184,14 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-  border: 1px solid #C8B071; /* Retour à 1px pour éviter l'effet pixellisé */
+  border: 2px solid rgba(200, 176, 113, 0.6); /* Bordure de 2px avec 60% d'opacité */
   transition: all 0.3s ease;
 }
 
 .service-item:hover .service-circle {
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(200, 176, 113, 0.6); /* Nouvelle couleur exacte avec transparence */
-  border-color: #C8B071; /* Nouvelle couleur exacte */
+  border-color: #C8B071; /* Bordure pleine opacité au survol */
 }
 
 /* AJOUT: Opacité de 0.8 sur les icônes avec transition au survol */
@@ -258,7 +258,7 @@ body {
 }
 
 .nav-item:hover {
-  color: #ffffff;
+  color: #ffff;
 }
 
 /* Responsive Design */
@@ -362,7 +362,7 @@ body {
     width: 77px; /* Augmenté de 10% par rapport à 70px */
     height: 77px; /* Augmenté de 10% par rapport à 70px */
     margin-bottom: 5px; /* Réduit pour rapprocher le texte de l'icône */
-    /* Bordure de 1px pour mobile aussi */
+    /* Conservation de la bordure d'origine pour mobile */
     border: 1px solid #C8B071;
   }
   
@@ -493,8 +493,8 @@ body {
   .service-orbit {
     display: grid;
     grid-template-areas: 
-      "bapteme mariage accompagnement"
-      "confirmation funerailles empty";
+    "bapteme mariage accompagnement"
+    "confirmation funerailles empty";
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
   }
@@ -534,9 +534,9 @@ body {
 @media (max-width: 360px) {
   .service-orbit {
     grid-template-areas: 
-      "bapteme mariage"
-      "accompagnement confirmation"
-      "funerailles empty";
+    "bapteme mariage"
+    "accompagnement confirmation"
+    "funerailles empty";
     grid-template-columns: 1fr 1fr;
     grid-gap: 25px;
     margin-top: calc(10% + 15px); /* Ajusté pour les très petits écrans */
