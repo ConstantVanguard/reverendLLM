@@ -62,11 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
       messageDiv.style.color = "#C8B071";
       
       if (selectedType === "single") {
-        messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de 70€ pour votre rencontre ponctuelle.";
+        messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de votre acompte (70€) pour réserver cette date.";
         paypalButtonSingle.style.display = "block";
         paypalButtonGuidance.style.display = "none";
       } else {
-        messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de 450€ pour votre programme de guidance spirituelle.";
+        messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de votre acompte (100€) pour réserver cette date.";
         paypalButtonSingle.style.display = "none";
         paypalButtonGuidance.style.display = "block";
       }
