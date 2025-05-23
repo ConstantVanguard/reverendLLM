@@ -79,15 +79,15 @@ body {
   height: 100%;
 }
 
-/* Style pour la phrase fixe */
+/* Style pour la phrase fixe - option plus basse et à droite */
 .fixed-phrase {
   position: absolute;
-  top: 40%; /* Centré verticalement, légèrement au-dessus de CONFIRMATION */
-  left: 50%; /* Centré horizontalement */
-  transform: translateX(-50%); /* Centrage parfait */
+  top: 60%;
+  left: 60%;
+  transform: translate(-50%, -50%);
   font-family: 'Tangerine', cursive;
   font-weight: 700;
-  font-size: 2.4rem;
+  font-size: 2.8rem;
   color: rgba(200, 176, 113, 0.5); /* Transparence à 50% */
   text-shadow: 0 0 15px rgba(200, 176, 113, 0.4); /* Halo doré autour du texte */
   white-space: nowrap;
@@ -491,85 +491,3 @@ body {
     width: 70px;
     height: 90px; /* Augmenté pour donner plus d'espace au texte */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .service-content {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .service-name {
-    position: static;
-    margin-top: 5px;
-    text-align: center;
-    width: 100%;
-  }
-  
-  /* Ordre spécifique pour les éléments sur mobile */
-  .service-orbit {
-    display: grid;
-    grid-template-areas: 
-    "bapteme mariage accompagnement"
-    "confirmation funerailles empty";
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
-  }
-  
-  #service-bapteme {
-    grid-area: bapteme;
-  }
-  
-  #service-mariage {
-    grid-area: mariage;
-  }
-  
-  #service-accompagnement {
-    grid-area: accompagnement;
-  }
-  
-  #service-confirmation {
-    grid-area: confirmation;
-  }
-  
-  #service-funerailles {
-    grid-area: funerailles;
-  }
-  
-  .bottom-bar {
-    padding: 8px 10px;
-    margin-top: 10px; /* Réduit à 10px pour rapprocher le bandeau des icônes */
-  }
-  
-  .nav-item {
-    font-size: 1rem; /* Taille augmentée pour petits écrans aussi (de 0.8rem à 1rem) */
-    margin: 3px 0;
-  }
-}
-
-/* Ajustement spécifique pour les très petits écrans */
-@media (max-width: 360px) {
-  .service-orbit {
-    grid-template-areas: 
-    "bapteme mariage"
-    "accompagnement confirmation"
-    "funerailles empty";
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 25px;
-    margin-top: calc(10% + 15px); /* Ajusté pour les très petits écrans */
-    padding-bottom: 0; /* Réduit à 0 pour rapprocher le bandeau */
-  }
-  
-  .service-item {
-    margin: 5px;
-    height: 85px;
-  }
-  
-  .bottom-bar {
-    margin-top: 10px; /* Réduit à 10px pour rapprocher le bandeau des icônes */
-  }
-}
