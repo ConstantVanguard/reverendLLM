@@ -434,9 +434,10 @@ input[type="date"]::-moz-calendar-picker-indicator {
   color: #ffff;
 }
 
-/* Classe pour le texte doré - même couleur que les titres */
+/* Classe pour le texte doré et gras - même couleur que les titres */
 .gold-text {
   color: #C8B071;
+  font-weight: bold;
 }
 
 /* Assurer que les éléments de liste gardent la même taille de police */
