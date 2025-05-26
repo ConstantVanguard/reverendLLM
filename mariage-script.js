@@ -2,9 +2,9 @@
 function isDateAvailable(date) {
   const selectedDate = new Date(date);
   const today = new Date();
-  // Appliquer le délai de 63 jours
+  // Appliquer le délai de 41 jours
   const minDate = new Date();
-  minDate.setDate(today.getDate() + 63);
+  minDate.setDate(today.getDate() + 41);
 
   // Vérifier le délai minimal
   if (selectedDate < minDate) {
@@ -31,7 +31,7 @@ function isDateAvailable(date) {
 document.addEventListener('DOMContentLoaded', function() {
   const today = new Date();
   const minDate = new Date();
-  minDate.setDate(today.getDate() + 63);
+  minDate.setDate(today.getDate() + 41);
   document.getElementById("datePicker").min = minDate.toISOString().split('T')[0];
   
   // Améliorer l'interaction avec le sélecteur de date
@@ -45,20 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const messageDiv = document.getElementById("message");
 
     if (!dateValue) {
-      messageDiv.textContent = "Veuillez sélectionner une date.";
-      messageDiv.style.color = "#FFD140";
-      document.getElementById("paypalButton").style.display = "none";
-      return;
+    messageDiv.textContent = "Veuillez sélectionner une date.";
+    messageDiv.style.color = "#FFD140";
+    document.getElementById("paypalButton").style.display = "none";
+    return;
     }
 
     if (isDateAvailable(dateValue)) {
-      messageDiv.style.color = "#C8B071";
-      messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 100€.";
-      document.getElementById("paypalButton").style.display = "block";
+    messageDiv.style.color = "#C8B071";
+    messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 100€.";
+    document.getElementById("paypalButton").style.display = "block";
     } else {
-      messageDiv.style.color = "#FFD140";
-      messageDiv.textContent = "La date sélectionnée n'est pas disponible. Veuillez choisir une autre date.";
-      document.getElementById("paypalButton").style.display = "none";
+    messageDiv.style.color = "#FFD140";
+    messageDiv.textContent = "La date sélectionnée n'est pas disponible. Veuillez choisir une autre date.";
+    document.getElementById("paypalButton").style.display = "none";
     }
   });
 
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenu = document.getElementById('mobile-menu');
     
     if (!hamburgerButton.contains(event.target) && !mobileMenu.contains(event.target)) {
-      mobileMenu.classList.add('hidden');
+    mobileMenu.classList.add('hidden');
     }
   });
 });
