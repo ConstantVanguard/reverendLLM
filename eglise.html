@@ -302,7 +302,7 @@
       color: #fff;
     }
 
-    /* Galerie d'images */
+    /* Galerie d'images - MODIFIÉ: suppression de image-rendering */
     .image-gallery {
       margin-bottom: 20px;
       border-radius: 8px;
@@ -319,6 +319,11 @@
       margin-bottom: 15px;
       object-fit: cover;
       object-position: center;
+      /* Ajout pour améliorer la qualité */
+      -webkit-backface-visibility: hidden;
+      -ms-transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
     }
 
     .gallery-image:hover {
@@ -352,6 +357,11 @@
       height: auto;
       border-radius: 8px;
       object-fit: contain;
+      /* Ajout pour améliorer la qualité */
+      -webkit-backface-visibility: hidden;
+      -ms-transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
     }
 
     .pastor-text {
@@ -367,7 +377,7 @@
       color: #fff;
     }
 
-    /* Style pour les images du centre - SANS EFFET DE ZOOM */
+    /* Style pour les images du centre - MODIFIÉ: suppression de image-rendering */
     .centre-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -378,9 +388,12 @@
     .centre-container .gallery-image {
       height: 220px;
       object-fit: cover;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
       transition: none;
+      /* Ajout pour améliorer la qualité */
+      -webkit-backface-visibility: hidden;
+      -ms-transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
     }
 
     .centre-container .gallery-image:hover {
@@ -641,7 +654,7 @@
     <h2 class="section-title">Nos Croyances</h2>
     
     <div class="image-gallery">
-    <img src="croyances_bible.jpg" alt="Nos croyances - Bible et traditions" class="gallery-image" loading="lazy">
+    <img src="eglise_priere.jpg" alt="Nos croyances - Bible et traditions" class="gallery-image" loading="lazy">
     </div>
     
     <p>
