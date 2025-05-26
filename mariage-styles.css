@@ -434,7 +434,7 @@ input[type="date"]::-moz-calendar-picker-indicator {
   color: #ffff;
 }
 
-/* Classe pour le texte doré */
+/* Classe pour le texte doré - même couleur que les titres */
 .gold-text {
   color: #C8B071;
 }
