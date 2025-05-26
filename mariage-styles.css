@@ -434,6 +434,17 @@ input[type="date"]::-moz-calendar-picker-indicator {
   color: #ffff;
 }
 
+/* Classe pour le texte doré */
+.gold-text {
+  color: #C8B071;
+}
+
+/* Assurer que les éléments de liste gardent la même taille de police */
+.content-section ul li {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
   .page-header {
