@@ -208,6 +208,12 @@ body {
   color: #C8B071;
 }
 
+/* Style pour les prix */
+.price {
+  color: #C8B071;
+  font-weight: bold;
+}
+
 /* Reservation section */
 .reservation-section {
   background: url("dark_parchment.png") center/cover;
