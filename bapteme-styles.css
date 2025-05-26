@@ -200,6 +200,9 @@ body {
 }
 
 .content-section li {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  line-height: 1.8;
   margin-bottom: 12px;
   color: #444;
 }
