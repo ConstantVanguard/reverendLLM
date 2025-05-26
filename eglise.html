@@ -302,7 +302,7 @@
       color: #fff;
     }
 
-    /* Galerie d'images - MODIFIÉ: suppression de image-rendering */
+    /* Galerie d'images */
     .image-gallery {
       margin-bottom: 20px;
       border-radius: 8px;
@@ -377,7 +377,7 @@
       color: #fff;
     }
 
-    /* Style pour les images du centre - MODIFIÉ: suppression de image-rendering */
+    /* Style pour les images du centre - MODIFIÉ: respect du ratio original */
     .centre-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -386,8 +386,11 @@
     }
 
     .centre-container .gallery-image {
-      height: 220px;
-      object-fit: cover;
+      height: auto; /* Changé de 220px à auto */
+      max-height: 220px; /* Limite maximale */
+      width: 100%;
+      object-fit: contain; /* Changé de cover à contain */
+      object-position: center;
       transition: none;
       /* Ajout pour améliorer la qualité */
       -webkit-backface-visibility: hidden;
@@ -431,7 +434,7 @@
       }
       
       .centre-container .gallery-image {
-        height: 180px;
+        max-height: 180px; /* Au lieu de height: 180px */
       }
       
       .pastor-container {
@@ -493,7 +496,7 @@
       }
       
       .centre-container .gallery-image {
-        height: 160px;
+        max-height: 160px; /* Au lieu de height: 160px */
       }
       
       /* MODIFICATION: Bandeau bas identique à la page mariage sur mobile */
@@ -577,7 +580,7 @@
       }
       
       .centre-container .gallery-image {
-        height: 140px;
+        max-height: 140px; /* Au lieu de height: 140px */
       }
       
       /* MODIFICATION: Bandeau bas identique à la page mariage sur petit mobile */
