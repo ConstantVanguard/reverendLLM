@@ -217,6 +217,12 @@ body {
   font-weight: bold;
 }
 
+/* Style pour le texte doré */
+.gold-text {
+  color: #C8B071;
+  font-weight: bold;
+}
+
 /* Reservation section */
 .reservation-section {
   background: url("dark_parchment.png") center/cover;
