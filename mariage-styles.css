@@ -445,6 +445,12 @@ input[type="date"]::-moz-calendar-picker-indicator {
   font-weight: bold;
 }
 
+/* Classe spéciale pour "Remarque" - couleur dorée mais pas gras */
+.gold-text-normal {
+  color: #C8B071;
+  font-weight: normal;
+}
+
 /* Assurer que les éléments de liste gardent la même taille de police */
 .content-section ul li {
   font-size: 18px;
