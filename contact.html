@@ -6,6 +6,8 @@
   <title>Contact - Révérend Constant</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
+  <!-- Font Awesome pour les icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     /* Styles spécifiques à la page contact */
     body {
@@ -25,8 +27,8 @@
       background-color: rgba(0, 0, 0, 0.7);
       padding: 30px;
       border-radius: 8px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-left: 4px solid #d4af37;
+      border: 1px solid rgba(200, 176, 113, 0.3);
+      border-left: 4px solid #C8B071;
     }
     
     .contact-form {
@@ -35,15 +37,15 @@
       background-color: rgba(0, 0, 0, 0.7);
       padding: 30px;
       border-radius: 8px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-left: 4px solid #d4af37;
+      border: 1px solid rgba(200, 176, 113, 0.3);
+      border-left: 4px solid #C8B071;
     }
     
     .section-title {
       font-family: 'Cinzel', serif;
       font-size: 28px;
       margin-bottom: 20px;
-      color: #d4af37;
+      color: #C8B071;
       position: relative;
       padding-bottom: 10px;
     }
@@ -55,7 +57,7 @@
       left: 0;
       width: 60px;
       height: 2px;
-      background-color: #d4af37;
+      background-color: #C8B071;
     }
     
     .contact-info p {
@@ -74,8 +76,18 @@
     
     .contact-info .contact-method i {
       margin-right: 10px;
-      color: #d4af37;
+      color: #C8B071;
       font-size: 20px;
+    }
+    
+    .contact-info .contact-label {
+      color: #C8B071;
+      font-weight: normal;
+    }
+    
+    .contact-info .services-label {
+      color: #C8B071;
+      font-weight: normal;
     }
     
     /* Form styling */
@@ -87,14 +99,14 @@
       display: block;
       margin-bottom: 8px;
       font-weight: bold;
-      color: #d4af37;
+      color: #C8B071;
     }
     
     .form-group input, 
     .form-group textarea {
       width: 100%;
       padding: 12px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
+      border: 1px solid rgba(200, 176, 113, 0.3);
       background-color: rgba(10, 5, 2, 0.7);
       border-radius: 5px;
       font-size: 16px;
@@ -108,7 +120,7 @@
     }
     
     .btn {
-      background-color: #d4af37;
+      background-color: #C8B071;
       color: #000;
       border: none;
       padding: 14px 30px;
@@ -121,48 +133,37 @@
     }
     
     .btn:hover {
-      background-color: #c4a030;
+      background-color: #b8a061;
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
     
     .page-header {
       text-align: center;
-      padding: 60px 0 10px; /* Réduit davantage le padding */
+      padding: 60px 0 20px;
       position: relative;
-      margin-bottom: 10px; /* Ajoute une petite marge en bas */
+      margin-bottom: 0;
     }
     
     .page-title {
       font-family: 'Cinzel', serif;
       font-size: 42px;
-      color: #d4af37;
+      color: #C8B071;
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      margin-bottom: 10px; /* Réduit la marge */
-    }
-    
-    .page-subtitle {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      color: #f5e7c1;
-      max-width: 800px;
-      margin: 0 auto 10px; /* Ajoute une marge en bas */
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      margin-bottom: 0;
     }
     
     .main-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px 20px 50px; /* Réduit encore le padding top */
+      padding: 30px 20px 30px;
       background: url("dark_parchment.png") center/cover;
       background-color: rgba(0, 0, 0, 0.7);
       border-radius: 10px;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
       position: relative;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      margin-bottom: 60px; /* Marge en bas pour éviter que le contenu soit caché par la barre de navigation */
+      border: 1px solid rgba(200, 176, 113, 0.3);
+      margin-bottom: 60px;
     }
     
     /* Hamburger Menu */
@@ -218,7 +219,7 @@
     
     #mobile-menu li {
       margin: 15px 0;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      border-bottom: 1px solid rgba(200, 176, 113, 0.3);
       padding-bottom: 10px;
     }
     
@@ -228,7 +229,7 @@
     
     #mobile-menu a {
       text-decoration: none;
-      color: #d4af37;
+      color: #C8B071;
       font-weight: 500;
       display: block;
       padding: 5px 10px;
@@ -284,7 +285,6 @@
 
   <header class="page-header">
     <h1 class="page-title">Contact</h1>
-    <p class="page-subtitle">N'hésitez pas à me contacter pour toute question ou information concernant mes services</p>
   </header>
 
   <div class="main-container">
@@ -293,14 +293,14 @@
         <h3 class="section-title">Coordonnées</h3>
         <div class="contact-method">
           <i class="fas fa-phone"></i>
-          <p><strong>Téléphone :</strong> 0470 78 18 34</p>
+          <p><span class="contact-label">Téléphone :</span> 0470 78 18 34</p>
         </div>
         <div class="contact-method">
           <i class="fas fa-envelope"></i>
-          <p><strong>Email :</strong> constantvanguard@gmail.com</p>
+          <p><span class="contact-label">Email :</span> constantvanguard@gmail.com</p>
         </div>
         <p style="margin-top: 20px;">
-          <strong>Services disponibles :</strong>
+          <span class="services-label">Services disponibles :</span>
         </p>
         <p>• à mon presbytère (Octave Michotlaan 1, 1640 Rhode-Saint-Genèse, à 10 minutes de Waterloo)</p>
         <p>• en déplacement (toute la Belgique)</p>
@@ -356,8 +356,5 @@
       });
     });
   </script>
-  
-  <!-- Font Awesome pour les icônes -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
