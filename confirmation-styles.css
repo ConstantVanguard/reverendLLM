@@ -204,6 +204,14 @@ body {
   color: #444;
 }
 
+/* Style spécifique pour la liste d'organisation */
+.organization-list li {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #444;
+}
+
 .content-section strong, .content-section em {
   color: #C8B071;
 }
