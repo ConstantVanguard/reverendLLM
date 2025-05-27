@@ -202,10 +202,29 @@ body {
 .content-section li {
   margin-bottom: 12px;
   color: #444;
+  font-size: 18px;
+  line-height: 1.8;
 }
 
 .content-section strong, .content-section em {
   color: #C8B071;
+}
+
+/* Classes pour les lignes de prix avec espacement uniforme */
+.price-line {
+  margin-bottom: 20px !important;
+}
+
+/* Classe pour le texte doré et gras - même couleur que les titres */
+.gold-text {
+  color: #C8B071;
+  font-weight: bold;
+}
+
+/* Classe spéciale pour "Remarque" et montants - couleur dorée mais pas gras */
+.gold-text-normal {
+  color: #C8B071;
+  font-weight: normal;
 }
 
 /* Reservation section */
