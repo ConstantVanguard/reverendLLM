@@ -52,6 +52,29 @@ body {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
+/* Classe pour le texte doré et gras - même couleur que les titres */
+.gold-text {
+  color: #C8B071 !important;
+  font-weight: bold;
+}
+
+/* Classe spéciale pour "Remarque" et montants - couleur dorée mais pas gras */
+.gold-text-normal {
+  color: #C8B071 !important;
+  font-weight: normal;
+}
+
+/* Règle spécifique pour surcharger les styles des éléments strong dans les sections de contenu */
+.content-section .gold-text-normal {
+  color: #C8B071 !important;
+  font-weight: normal !important;
+}
+
+.content-section strong .gold-text-normal {
+  color: #C8B071 !important;
+  font-weight: normal !important;
+}
+
 /* Hamburger Menu */
 .hamburger-menu {
   position: absolute;
@@ -213,18 +236,6 @@ body {
 /* Classes pour les lignes de prix avec espacement uniforme */
 .price-line {
   margin-bottom: 20px !important;
-}
-
-/* Classe pour le texte doré et gras - même couleur que les titres */
-.gold-text {
-  color: #C8B071;
-  font-weight: bold;
-}
-
-/* Classe spéciale pour "Remarque" et montants - couleur dorée mais pas gras */
-.gold-text-normal {
-  color: #C8B071;
-  font-weight: normal;
 }
 
 /* Reservation section */
