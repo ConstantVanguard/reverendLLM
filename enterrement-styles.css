@@ -55,12 +55,12 @@ body {
 /* Classes pour les textes dorés */
 .gold-text {
   color: #C8B071 !important;
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 .gold-text-normal {
   color: #C8B071 !important;
-  font-weight: normal;
+  font-weight: normal !important;
 }
 
 .gold-text-bold {
@@ -71,6 +71,25 @@ body {
 /* Classes pour les lignes de prix avec espacement uniforme */
 .price-line {
   margin-bottom: 20px !important;
+}
+
+/* Règles spécifiques pour surcharger les styles des éléments dans les sections de contenu */
+.content-section .gold-text,
+.content-section .gold-text-normal,
+.content-section .gold-text-bold {
+  color: #C8B071 !important;
+}
+
+.content-section .gold-text {
+  font-weight: bold !important;
+}
+
+.content-section .gold-text-bold {
+  font-weight: bold !important;
+}
+
+.content-section .gold-text-normal {
+  font-weight: normal !important;
 }
 
 /* Hamburger Menu */
