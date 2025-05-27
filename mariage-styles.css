@@ -209,6 +209,11 @@ body {
   color: #C8B071;
 }
 
+/* Classe pour les lignes de prix avec espacement uniforme */
+.price-line {
+  margin-bottom: 20px !important;
+}
+
 /* Reservation section */
 .reservation-section {
   background: url("dark_parchment.png") center/cover;
