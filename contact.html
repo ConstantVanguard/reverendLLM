@@ -12,9 +12,10 @@
     /* Styles spécifiques à la page contact */
     body {
       overflow-y: auto !important; /* Permet le défilement vertical */
+      padding-bottom: 60px; /* Espace pour le bandeau du bas */
     }
     
-    /* Réduction de la taille du logo sur mobile */
+    /* Réduction de la taille du logo UNIQUEMENT sur mobile */
     @media (max-width: 480px) {
       .logo img {
         height: 40px !important;
@@ -183,23 +184,11 @@
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
       position: relative;
       border: 1px solid rgba(200, 176, 113, 0.3);
-      margin-bottom: 60px;
+      margin-bottom: 80px; /* Augmenté pour laisser place au bandeau */
       min-height: 600px;
       max-height: 750px;
       display: flex;
       flex-direction: column;
-    }
-    
-    /* Style pour le lien Révérend Constant */
-    .nav-item-link {
-      text-decoration: none;
-      color: inherit;
-      transition: color 0.3s ease;
-    }
-    
-    .nav-item-link:hover {
-      color: #fff !important;
-      text-decoration: none;
     }
     
     /* Hamburger Menu */
@@ -276,6 +265,59 @@
       color: #fff;
     }
     
+    /* Bottom bar - identique à la page église */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 30px;
+      z-index: 100;
+      border-top: 1px solid rgba(200, 176, 113, 0.3);
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 800px;
+      position: relative;
+    }
+
+    .nav-item {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: #C8B071;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin: 0 20px;
+    }
+
+    /* Suppression du soulignement pour tous les liens */
+    .nav-links a.nav-item {
+      text-decoration: none;
+    }
+
+    .nav-links a.nav-item:first-child {
+      position: absolute;
+      left: 0;
+    }
+
+    .nav-links a.nav-item:last-child {
+      position: absolute;
+      right: 0;
+    }
+
+    .nav-item:hover {
+      color: #fff;
+    }
+    
     /* Responsive design */
     @media (max-width: 768px) {
       .contact-container {
@@ -287,13 +329,42 @@
         flex: 1 1 100%;
       }
       
-      .bottom-bar {
-        display: none;
-      }
-      
       .main-container {
         min-height: auto;
         max-height: none;
+      }
+      
+      /* Bandeau bas identique à la page église sur mobile */
+      .bottom-bar {
+        display: flex;
+        padding: 8px 15px;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      
+      .nav-links {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        transform: none;
+      }
+      
+      .nav-links a.nav-item {
+        position: static !important;
+        margin: 0;
+        font-size: 0.85rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      /* Bandeau bas identique à la page église sur petit mobile */
+      .bottom-bar {
+        padding: 6px 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      
+      .nav-links a.nav-item {
+        font-size: 0.75rem;
       }
     }
   </style>
@@ -371,7 +442,7 @@
 
   <div class="bottom-bar">
     <div class="nav-links">
-      <a href="index.html" class="nav-item nav-item-link">Révérend Constant</a>
+      <a href="index.html" class="nav-item">Révérend Constant</a>
       <a href="eglise.html" class="nav-item">Notre Ministère</a>
       <a href="contact.html" class="nav-item">Contact</a>
     </div>
