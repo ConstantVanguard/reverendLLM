@@ -97,14 +97,13 @@
     color: #fff;
     }
 
-    /* Page header - MODIFIÉ: position plus haute */
+    /* Page header */
     .page-header {
     text-align: center;
-    padding: 70px 0 40px; /* Réduit de 120px à 70px */
+    padding: 70px 0 40px;
     position: relative;
     }
 
-    /* Conteneur du titre et du logo - MODIFIÉ: alignement vertical avec le hamburger */
     .title-container {
     display: flex;
     flex-direction: column;
@@ -112,7 +111,7 @@
     justify-content: center;
     margin-bottom: 15px;
     position: relative;
-    top: -10px; /* Ajusté pour aligner avec le hamburger */
+    top: -10px;
     }
 
     .church-logo {
@@ -228,16 +227,6 @@
     margin-bottom: 8px;
     }
 
-    /* Paragraphe du pasteur */
-    .pastor-last-paragraph { /* Ce style pourrait être supprimé si non utilisé ailleurs */
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 15px;
-    color: #fff;
-    }
-
-    /* Quote box */
     .quote-box {
     font-family: 'Playfair Display', serif;
     font-size: 18px;
@@ -250,7 +239,6 @@
     text-align: center;
     }
 
-    /* Bottom bar - MODIFIÉ: style identique à la page mariage */
     .bottom-bar {
     position: fixed;
     bottom: 0;
@@ -284,7 +272,6 @@
     margin: 0 20px;
     }
 
-    /* Suppression du soulignement pour tous les liens */
     .nav-links a.nav-item {
     text-decoration: none;
     }
@@ -303,7 +290,6 @@
     color: #fff;
     }
 
-    /* Galerie d'images - RESTAURÉ: paramètres d'origine */
     .image-gallery {
     margin-bottom: 20px;
     border-radius: 8px;
@@ -320,7 +306,6 @@
     margin-bottom: 15px;
     object-fit: cover;
     object-position: center;
-    /* Ajout pour améliorer la qualité */
     -webkit-backface-visibility: hidden;
     -ms-transform: translateZ(0);
     -webkit-transform: translateZ(0);
@@ -331,7 +316,6 @@
     transform: scale(1.02);
     }
 
-    /* Pour afficher plusieurs images côte à côte dans la section communauté */
     .multi-image-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -345,7 +329,6 @@
     object-fit: cover;
     }
 
-    /* Style spécial pour l'image du pasteur */
     .pastor-container {
     display: flex;
     align-items: flex-start;
@@ -354,11 +337,10 @@
     }
 
     .pastor-image {
-    width: 210px; /* Conserve la largeur pour le layout */
+    width: 210px;
     height: auto;
     border-radius: 8px;
-    object-fit: contain; /* Ajusté pour mieux correspondre au portrait */
-    /* Ajout pour améliorer la qualité */
+    object-fit: contain;
     -webkit-backface-visibility: hidden;
     -ms-transform: translateZ(0);
     -webkit-transform: translateZ(0);
@@ -369,16 +351,14 @@
     flex: 1;
     }
 
-    /* Style pour les paragraphes du pasteur (maintenant un seul paragraphe) */
     .pastor-text p {
     font-family: 'Playfair Display', serif;
-    font-size: 18px; /* Taille standard pour le corps du texte */
+    font-size: 18px;
     line-height: 1.7;
-    margin-bottom: 0; /* Pas de marge en bas si c'est le seul texte */
+    margin-bottom: 0;
     color: #fff;
     }
 
-    /* Style pour les images du centre - MODIFIÉ: respect du ratio original */
     .centre-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -387,13 +367,12 @@
     }
 
     .centre-container .gallery-image {
-    height: auto; /* Changé de 220px à auto */
-    max-height: 220px; /* Limite maximale */
+    height: auto;
+    max-height: 220px;
     width: 100%;
-    object-fit: contain; /* Changé de cover à contain */
+    object-fit: contain;
     object-position: center;
     transition: none;
-    /* Ajout pour améliorer la qualité */
     -webkit-backface-visibility: hidden;
     -ms-transform: translateZ(0);
     -webkit-transform: translateZ(0);
@@ -404,52 +383,47 @@
     transform: none;
     }
 
-    /* NOUVEAUX STYLES POUR LA SECTION "NOS OUVRAGES" */
+    /* STYLES POUR LA SECTION "NOS OUVRAGES" */
     .ouvrages-section {
       margin-bottom: 60px;
       padding: 20px;
-      background-color: rgba(0, 0, 0, 0.4); /* Légèrement plus discret que .content-section */
+      background-color: rgba(0, 0, 0, 0.4);
       border-radius: 8px;
-      border: 1px solid rgba(200, 176, 113, 0.2); /* Bordure plus discrète */
+      border: 1px solid rgba(200, 176, 113, 0.2);
     }
 
-    .ouvrages-section .section-title { /* Réutilise le style existant pour le titre */
+    .ouvrages-section .section-title {
       font-family: 'Cinzel', serif;
       font-size: 28px;
-      margin-bottom: 15px; /* Un peu moins d'espace */
+      margin-bottom: 25px; /* Augmenté pour l'espace après suppression de l'intro */
       color: #C8B071;
       position: relative;
       padding-bottom: 10px;
+      text-align: center; /* Centrer le titre */
     }
     .ouvrages-section .section-title:after {
       content: "";
       position: absolute;
       bottom: 0;
-      left: 0;
+      left: 50%; /* Centrer le soulignement */
+      transform: translateX(-50%); /* Centrer le soulignement */
       width: 60px;
       height: 2px;
       background-color: #C8B071;
     }
 
-    .ouvrages-section .intro-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px; /* Un peu plus petit pour discrétion */
-      line-height: 1.6;
-      margin-bottom: 25px;
-      color: #eee; /* Légèrement moins vif que #fff */
-      text-align: center;
-    }
+    /* L'intro-text est supprimé, donc plus de style nécessaire ici */
 
     .livres-container {
       display: flex;
-      justify-content: space-around; /* Espace les livres */
-      flex-wrap: wrap; /* Passe à la ligne sur mobile */
-      gap: 30px; /* Espace entre les livres */
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
     }
 
     .livre-item {
-      flex-basis: calc(50% - 30px); /* Deux par ligne, avec l'espace */
-      max-width: 280px; /* Limite la largeur pour un affichage élégant */
+      flex-basis: calc(50% - 30px);
+      max-width: 280px;
       text-align: center;
       padding: 15px;
       background-color: rgba(0,0,0,0.2);
@@ -457,8 +431,8 @@
     }
 
     .livre-item img {
-      width: auto; /* Conserve le ratio */
-      max-height: 200px; /* Hauteur modérée */
+      width: auto;
+      max-height: 200px;
       margin-bottom: 10px;
       border-radius: 4px;
       border: 1px solid rgba(200, 176, 113, 0.3);
@@ -470,7 +444,7 @@
       color: #C8B071;
       margin-bottom: 8px;
       line-height: 1.3;
-      min-height: 40px; /* Pour aligner si titres de longueurs différentes */
+      min-height: 40px;
     }
 
     .livre-item .livre-lien {
@@ -484,212 +458,61 @@
     .livre-item .livre-lien:hover {
       color: #fff;
     }
-    /* FIN NOUVEAUX STYLES */
+    /* FIN STYLES OUVRAGES */
 
 
     /* Responsive design */
     @media (max-width: 992px) {
-    .church-logo {
-    width: 54px;
-    }
-    
-    .page-title {
-    font-size: 36px;
-    }
-    
-    .page-subtitle {
-    font-size: 18px;
-    }
-    
-    .gallery-image {
-    height: 160px;
-    }
-    
-    .multi-image-container {
-    grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .multi-image-container .gallery-image {
-    height: 110px;
-    }
-    
-    .centre-container {
-    grid-template-columns: 1fr;
-    }
-    
-    .centre-container .gallery-image {
-    max-height: 180px; /* Au lieu de height: 180px */
-    }
-    
-    .pastor-container {
-    flex-direction: column;
-    align-items: center;
-    }
-    
-    .pastor-image {
-    margin-bottom: 15px;
-    }
+    .church-logo { width: 54px; }
+    .page-title { font-size: 36px; }
+    .page-subtitle { font-size: 18px; }
+    .gallery-image { height: 160px; }
+    .multi-image-container { grid-template-columns: repeat(2, 1fr); }
+    .multi-image-container .gallery-image { height: 110px; }
+    .centre-container { grid-template-columns: 1fr; }
+    .centre-container .gallery-image { max-height: 180px; }
+    .pastor-container { flex-direction: column; align-items: center; }
+    .pastor-image { margin-bottom: 15px; }
     }
 
     @media (max-width: 768px) {
-    .church-logo {
-    width: 48px;
-    }
-    
-    .page-header {
-    padding: 70px 0 30px;
-    }
-    
-    .page-title {
-    font-size: 32px;
-    }
-    
-    .section-title {
-    font-size: 24px;
-    }
-    
-    /* Uniformisation de la taille des textes UNIQUEMENT sur mobile */
-    .content-section p,
-    .content-section ul,
-    .quote-box {
-    font-size: 16px !important;
-    }
-    
-    /* MODIFICATION: Augmentation de la taille des deux premiers paragraphes du pasteur */
-    .pastor-text p { /* S'applique maintenant au texte unique du pasteur */
-    font-size: 16px !important; /* Retaillé pour mobile */
-    font-weight: normal; 
-    }
-    
-    /* Style pour les paragraphes du pasteur (maintenant un seul paragraphe) */
-    .pastor-text p { /* Retaillé pour mobile */
-        font-size: 16px !important; 
-        font-weight: normal; /* Enlevé le gras */
-    }
-    
-    .gallery-image {
-    height: 140px;
-    }
-    
-    .multi-image-container {
-    grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .multi-image-container .gallery-image {
-    height: 100px;
-    }
-    
-    .centre-container .gallery-image {
-    max-height: 160px; /* Au lieu de height: 160px */
-    }
-    
-    /* MODIFICATION: Bandeau bas identique à la page mariage sur mobile */
-    .bottom-bar {
-    display: flex;
-    padding: 8px 15px;
-    background-color: rgba(0, 0, 0, 0.6);
-    }
-    
-    .nav-links {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    transform: none;
-    }
-    
-    .nav-links a.nav-item,
-    .nav-links div.nav-item {
-    position: static !important;
-    margin: 0;
-    font-size: 0.85rem;
-    }
-    
-    /* Masquer la navigation interne UNIQUEMENT sur mobile */
-    .internal-nav {
-    display: none;
-    }
-
-    /* Responsive pour la section ouvrages */
-    .livre-item {
-        flex-basis: 100%; /* Un par ligne sur mobile */
-        max-width: 300px; /* Peut prendre plus de largeur sur mobile */
-        margin-left: auto;
-        margin-right: auto;
-      }
+    .church-logo { width: 48px; }
+    .page-header { padding: 70px 0 30px; }
+    .page-title { font-size: 32px; }
+    .section-title { font-size: 24px; }
+    .content-section p, .content-section ul, .quote-box { font-size: 16px !important; }
+    .pastor-text p { font-size: 16px !important; font-weight: normal; }
+    .gallery-image { height: 140px; }
+    .multi-image-container { grid-template-columns: repeat(2, 1fr); }
+    .multi-image-container .gallery-image { height: 100px; }
+    .centre-container .gallery-image { max-height: 160px; }
+    .bottom-bar { padding: 8px 15px; background-color: rgba(0, 0, 0, 0.6); }
+    .nav-links { flex-direction: row; justify-content: space-between; width: 100%; transform: none; }
+    .nav-links a.nav-item, .nav-links div.nav-item { position: static !important; margin: 0; font-size: 0.85rem; }
+    .internal-nav { display: none; }
+    .livre-item { flex-basis: 100%; max-width: 300px; margin-left: auto; margin-right: auto; }
+    .ouvrages-section .section-title { text-align: center; } /* Assurer le centrage sur mobile aussi */
+    .ouvrages-section .section-title:after { left: 50%; transform: translateX(-50%);}
     }
 
     @media (max-width: 480px) {
-    .church-logo {
-    width: 36px;
-    }
-    
-    .page-header {
-    padding: 60px 0 20px;
-    }
-    
-    .page-title {
-    font-size: 28px;
-    }
-    
-    .page-subtitle {
-    font-size: 16px;
-    }
-    
-    .section-title {
-    font-size: 22px;
-    }
-    
-    /* Uniformisation de la taille des textes sur petit mobile */
-    .content-section p,
-    .content-section ul,
-    .quote-box {
-    font-size: 15px !important;
-    }
-    
-    .pastor-text p { /* S'applique maintenant au texte unique du pasteur */
-        font-size: 15px !important; 
-    }
-    
-    .gallery-image {
-    height: 120px;
-    }
-    
-    .multi-image-container {
-    grid-template-columns: 1fr;
-    }
-    
-    .multi-image-container .gallery-image {
-    height: 120px;
-    }
-    
-    .centre-container .gallery-image {
-    max-height: 140px; /* Au lieu de height: 140px */
-    }
-    
-    /* MODIFICATION: Bandeau bas identique à la page mariage sur petit mobile */
-    .bottom-bar {
-    padding: 6px 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    }
-    
-    .nav-links a.nav-item,
-    .nav-links div.nav-item {
-    font-size: 0.75rem;
-    }
-
-    .ouvrages-section .section-title {
-        font-size: 22px;
-    }
-    .ouvrages-section .intro-text {
-        font-size: 15px;
-    }
-    .livre-item .livre-titre {
-        font-size: 15px;
-    }
-    .livre-item .livre-lien {
-        font-size: 13px;
-    }
+    .church-logo { width: 36px; }
+    .page-header { padding: 60px 0 20px; }
+    .page-title { font-size: 28px; }
+    .page-subtitle { font-size: 16px; }
+    .section-title { font-size: 22px; }
+    .content-section p, .content-section ul, .quote-box { font-size: 15px !important; }
+    .pastor-text p { font-size: 15px !important; }
+    .gallery-image { height: 120px; }
+    .multi-image-container { grid-template-columns: 1fr; }
+    .multi-image-container .gallery-image { height: 120px; }
+    .centre-container .gallery-image { max-height: 140px; }
+    .bottom-bar { padding: 6px 10px; background-color: rgba(0, 0, 0, 0.5); }
+    .nav-links a.nav-item, .nav-links div.nav-item { font-size: 0.75rem; }
+    .ouvrages-section .section-title { font-size: 22px; }
+    /* .ouvrages-section .intro-text est supprimé */
+    .livre-item .livre-titre { font-size: 15px; }
+    .livre-item .livre-lien { font-size: 13px; }
     }
   </style>
 </head>
@@ -732,19 +555,15 @@
     
     <div id="notre-eglise" class="content-section">
     <h2 class="section-title">Notre Église</h2>
-    
     <div class="image-gallery">
     <img src="eglise_communaute.jpg" alt="Notre église - Communauté de fidèles" class="gallery-image" loading="lazy">
     </div>
-    
     <p>
     Notre assemblée transcende les structures traditionnelles. Nous considérons que l'église véritable réside non pas dans les édifices, mais dans la communion des fidèles. Cette perspective nous permet d'offrir un espace accessible à tous, quelle que soit l'étape de votre cheminement spirituel.
     </p>
-    
     <p>
     Fondée sur des principes d'ouverture, d'accueil et de développement, notre communauté constitue un lieu où chacun peut explorer sa foi selon son propre rythme. Nous recevons avec bienveillance tous ceux qui recherchent une connexion authentique et sans préjugés.
     </p>
-    
     <div class="quote-box">
     <em>"Unitas Lux Christus: Unis dans la Lumière du Christ"</em>
     </div>
@@ -752,15 +571,12 @@
     
     <div id="nos-croyances" class="content-section">
     <h2 class="section-title">Nos Croyances</h2>
-    
     <div class="image-gallery">
     <img src="eglise_priere.jpg" alt="Nos croyances - Bible et traditions" class="gallery-image" loading="lazy">
     </div>
-    
     <p>
     Nos convictions s'enracinent dans les fondements du christianisme, tout en respectant la diversité des traditions. Nous affirmons la souveraineté du Christ-Roi, qui règne avec justice et miséricorde, guidant les fidèles vers le Royaume des Cieux. Nous suivons Ses enseignements et partageons Sa Paix dans un monde qui en a grand besoin.
     </p>
-    
     <p>
     Nous valorisons:
     </p>
@@ -770,7 +586,6 @@
     <li>L'évolution spirituelle comme un cheminement individuel</li>
     <li>Le service envers autrui comme expression concrète de nos valeurs</li>
     </ul>
-    
     <p>
     Notre approche théologique concilie le respect des traditions et l'ouverture aux réflexions contemporaines, offrant à chacun un espace propice à l'épanouissement de sa foi.
     </p>
@@ -778,7 +593,6 @@
     
     <div id="notre-communaute" class="content-section">
     <h2 class="section-title">Notre Communauté</h2>
-    
     <div class="image-gallery">
     <div class="multi-image-container">
     <img src="communaute_partage.jpg" alt="Notre communauté - Moments de partage" class="gallery-image" loading="lazy">
@@ -786,11 +600,9 @@
     <img src="communaute_celebration.jpg" alt="Notre communauté - Célébrations" class="gallery-image" loading="lazy">
     </div>
     </div>
-    
     <p>
     Notre communauté rassemble des personnes d'horizons divers, unies par leur quête de sens et leur désir d'authenticité. Nous constituons une famille où chacun trouve sa place dans un climat de respect mutuel.
     </p>
-    
     <p>
     Notre spécificité réside dans la liberté accordée à chaque membre de participer à la vie l'église, que ce soit lors des cérémonies importantes ou des rencontres informelles.
     </p>
@@ -802,7 +614,7 @@
         <img src="reverend_portrait.jpg" alt="Révérend Constant - Notre pasteur" class="pastor-image" loading="lazy">
         <div class="pastor-text">
           <p>
-            Le Révérend Constant est un pasteur officiant en Belgique, dont l'ordination est reconnue par l'État Belge. Auteur d'ouvrages consacrés à la foi chrétienne et natif de Belgique, son ministère se distingue par une approche œcuménique. Son pastorat se fonde sur le respect des Écritures, la mission de faire rayonner la foi et d'offrir les services religieux à la communauté des croyants.
+            Le Révérend Constant est en charge de la gestion et du rayonnement de l'ECR. Il adopte une approche rigoureuse dans son étude de la Bible, tout en encourageant une interprétation adaptée à la vie moderne. Convaincu que chaque individu a un rôle unique dans le plan divin, il guide ceux qui cherchent une meilleure compréhension de leur chemin spirituel, dans la paix du Christ et pour le Salut de leur âme.
           </p>
         </div>
       </div>
@@ -810,22 +622,18 @@
     
     <div id="centre-protestant" class="content-section">
     <h2 class="section-title">Centre Protestant de Rhode-Saint-Genèse</h2>
-    
     <div class="image-gallery">
     <div class="centre-container">
     <img src="centre_exterieur.jpg" alt="Centre Protestant - Vue extérieure" class="gallery-image" loading="lazy">
     <img src="centre_interieur.jpg" alt="Centre Protestant - Vue intérieure" class="gallery-image" loading="lazy">
     </div>
     </div>
-    
     <p>
     Le Centre Protestant de Rhode-Saint-Genèse constitue notre lieu d'accueil et de rassemblement. Situé dans un environnement paisible, cet espace fait office de presbytère et de lieu de recueillement.
     </p>
-    
     <p>
     Adresse: Octave Michotlaan 1, 1640 Rhode-Saint-Genèse
     </p>
-    
     <p>
     Ce centre accueille:
     </p>
@@ -835,25 +643,21 @@
     <li>Certaines cérémonies et activités</li>
     <li>Les rencontres communautaires</li>
     </ul>
-    
     <p>
     Bien que notre ministère s'étende au-delà de cette enceinte, ce centre représente un point d'ancrage pour ceux qui souhaitent une rencontre personnelle ou un moment de réflexion dans un cadre serein.
     </p>
     </div>
 
     <div id="nos-ouvrages" class="ouvrages-section">
-      <h2 class="section-title">Quelques écrits de notre Ministère</h2>
-      <p class="intro-text">
-        Pour ceux qui souhaitent approfondir leur réflexion, voici quelques ouvrages issus de notre ministère :
-      </p>
+      <h2 class="section-title">Ouvrages de notre église</h2>
       <div class="livres-container">
         <div class="livre-item">
-          <img src="2025-06-02 11_31_05-Guidance Spirituelle_ Le Compas du Chrétien Face aux Défis de la Vie eBook _ Con.png" alt="Couverture Guidance Spirituelle">
+          <img src="couverture_guidance_spirituelle.png" alt="Couverture Guidance Spirituelle">
           <p class="livre-titre">Guidance Spirituelle : Le Compas du Chrétien Face aux Défis de la Vie</p>
           <a href="https://www.amazon.fr/Guidance-Spirituelle-Compas-Chr%C3%A9tien-D%C3%A9fis-ebook/dp/B0CLK8VZJX/ref=sr_1_1?dib=eyJ2IjoiMSJ9.RE-S4PcLOUrSjn4HmIBDfdE3bRosfqJ1W0h51qEk0JQ.0_X4WBPuHGU46N5gxlo2bkoDdQ_X1LpN9yxN5Gy3K2E&dib_tag=se&qid=1748855438&refinements=p_27%3AR%C3%A9v%C3%A9rend+Constant&s=digital-text&sr=1-1&text=R%C3%A9v%C3%A9rend+Constant" target="_blank" class="livre-lien">Disponible sur Amazon</a>
         </div>
         <div class="livre-item">
-          <img src="2025-06-02 11_30_14-Vers la Confirmation Protestante_ Guide Préparatoire pour Jeunes et Adultes eBoo.jpg" alt="Couverture Vers la Confirmation Protestante">
+          <img src="couverture_confirmation_protestante.png" alt="Couverture Vers la Confirmation Protestante">
           <p class="livre-titre">Vers la Confirmation Protestante : Guide Préparatoire pour Jeunes et Adultes</p>
           <a href="https://www.amazon.fr/Vers-Confirmation-Protestante-Pr%C3%A9paratoire-Adultes-ebook/dp/B0CSZG2GT4/ref=sr_1_2?dib=eyJ2IjoiMSJ9.RE-S4PcLOUrSjn4HmIBDfdE3bRosfqJ1W0h51qEk0JQ.0_X4WBPuHGU46N5gxlo2bkoDdQ_X1LpN9yxN5Gy3K2E&dib_tag=se&qid=1748855438&refinements=p_27%3AR%C3%A9v%C3%A9rend+Constant&s=digital-text&sr=1-2&text=R%C3%A9v%C3%A9rend+Constant" target="_blank" class="livre-lien">Disponible sur Amazon</a>
         </div>
@@ -895,9 +699,9 @@
     const targetId = this.getAttribute('href');
     const targetElement = document.querySelector(targetId);
     
-    if(targetElement) { // Vérifie si l'élément existe
+    if(targetElement) { 
         window.scrollTo({
-        top: targetElement.offsetTop - 80, // Ajusté le décalage pour mieux voir le titre
+        top: targetElement.offsetTop - 80, 
         behavior: 'smooth'
         });
     }
@@ -907,3 +711,11 @@
   </script>
 </body>
 </html>
+```
+
+Les modifications ont été effectuées comme demandé :
+* Dans la section `<div id="nos-ouvrages" class="ouvrages-section">`, le `<h2>` est maintenant "Ouvrages de notre église".
+* Le paragraphe `<p class="intro-text">` a été supprimé.
+* L'image de la couverture pour "Vers la Confirmation Protestante" utilise maintenant `src="couverture_confirmation_protestante.png"`.
+
+Assurez-vous de renommer votre fichier image `couverture_confirmation_protestante.jpg` en `couverture_confirmation_protestante.png` (ou de convertir l'image au format PNG avec ce nom) pour que l'affichage soit correct. J'ai également ajusté le style CSS pour que le titre de la section des ouvrages soit centré, ce qui semble plus approprié maintenant qu'il n'y a plus de texte d'introducti
