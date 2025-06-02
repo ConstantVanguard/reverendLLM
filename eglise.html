@@ -229,7 +229,7 @@
     }
 
     /* Paragraphe du pasteur */
-    .pastor-last-paragraph {
+    .pastor-last-paragraph { /* Ce style pourrait être supprimé si non utilisé ailleurs */
     font-family: 'Playfair Display', serif;
     font-size: 18px;
     line-height: 1.7;
@@ -354,10 +354,10 @@
     }
 
     .pastor-image {
-    width: 210px;
+    width: 210px; /* Conserve la largeur pour le layout */
     height: auto;
     border-radius: 8px;
-    object-fit: contain;
+    object-fit: contain; /* Ajusté pour mieux correspondre au portrait */
     /* Ajout pour améliorer la qualité */
     -webkit-backface-visibility: hidden;
     -ms-transform: translateZ(0);
@@ -369,12 +369,12 @@
     flex: 1;
     }
 
-    /* Style pour les paragraphes du pasteur */
+    /* Style pour les paragraphes du pasteur (maintenant un seul paragraphe) */
     .pastor-text p {
     font-family: 'Playfair Display', serif;
-    font-size: 18px;
+    font-size: 18px; /* Taille standard pour le corps du texte */
     line-height: 1.7;
-    margin-bottom: 15px;
+    margin-bottom: 0; /* Pas de marge en bas si c'est le seul texte */
     color: #fff;
     }
 
@@ -403,6 +403,89 @@
     .centre-container .gallery-image:hover {
     transform: none;
     }
+
+    /* NOUVEAUX STYLES POUR LA SECTION "NOS OUVRAGES" */
+    .ouvrages-section {
+      margin-bottom: 60px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.4); /* Légèrement plus discret que .content-section */
+      border-radius: 8px;
+      border: 1px solid rgba(200, 176, 113, 0.2); /* Bordure plus discrète */
+    }
+
+    .ouvrages-section .section-title { /* Réutilise le style existant pour le titre */
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      margin-bottom: 15px; /* Un peu moins d'espace */
+      color: #C8B071;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    .ouvrages-section .section-title:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background-color: #C8B071;
+    }
+
+    .ouvrages-section .intro-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px; /* Un peu plus petit pour discrétion */
+      line-height: 1.6;
+      margin-bottom: 25px;
+      color: #eee; /* Légèrement moins vif que #fff */
+      text-align: center;
+    }
+
+    .livres-container {
+      display: flex;
+      justify-content: space-around; /* Espace les livres */
+      flex-wrap: wrap; /* Passe à la ligne sur mobile */
+      gap: 30px; /* Espace entre les livres */
+    }
+
+    .livre-item {
+      flex-basis: calc(50% - 30px); /* Deux par ligne, avec l'espace */
+      max-width: 280px; /* Limite la largeur pour un affichage élégant */
+      text-align: center;
+      padding: 15px;
+      background-color: rgba(0,0,0,0.2);
+      border-radius: 5px;
+    }
+
+    .livre-item img {
+      width: auto; /* Conserve le ratio */
+      max-height: 200px; /* Hauteur modérée */
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(200, 176, 113, 0.3);
+    }
+
+    .livre-item .livre-titre {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      color: #C8B071;
+      margin-bottom: 8px;
+      line-height: 1.3;
+      min-height: 40px; /* Pour aligner si titres de longueurs différentes */
+    }
+
+    .livre-item .livre-lien {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: #C8B071;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    .livre-item .livre-lien:hover {
+      color: #fff;
+    }
+    /* FIN NOUVEAUX STYLES */
+
 
     /* Responsive design */
     @media (max-width: 992px) {
@@ -473,15 +556,15 @@
     }
     
     /* MODIFICATION: Augmentation de la taille des deux premiers paragraphes du pasteur */
-    .pastor-text p {
-    font-size: 18px !important; /* Augmenté de 16px à 18px */
-    font-weight: 500; /* Légèrement plus gras pour renforcer la différence */
+    .pastor-text p { /* S'applique maintenant au texte unique du pasteur */
+    font-size: 16px !important; /* Retaillé pour mobile */
+    font-weight: normal; 
     }
     
-    /* Taille plus petite pour le dernier paragraphe du pasteur */
-    .pastor-last-paragraph {
-    font-size: 15px !important;
-    font-weight: normal;
+    /* Style pour les paragraphes du pasteur (maintenant un seul paragraphe) */
+    .pastor-text p { /* Retaillé pour mobile */
+        font-size: 16px !important; 
+        font-weight: normal; /* Enlevé le gras */
     }
     
     .gallery-image {
@@ -526,6 +609,14 @@
     .internal-nav {
     display: none;
     }
+
+    /* Responsive pour la section ouvrages */
+    .livre-item {
+        flex-basis: 100%; /* Un par ligne sur mobile */
+        max-width: 300px; /* Peut prendre plus de largeur sur mobile */
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
     @media (max-width: 480px) {
@@ -556,16 +647,8 @@
     font-size: 15px !important;
     }
     
-    /* MODIFICATION: Augmentation de la taille des deux premiers paragraphes du pasteur sur petit mobile */
-    .pastor-text p {
-    font-size: 17px !important; /* Augmenté de 15px à 17px */
-    font-weight: 500; /* Légèrement plus gras pour renforcer la différence */
-    }
-    
-    /* Taille plus petite pour le dernier paragraphe du pasteur sur petit mobile */
-    .pastor-last-paragraph {
-    font-size: 14px !important;
-    font-weight: normal;
+    .pastor-text p { /* S'applique maintenant au texte unique du pasteur */
+        font-size: 15px !important; 
     }
     
     .gallery-image {
@@ -593,6 +676,19 @@
     .nav-links a.nav-item,
     .nav-links div.nav-item {
     font-size: 0.75rem;
+    }
+
+    .ouvrages-section .section-title {
+        font-size: 22px;
+    }
+    .ouvrages-section .intro-text {
+        font-size: 15px;
+    }
+    .livre-item .livre-titre {
+        font-size: 15px;
+    }
+    .livre-item .livre-lien {
+        font-size: 13px;
     }
     }
   </style>
@@ -701,24 +797,15 @@
     </div>
     
     <div id="notre-pasteur" class="content-section">
-    <h2 class="section-title">Notre Pasteur</h2>
-    
-    <div class="pastor-container">
-    <img src="reverend_portrait.jpg" alt="Révérend Constant - Notre pasteur" class="pastor-image" loading="lazy">
-    <div class="pastor-text">
-    <p>
-    Le Révérend Constant exerce son ministère avec une conviction profonde et un sincère désir d'accompagner autrui dans les moments déterminants de l'existence. Formé dans la tradition protestante tout en restant réceptif aux influences œcuméniques, il officie avec la volonté d'amener chacun vers le Royaume des Cieux.
-    </p>
-    
-    <p>
-    Sa philosophie pastorale repose sur la tradition et l'accessibilité des services. Il considère que les cérémonies doivent refléter l'identité de chacun, c'est pourquoi il s'attache à créer des services qui résonnent avec l'histoire des fidèles qu'il accompagne.
-    </p>
-    </div>
-    </div>
-    
-    <p class="pastor-last-paragraph">
-    Le Révérend a écrit plusieurs ouvrages religieux liés à la guidance spirituelle et à la formation au Christianisme, partageant ainsi sa vision et ses enseignements au-delà des cérémonies.
-    </p>
+      <h2 class="section-title">Notre Pasteur</h2>
+      <div class="pastor-container">
+        <img src="reverend_portrait.jpg" alt="Révérend Constant - Notre pasteur" class="pastor-image" loading="lazy">
+        <div class="pastor-text">
+          <p>
+            Le Révérend Constant est un pasteur officiant en Belgique, dont l'ordination est reconnue par l'État Belge. Auteur d'ouvrages consacrés à la foi chrétienne et natif de Belgique, son ministère se distingue par une approche œcuménique. Son pastorat se fonde sur le respect des Écritures, la mission de faire rayonner la foi et d'offrir les services religieux à la communauté des croyants.
+          </p>
+        </div>
+      </div>
     </div>
     
     <div id="centre-protestant" class="content-section">
@@ -753,7 +840,26 @@
     Bien que notre ministère s'étende au-delà de cette enceinte, ce centre représente un point d'ancrage pour ceux qui souhaitent une rencontre personnelle ou un moment de réflexion dans un cadre serein.
     </p>
     </div>
-  </div>
+
+    <div id="nos-ouvrages" class="ouvrages-section">
+      <h2 class="section-title">Quelques écrits de notre Ministère</h2>
+      <p class="intro-text">
+        Pour ceux qui souhaitent approfondir leur réflexion, voici quelques ouvrages issus de notre ministère :
+      </p>
+      <div class="livres-container">
+        <div class="livre-item">
+          <img src="2025-06-02 11_31_05-Guidance Spirituelle_ Le Compas du Chrétien Face aux Défis de la Vie eBook _ Con.png" alt="Couverture Guidance Spirituelle">
+          <p class="livre-titre">Guidance Spirituelle : Le Compas du Chrétien Face aux Défis de la Vie</p>
+          <a href="https://www.amazon.fr/Guidance-Spirituelle-Compas-Chr%C3%A9tien-D%C3%A9fis-ebook/dp/B0CLK8VZJX/ref=sr_1_1?dib=eyJ2IjoiMSJ9.RE-S4PcLOUrSjn4HmIBDfdE3bRosfqJ1W0h51qEk0JQ.0_X4WBPuHGU46N5gxlo2bkoDdQ_X1LpN9yxN5Gy3K2E&dib_tag=se&qid=1748855438&refinements=p_27%3AR%C3%A9v%C3%A9rend+Constant&s=digital-text&sr=1-1&text=R%C3%A9v%C3%A9rend+Constant" target="_blank" class="livre-lien">Disponible sur Amazon</a>
+        </div>
+        <div class="livre-item">
+          <img src="2025-06-02 11_30_14-Vers la Confirmation Protestante_ Guide Préparatoire pour Jeunes et Adultes eBoo.jpg" alt="Couverture Vers la Confirmation Protestante">
+          <p class="livre-titre">Vers la Confirmation Protestante : Guide Préparatoire pour Jeunes et Adultes</p>
+          <a href="https://www.amazon.fr/Vers-Confirmation-Protestante-Pr%C3%A9paratoire-Adultes-ebook/dp/B0CSZG2GT4/ref=sr_1_2?dib=eyJ2IjoiMSJ9.RE-S4PcLOUrSjn4HmIBDfdE3bRosfqJ1W0h51qEk0JQ.0_X4WBPuHGU46N5gxlo2bkoDdQ_X1LpN9yxN5Gy3K2E&dib_tag=se&qid=1748855438&refinements=p_27%3AR%C3%A9v%C3%A9rend+Constant&s=digital-text&sr=1-2&text=R%C3%A9v%C3%A9rend+Constant" target="_blank" class="livre-lien">Disponible sur Amazon</a>
+        </div>
+      </div>
+    </div>
+    </div>
 
   <div class="bottom-bar">
     <div class="nav-links">
@@ -776,7 +882,7 @@
     const hamburgerButton = document.getElementById('hamburger-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
-    if (!hamburgerButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+    if (hamburgerButton && mobileMenu && !hamburgerButton.contains(event.target) && !mobileMenu.contains(event.target)) {
     mobileMenu.classList.add('hidden');
     }
     });
@@ -789,10 +895,12 @@
     const targetId = this.getAttribute('href');
     const targetElement = document.querySelector(targetId);
     
-    window.scrollTo({
-    top: targetElement.offsetTop - 100,
-    behavior: 'smooth'
-    });
+    if(targetElement) { // Vérifie si l'élément existe
+        window.scrollTo({
+        top: targetElement.offsetTop - 80, // Ajusté le décalage pour mieux voir le titre
+        behavior: 'smooth'
+        });
+    }
     });
     });
     });
