@@ -1,80 +1,90 @@
-// Fonction pour vérifier si la date est disponible
-function isDateAvailable(date) {
-  const selectedDate = new Date(date);
-  const today = new Date();
-  // Appliquer le délai de 41 jours
-  const minDate = new Date();
-  minDate.setDate(today.getDate() + 41);
+// mariage-script.js
 
-  // Vérifier le délai minimal
-  if (selectedDate < minDate) {
-    return false;
-  }
-
-  // Jours autorisés: Lundi (1), Jeudi (4) et Samedi (6)
-  const allowedDays = [1, 4, 6];
-  if (!allowedDays.includes(selectedDate.getDay())) {
-    return false;
-  }
-
-  // Liste des dates bloquées (à compléter par l'administrateur au format "YYYY-MM-DD")
-  const blockedDates = ["2025-05-15", "2025-06-20"]; // Exemple
-  const formattedDate = selectedDate.toISOString().split('T')[0];
-  if (blockedDates.includes(formattedDate)) {
-    return false;
-  }
-
-  return true;
-}
-
-// Définir la date minimale affichée dans le sélecteur
 document.addEventListener('DOMContentLoaded', function() {
-  const today = new Date();
-  const minDate = new Date();
-  minDate.setDate(today.getDate() + 41);
-  document.getElementById("datePicker").min = minDate.toISOString().split('T')[0];
-  
-  // Améliorer l'interaction avec le sélecteur de date
+  const serviceName = "mariage"; // Nom du service pour récupérer les configurations
   const datePicker = document.getElementById("datePicker");
+  const messageDiv = document.getElementById("message");
+  const paypalButtonDiv = document.getElementById("paypalButton"); // L'ID du conteneur du bouton PayPal est "paypalButton" dans mariage.html
+  const bookButton = document.getElementById("bookButton");
+  const hamburgerButton = document.getElementById('hamburger-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // S'assurer que les éléments HTML requis existent
+  if (!datePicker || !messageDiv || !paypalButtonDiv || !bookButton || !hamburgerButton || !mobileMenu) {
+    console.error("Un ou plusieurs éléments HTML requis sont manquants sur la page Mariage.");
+    return;
+  }
+
+  // Initialiser la date minimale dans le sélecteur
+  try {
+    if (typeof serviceLeadTimes !== 'undefined' && serviceLeadTimes && serviceLeadTimes[serviceName] !== undefined) {
+      const today = new Date();
+      const minDate = new Date();
+      minDate.setDate(today.getDate() + serviceLeadTimes[serviceName]);
+      datePicker.min = minDate.toISOString().split('T')[0];
+    } else {
+      console.error(`Le délai pour le service '${serviceName}' n'est pas défini dans agenda-config.js ou agenda-config.js n'est pas chargé.`);
+      datePicker.disabled = true;
+      bookButton.disabled = true;
+      messageDiv.textContent = "Erreur de configuration des délais. Veuillez contacter l'administrateur.";
+      messageDiv.style.color = "red";
+    }
+  } catch (e) {
+    console.error("Erreur lors de l'initialisation du datePicker (agenda-config.js est-il chargé?) :", e);
+    datePicker.disabled = true;
+    bookButton.disabled = true;
+    messageDiv.textContent = "Erreur de chargement de la configuration de l'agenda.";
+    messageDiv.style.color = "red";
+    return;
+  }
+
+  // Écouteur pour le clic sur le sélecteur de date
   datePicker.addEventListener("click", function() {
-    this.showPicker();
+    try {
+      this.showPicker();
+    } catch (error) {
+      console.info("showPicker() n'est pas supporté sur ce navigateur/OS ou le datePicker est désactivé.");
+    }
   });
-  
-  document.getElementById("bookButton").addEventListener("click", function() {
-    const dateValue = document.getElementById("datePicker").value;
-    const messageDiv = document.getElementById("message");
+
+  // Écouteur pour le bouton "Vérifier la disponibilité"
+  bookButton.addEventListener("click", function() {
+    const dateValue = datePicker.value;
+    paypalButtonDiv.style.display = "none"; // Cacher le bouton PayPal par défaut
 
     if (!dateValue) {
-    messageDiv.textContent = "Veuillez sélectionner une date.";
-    messageDiv.style.color = "#FFD140";
-    document.getElementById("paypalButton").style.display = "none";
-    return;
+      messageDiv.textContent = "Veuillez sélectionner une date.";
+      messageDiv.style.color = "#FFD140";
+      return;
     }
 
-    if (isDateAvailable(dateValue)) {
-    messageDiv.style.color = "#C8B071";
-    messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 100€.";
-    document.getElementById("paypalButton").style.display = "block";
+    // Utilisation de la fonction globale de agenda-config.js
+    if (typeof isServiceDateAvailable === "function") {
+      if (isServiceDateAvailable(dateValue, serviceName)) {
+        messageDiv.style.color = "#C8B071";
+        // Le message d'acompte pour le mariage est de 100€ selon le script original
+        messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 100€."; //
+        paypalButtonDiv.style.display = "block";
+      } else {
+        messageDiv.style.color = "#FFD140";
+        messageDiv.textContent = "La date sélectionnée n'est pas disponible. Veuillez choisir une autre date.";
+      }
     } else {
-    messageDiv.style.color = "#FFD140";
-    messageDiv.textContent = "La date sélectionnée n'est pas disponible. Veuillez choisir une autre date.";
-    document.getElementById("paypalButton").style.display = "none";
+      console.error("La fonction isServiceDateAvailable n'est pas définie. Vérifiez que agenda-config.js est correctement chargé AVANT ce script.");
+      messageDiv.textContent = "Erreur de vérification de la disponibilité. Contactez l'administrateur.";
+      messageDiv.style.color = "red";
     }
   });
 
-  // Script pour le menu hamburger
-  document.getElementById('hamburger-button').addEventListener('click', function(event) {
+  // Gestion du menu hamburger
+  hamburgerButton.addEventListener('click', function(event) {
     event.stopPropagation();
-    const mobileMenu = document.getElementById('mobile-menu');
     mobileMenu.classList.toggle('hidden');
   });
-  
+
   document.addEventListener('click', function(event) {
-    const hamburgerButton = document.getElementById('hamburger-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
     if (!hamburgerButton.contains(event.target) && !mobileMenu.contains(event.target)) {
-    mobileMenu.classList.add('hidden');
+      mobileMenu.classList.add('hidden');
     }
   });
 });
