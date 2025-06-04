@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const serviceName = "mariage"; // Nom du service pour récupérer les configurations
   const datePicker = document.getElementById("datePicker");
   const messageDiv = document.getElementById("message");
-  const paypalButtonDiv = document.getElementById("paypalButton"); // L'ID du conteneur du bouton PayPal est "paypalButton" dans mariage.html
+  const paypalButtonDiv = document.getElementById("paypalButton");
   const bookButton = document.getElementById("bookButton");
   const hamburgerButton = document.getElementById('hamburger-button');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -62,8 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof isServiceDateAvailable === "function") {
       if (isServiceDateAvailable(dateValue, serviceName)) {
         messageDiv.style.color = "#C8B071";
-        // Le message d'acompte pour le mariage est de 100€ selon le script original
-        messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 100€."; //
+        messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 100€."; // Acompte pour mariage
         paypalButtonDiv.style.display = "block";
       } else {
         messageDiv.style.color = "#FFD140";
