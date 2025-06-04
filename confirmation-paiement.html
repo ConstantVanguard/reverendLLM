@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réservation Effectuée - Révérend Constant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    /* Base styles (styles copiés de eglise.html) */
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    body {
+    font-family: 'Cinzel', serif;
+    background: url("hero_background.png") center/cover fixed;
+    color: #C8B071;
+    min-height: 100vh;
+    position: relative;
+    overflow-y: auto !important;
+    padding-bottom: 60px; /* Espace pour le bandeau du bas */
+    }
+
+    /* Hamburger Menu */
+    .hamburger-menu {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    z-index: 100;
+    }
+
+    #hamburger-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+    }
+
+    #hamburger-button span {
+    width: 100%;
+    height: 3px;
+    background-color: #C8B071;
+    border-radius: 3px;
+    transition: all 0.3s linear;
+    }
+
+    #mobile-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 5;
+    min-width: 250px;
+    }
+
+    #mobile-menu.hidden {
+    display: none;
+    }
+
+    #mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    }
+
+    #mobile-menu li {
+    margin: 15px 0;
+    border-bottom: 1px solid rgba(200, 176, 113, 0.3);
+    padding-bottom: 10px;
+    }
+
+    #mobile-menu li:last-child {
+    border-bottom: none;
+    }
+
+    #mobile-menu a {
+    text-decoration: none;
+    color: #C8B071;
+    font-weight: 500;
+    display: block;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    }
+
+    #mobile-menu a:hover {
+    color: #fff;
+    }
+
+    /* Page header */
+    .page-header {
+    text-align: center;
+    padding: 70px 0 40px;
+    position: relative;
+    }
+
+    .title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    position: relative;
+    top: -10px;
+    }
+
+    .church-logo {
+    width: 72px;
+    height: auto;
+    margin-bottom: 10px;
+    }
+
+    .page-title {
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    color: #C8B071;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .page-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #C8B071;
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Main container */
+    .main-container {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 20px;
+    background: url("dark_parchment.png") center/cover;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border: 1px solid rgba(200, 176, 113, 0.3);
+    }
+
+    /* Content sections (général pour eglise.html, adapté pour confirmation) */
+    .content-section {
+    margin-bottom: 60px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    border: 1px solid rgba(200, 176, 113, 0.3);
+    }
+
+    .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #C8B071;
+    position: relative;
+    padding-bottom: 10px;
+    }
+
+    .section-title:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background-color: #C8B071;
+    }
+
+    .content-section p { /* Style général pour les paragraphes dans content-section */
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    color: #fff;
+    }
+    
+    /* Bottom bar */
+    .bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+    z-index: 100;
+    border-top: 1px solid rgba(200, 176, 113, 0.3);
+    }
+
+    .nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    }
+
+    .nav-item {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: #C8B071;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 0 20px;
+    }
+
+    .nav-links a.nav-item {
+    text-decoration: none;
+    }
+
+    .nav-links a.nav-item:first-child {
+    position: absolute;
+    left: 0;
+    }
+
+    .nav-links a.nav-item:last-child {
+    position: absolute;
+    right: 0;
+    }
+
+    .nav-item:hover {
+    color: #fff;
+    }
+
+    /* Responsive design (copié de eglise.html) */
+    @media (max-width: 992px) {
+    .church-logo { width: 54px; }
+    .page-title { font-size: 36px; }
+    .page-subtitle { font-size: 18px; }
+    }
+
+    @media (max-width: 768px) {
+    .church-logo { width: 48px; }
+    .page-header { padding: 70px 0 30px; }
+    .page-title { font-size: 32px; }
+    .section-title { font-size: 24px; }
+    .content-section p { font-size: 16px !important; } /* !important peut être nécessaire pour surcharger */
+    .bottom-bar { padding: 8px 15px; background-color: rgba(0, 0, 0, 0.6); }
+    .nav-links { flex-direction: row; justify-content: space-between; width: 100%; transform: none; }
+    .nav-links a.nav-item, .nav-links div.nav-item { position: static !important; margin: 0; font-size: 0.85rem; }
+    }
+
+    @media (max-width: 480px) {
+    .church-logo { width: 36px; }
+    .page-header { padding: 60px 0 20px; }
+    .page-title { font-size: 28px; }
+    .page-subtitle { font-size: 16px; }
+    .section-title { font-size: 22px; }
+    .content-section p { font-size: 15px !important; } /* !important peut être nécessaire pour surcharger */
+    .bottom-bar { padding: 6px 10px; background-color: rgba(0, 0, 0, 0.5); }
+    .nav-links a.nav-item, .nav-links div.nav-item { font-size: 0.75rem; }
+    }
+
+    /* Styles spécifiques pour la page de confirmation */
+    .confirmation-message-section {
+      padding-top: 40px; 
+      padding-bottom: 40px;
+      text-align: center; 
+    }
+    .confirmation-message-section .main-confirmation-text {
+      font-family: 'Cinzel', serif; 
+      font-size: 2.5em; 
+      color: #C8B071;   
+      font-weight: bold;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+    .confirmation-message-section .secondary-confirmation-text {
+      font-family: 'Playfair Display', serif; 
+      font-size: 1.3em;  
+      color: #f5e7c1;    
+      margin-bottom: 40px;
+    }
+    .confirmation-message-section .additional-info {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.0em;
+      color: #fff;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+    /* Assurer que les p dans additional-info héritent bien des styles de .content-section p si nécessaire */
+    .confirmation-message-section .additional-info p {
+        font-size: 1em; /* ou la taille désirée, héritée de .content-section p par défaut */
+        margin-bottom: 10px; /* Ajustement de la marge pour cette section */
+    }
+    .main-container .content-section .section-title { 
+        text-align: center;
+    }
+    .main-container .content-section .section-title:after { 
+        left: 50%;
+        transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="hamburger-menu">
+    <button id="hamburger-button" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+    </button>
+    <nav id="mobile-menu" class="hidden">
+    <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="bapteme.html">Baptême</a></li>
+    <li><a href="mariage.html">Mariage</a></li>
+    <li><a href="enterrement.html">Funérailles</a></li>
+    <li><a href="confirmation.html">Confirmation</a></li>
+    <li><a href="guidance.html">Accompagnement Spirituel</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    </ul>
+    </nav>
+  </div>
+
+  <header class="page-header">
+    <div class="title-container">
+      <img src="logo2.png" alt="Logo Ministère du Christ-Roi" class="church-logo">
+      <h1 class="page-title">Confirmation de Réservation</h1>
+    </div>
+    <p class="page-subtitle">Votre demande a bien été prise en compte</p>
+  </header>
+
+  <div class="main-container">
+    <div id="confirmation-message" class="content-section confirmation-message-section">
+      <p class="main-confirmation-text">Votre date est bien réservée!</p>
+      <p class="secondary-confirmation-text">Au besoin, nous reprendrons contact avec vous.</p>
+
+      <div class="additional-info">
+        <p>
+          Nous vous remercions sincèrement pour votre confiance.
+        </p>
+        <p>
+          Si vous avez la moindre question ou si vous souhaitez apporter une précision,
+          n'hésitez pas à nous joindre via notre page <a href="contact.html" style="color: #C8B071; text-decoration: underline;">Contact</a>.
+        </p>
+        <p>
+          Avec nos salutations fraternelles,
+        </p>
+        <p>
+          <em>Le secrétariat du Révérend Constant</em>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="nav-links">
+    <a href="index.html" class="nav-item">Révérend Constant</a>
+    <a href="eglise.html" class="nav-item">Notre Ministère</a>
+    <a href="contact.html" class="nav-item">Contact</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Script pour le menu hamburger
+      const hamburgerButton = document.getElementById('hamburger-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (hamburgerButton && mobileMenu) {
+        hamburgerButton.addEventListener('click', function(event) {
+          event.stopPropagation();
+          mobileMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', function(event) {
+          if (hamburgerButton && mobileMenu && !hamburgerButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+            mobileMenu.classList.add('hidden');
+          }
+        });
+      }
+      // La partie du script pour la navigation interne (.internal-nav a) a été supprimée.
+    });
+  </script>
+</body>
+</html>
