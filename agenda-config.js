@@ -26,36 +26,36 @@ const serviceLeadTimes = {
 };
 
 // URL publique de votre agenda Google au format iCalendar (ICS)
-// Remplacez la ligne ci-dessous par votre URL iCal publique réelle
-const googleCalendarIcsUrl = "https://calendar.google.com/calendar/ical/constantvanguard%40gmail.com/public/basic.ics";
+const originalGoogleCalendarIcsUrl = "https://calendar.google.com/calendar/ical/constantvanguard%40gmail.com/public/basic.ics";
+const googleCalendarIcsUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(originalGoogleCalendarIcsUrl);
+
 
 // Liste qui sera remplie dynamiquement avec les dates bloquées récupérées depuis Google Calendar
 let googleCalendarBlockedDates = [];
 
 /**
- * Récupère les dates des événements depuis l'URL iCalendar de Google Calendar
+ * Récupère les dates des événements depuis l'URL iCalendar de Google Calendar (via le proxy CORS)
  * et les ajoute à la liste googleCalendarBlockedDates.
  * Cette fonction est asynchrone.
  */
 async function fetchGoogleCalendarBlockedDates() {
-  if (!googleCalendarIcsUrl || googleCalendarIcsUrl === "METTRE_ICI_VOTRE_URL_ICAL_PUBLIQUE") {
-    console.warn("L'URL iCal de Google Calendar n'est pas configurée ou utilise la valeur par défaut. La synchronisation Google Calendar est désactivée.");
+  if (!googleCalendarIcsUrl) {
+    console.warn("L'URL iCal (via proxy) n'est pas configurée. La synchronisation Google Calendar est désactivée.");
     return;
   }
 
   try {
-    const response = await fetch(googleCalendarIcsUrl, { cache: "no-store" }); // Ajout de no-store pour tenter de forcer le rafraîchissement
+    const response = await fetch(googleCalendarIcsUrl, { cache: "no-store" });
     if (!response.ok) {
-      console.error("Erreur lors de la récupération de l'agenda Google:", response.status, response.statusText);
-      // Afficher un message plus visible pour le Révérend si le calendrier n'est pas accessible
+      console.error("Erreur lors de la récupération de l'agenda Google via le proxy:", response.status, response.statusText);
       if (response.status === 404) {
-        console.error("L'URL du calendrier Google semble incorrecte ou le calendrier n'est pas public/partagé correctement (Erreur 404).");
+        console.error("L'URL du calendrier Google (via proxy) semble incorrecte, ou le calendrier n'est pas public/partagé correctement, ou le proxy a un problème (Erreur 404).");
       }
       return;
     }
     const icsData = await response.text();
 
-    const lines = icsData.split(/\r\n|\n|\r/); // Gère différents types de sauts de ligne
+    const lines = icsData.split(/\r\n|\n|\r/);
     const newBlockedDates = new Set();
     let inEvent = false;
     let currentEventStartDate = null;
@@ -75,7 +75,7 @@ async function fetchGoogleCalendarBlockedDates() {
         if (line.startsWith("DTSTART;VALUE=DATE:")) {
           const dateStr = line.substring("DTSTART;VALUE=DATE:".length, "DTSTART;VALUE=DATE:YYYYMMDD".length);
           currentEventStartDate = `${dateStr.substring(0,4)}-${dateStr.substring(4,6)}-${dateStr.substring(6,8)}`;
-        } else if (line.startsWith("DTSTART:") || line.startsWith("DTSTART;")) { // Gère aussi les DTSTART avec heure
+        } else if (line.startsWith("DTSTART:") || line.startsWith("DTSTART;")) {
           let dateStrMatch = line.match(/(\d{8})T/);
           if (dateStrMatch && dateStrMatch[1]) {
             const dateStr = dateStrMatch[1];
@@ -87,25 +87,17 @@ async function fetchGoogleCalendarBlockedDates() {
 
     googleCalendarBlockedDates = Array.from(newBlockedDates);
     if (googleCalendarBlockedDates.length > 0) {
-        console.log("Dates bloquées récupérées depuis Google Calendar:", googleCalendarBlockedDates);
+        console.log("Dates bloquées récupérées depuis Google Calendar (via proxy):", googleCalendarBlockedDates);
     } else {
-        console.log("Aucune date spécifique récupérée de Google Calendar ou le calendrier est vide pour les jours concernés.");
+        console.log("Aucune date spécifique récupérée de Google Calendar (via proxy) ou le calendrier est vide pour les jours concernés, ou le format des dates n'est pas reconnu par le parser simplifié.");
     }
 
   } catch (error) {
-    console.error("Erreur lors du traitement de l'agenda Google (ex: problème réseau, CORS si test en local sans serveur) :", error);
-    // Si vous testez en local en ouvrant directement le fichier HTML, le `fetch` peut être bloqué par la politique CORS.
-    // Cela devrait fonctionner correctement une fois le site hébergé (ex: sur GitHub Pages).
+    console.error("Erreur lors du traitement de l'agenda Google (via proxy):", error);
   }
 }
 
 // Déclenche la récupération des données de Google Calendar au chargement du script.
-// Note: Il n'y a pas de garantie que cette opération sera terminée AVANT
-// que l'utilisateur interagisse avec le sélecteur de date sur les pages.
-// Pour une solution plus robuste, il faudrait que les scripts des services
-// attendent la fin de cette promesse ou la ré-évaluent.
-// Cependant, pour garder la modification simple, on part du principe que
-// la liste sera remplie peu après le chargement de la page.
 fetchGoogleCalendarBlockedDates();
 
 /**
@@ -124,23 +116,21 @@ function isServiceDateAvailable(dateString, currentServiceName) {
 
   // 1. Vérifier le délai d'attente spécifique au service
   if (serviceLeadTimes[currentServiceName] !== undefined) {
-    const minLeadDate = new Date(today); // Partir de la date d'aujourd'hui normalisée
-    minLeadDate.setDate(minLeadDate.getDate() + serviceLeadTimes[currentServiceName]);
-    // minLeadDate est déjà à minuit grâce à la normalisation de 'today'
+    const minLeadDate = new Date(today);
+    minLeadDate.setDate(today.getDate() + serviceLeadTimes[currentServiceName]); // Utiliser today.getDate() pour éviter les problèmes de fin de mois
+    minLeadDate.setHours(0,0,0,0); // S'assurer que l'heure est à minuit
     if (selectedDate < minLeadDate) {
-      console.log(`Délai non respecté pour ${currentServiceName}. Date sélectionnée: ${selectedDate}, Date minimale autorisée: ${minLeadDate}`);
+      console.log(`Délai non respecté pour ${currentServiceName}. Date sélectionnée: ${selectedDate.toISOString().split('T')[0]}, Date minimale autorisée: ${minLeadDate.toISOString().split('T')[0]}`);
       return false;
     }
   } else {
     console.warn(`Nom de service inconnu pour le délai d'attente: ${currentServiceName}`);
-    // Comportement par défaut si le nom du service n'est pas dans serviceLeadTimes : considérer comme indisponible ou lever une erreur.
-    // Pour l'instant, on le considère comme indisponible pour éviter les réservations non désirées.
     return false;
   }
 
   // 2. Jours autorisés (Lundi, Jeudi, Samedi)
   if (!globalAllowedDays.includes(selectedDate.getDay())) {
-    console.log(`Jour de la semaine non autorisé: ${selectedDate.getDay()}`);
+    console.log(`Jour de la semaine non autorisé: ${selectedDate.getDay()} pour la date ${selectedDate.toISOString().split('T')[0]}`);
     return false;
   }
 
@@ -153,10 +143,11 @@ function isServiceDateAvailable(dateString, currentServiceName) {
 
   // 4. Dates bloquées depuis Google Calendar (si la liste est remplie)
   if (googleCalendarBlockedDates.includes(formattedDate)) {
-    console.log(`Date bloquée par Google Calendar: ${formattedDate}`);
+    console.log(`Date bloquée par Google Calendar (via proxy): ${formattedDate}`);
     return false;
   }
 
   // Si toutes les vérifications passent, la date est disponible
+  console.log(`Date ${formattedDate} disponible pour le service ${currentServiceName}.`);
   return true;
 }
