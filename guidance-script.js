@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // S'assurer que les éléments HTML requis existent
   if (!datePicker || !messageDiv || !paypalButtonSingleDiv || !paypalButtonGuidanceDiv || !bookButton || !sessionTypeSelect || !hamburgerButton || !mobileMenu) {
     console.error("Un ou plusieurs éléments HTML requis sont manquants sur la page Accompagnement Spirituel.");
-    // Optionnel: désactiver les fonctionnalités si des éléments sont manquants
     if(datePicker) datePicker.disabled = true;
     if(bookButton) bookButton.disabled = true;
     if(sessionTypeSelect) sessionTypeSelect.disabled = true;
@@ -50,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
 
-  // Écouteur pour le clic sur le sélecteur de date
   datePicker.addEventListener("click", function() {
     try {
       this.showPicker();
@@ -59,12 +57,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Écouteur pour le bouton "Vérifier la disponibilité"
   bookButton.addEventListener("click", function() {
     const dateValue = datePicker.value;
     const selectedType = sessionTypeSelect.value;
 
-    // Cacher les boutons PayPal par défaut
     paypalButtonSingleDiv.style.display = "none";
     paypalButtonGuidanceDiv.style.display = "none";
 
@@ -74,16 +70,15 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    // Utilisation de la fonction globale de agenda-config.js
     if (typeof isServiceDateAvailable === "function") {
       if (isServiceDateAvailable(dateValue, serviceName)) {
         messageDiv.style.color = "#C8B071";
         
         if (selectedType === "single") {
-          messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de votre acompte (70€) pour réserver cette date.";
+          messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de votre acompte (70€) pour réserver cette date."; // Acompte pour séance ponctuelle
           paypalButtonSingleDiv.style.display = "block";
         } else { // "guidance"
-          messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de votre acompte (100€) pour réserver cette date.";
+          messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de votre acompte (100€) pour réserver cette date."; // Acompte pour guidance complète (supposé, basé sur le script original)
           paypalButtonGuidanceDiv.style.display = "block";
         }
       } else {
@@ -97,17 +92,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Cacher les boutons PayPal si le type de session change et qu'un message de disponibilité est affiché
   sessionTypeSelect.addEventListener("change", function() {
     if (messageDiv.textContent.startsWith("Date disponible")) {
         messageDiv.textContent = "Le type de séance a changé. Veuillez re-vérifier la disponibilité.";
-        messageDiv.style.color = "#FFD140"; // Couleur d'information/avertissement
+        messageDiv.style.color = "#FFD140"; 
         paypalButtonSingleDiv.style.display = "none";
         paypalButtonGuidanceDiv.style.display = "none";
     }
   });
 
-  // Gestion du menu hamburger
   hamburgerButton.addEventListener('click', function(event) {
     event.stopPropagation();
     mobileMenu.classList.toggle('hidden');
