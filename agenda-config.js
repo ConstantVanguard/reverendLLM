@@ -34,8 +34,34 @@ const googleCalendarIcsUrl = "https://api.allorigins.win/raw?url=" + encodeURICo
 let googleCalendarBlockedDates = [];
 
 /**
+ * Helper function to parse an iCalendar date string (YYYYMMDD) into a Date object (at UTC midnight).
+ * @param {string} dateStr - Date string in YYYYMMDD format.
+ * @returns {Date} - Date object.
+ */
+function parseIcsDate(dateStr) {
+  const year = parseInt(dateStr.substring(0, 4), 10);
+  const month = parseInt(dateStr.substring(4, 6), 10) - 1; // Month is 0-indexed in JS
+  const day = parseInt(dateStr.substring(6, 8), 10);
+  return new Date(Date.UTC(year, month, day)); // Use Date.UTC to avoid timezone issues during parsing
+}
+
+/**
+ * Helper function to format a Date object into "YYYY-MM-DD" string.
+ * @param {Date} dateObj - Date object.
+ * @returns {string} - Date string in "YYYY-MM-DD" format.
+ */
+function formatDateToYyyyMmDd(dateObj) {
+  const year = dateObj.getUTCFullYear();
+  const month = String(dateObj.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(dateObj.getUTCDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+
+/**
  * Récupère les dates des événements depuis l'URL iCalendar de Google Calendar (via le proxy CORS)
  * et les ajoute à la liste googleCalendarBlockedDates.
+ * Gère maintenant les événements s'étendant sur plusieurs jours.
  * Cette fonction est asynchrone.
  */
 async function fetchGoogleCalendarBlockedDates() {
@@ -58,28 +84,48 @@ async function fetchGoogleCalendarBlockedDates() {
     const lines = icsData.split(/\r\n|\n|\r/);
     const newBlockedDates = new Set();
     let inEvent = false;
-    let currentEventStartDate = null;
+    let dtstartStr = null;
+    let dtendStr = null;
 
     lines.forEach(line => {
       line = line.trim();
       if (line === "BEGIN:VEVENT") {
         inEvent = true;
-        currentEventStartDate = null;
+        dtstartStr = null;
+        dtendStr = null;
       } else if (line === "END:VEVENT") {
-        if (currentEventStartDate) {
-          newBlockedDates.add(currentEventStartDate);
+        if (dtstartStr) {
+          const startDate = parseIcsDate(dtstartStr);
+          if (dtendStr) { // If there's an end date, it's a multi-day event or timed event
+            const endDate = parseIcsDate(dtendStr);
+            // For all-day events, DTEND is the morning of the day *after* the event ends.
+            // So, we iterate from startDate up to (but not including) endDate.
+            let currentDate = new Date(startDate);
+            while (currentDate < endDate) {
+              newBlockedDates.add(formatDateToYyyyMmDd(currentDate));
+              currentDate.setUTCDate(currentDate.getUTCDate() + 1);
+            }
+          } else {
+            // If no DTEND, assume it's a single all-day event (though less common for all-day in strict iCal)
+            // or a timed event for which we only have DTSTART, so block that single day.
+            newBlockedDates.add(formatDateToYyyyMmDd(startDate));
+          }
         }
         inEvent = false;
-        currentEventStartDate = null;
       } else if (inEvent) {
         if (line.startsWith("DTSTART;VALUE=DATE:")) {
-          const dateStr = line.substring("DTSTART;VALUE=DATE:".length, "DTSTART;VALUE=DATE:YYYYMMDD".length);
-          currentEventStartDate = `${dateStr.substring(0,4)}-${dateStr.substring(4,6)}-${dateStr.substring(6,8)}`;
+          dtstartStr = line.substring("DTSTART;VALUE=DATE:".length, "DTSTART;VALUE=DATE:YYYYMMDD".length);
         } else if (line.startsWith("DTSTART:") || line.startsWith("DTSTART;")) {
-          let dateStrMatch = line.match(/(\d{8})T/);
+          let dateStrMatch = line.match(/(\d{8})T?/); // Match YYYYMMDD, optionally followed by T
           if (dateStrMatch && dateStrMatch[1]) {
-            const dateStr = dateStrMatch[1];
-            currentEventStartDate = `${dateStr.substring(0,4)}-${dateStr.substring(4,6)}-${dateStr.substring(6,8)}`;
+            dtstartStr = dateStrMatch[1];
+          }
+        } else if (line.startsWith("DTEND;VALUE=DATE:")) {
+          dtendStr = line.substring("DTEND;VALUE=DATE:".length, "DTEND;VALUE=DATE:YYYYMMDD".length);
+        } else if (line.startsWith("DTEND:") || line.startsWith("DTEND;")) {
+          let dateStrMatch = line.match(/(\d{8})T?/);
+          if (dateStrMatch && dateStrMatch[1]) {
+            dtendStr = dateStrMatch[1];
           }
         }
       }
@@ -87,9 +133,9 @@ async function fetchGoogleCalendarBlockedDates() {
 
     googleCalendarBlockedDates = Array.from(newBlockedDates);
     if (googleCalendarBlockedDates.length > 0) {
-        console.log("Dates bloquées récupérées depuis Google Calendar (via proxy):", googleCalendarBlockedDates);
+        console.log("Dates bloquées récupérées depuis Google Calendar (via proxy):", googleCalendarBlockedDates.sort()); // Sort for easier reading
     } else {
-        console.log("Aucune date spécifique récupérée de Google Calendar (via proxy) ou le calendrier est vide pour les jours concernés, ou le format des dates n'est pas reconnu par le parser simplifié.");
+        console.log("Aucune date spécifique récupérée de Google Calendar (via proxy) ou le calendrier est vide pour les jours concernés, ou le format des dates n'est pas reconnu par le parser.");
     }
 
   } catch (error) {
@@ -101,28 +147,24 @@ fetchGoogleCalendarBlockedDates();
 
 /**
  * Fonction globale pour vérifier la disponibilité d'une date.
- * Elle est destinée à être appelée par les scripts spécifiques de chaque service.
+ * (Le reste de cette fonction isServiceDateAvailable reste identique à la version précédente
+ * qui fonctionnait pour le décalage de date)
  * @param {string} dateStringFromPicker - La date à vérifier au format "AAAA-MM-JJ" provenant du datePicker.value.
  * @param {string} currentServiceName - Le nom du service (ex: "mariage", "bapteme") pour récupérer le bon délai.
  * @returns {boolean} - True si la date est disponible, false sinon.
  */
 function isServiceDateAvailable(dateStringFromPicker, currentServiceName) {
-  // Crée un objet Date. JavaScript interprète AAAA-MM-JJ comme étant à minuit heure locale.
-  // Pour éviter les problèmes de fuseau horaire qui pourraient faire basculer au jour précédent si on convertit en UTC
-  // directement, nous allons travailler avec les composantes de la date dans le fuseau horaire local.
   const parts = dateStringFromPicker.split('-');
   const year = parseInt(parts[0], 10);
-  const month = parseInt(parts[1], 10) - 1; // Mois en JS est 0-indexé (0=Janvier, 1=Février...)
+  const month = parseInt(parts[1], 10) - 1; 
   const day = parseInt(parts[2], 10);
   
-  // selectedDate est maintenant à minuit dans le fuseau horaire local de l'utilisateur
   const selectedDate = new Date(year, month, day);
-  selectedDate.setHours(0,0,0,0); // S'assurer qu'elle est bien à minuit pour la logique des jours entiers
+  selectedDate.setHours(0,0,0,0);
 
   const today = new Date();
-  today.setHours(0, 0, 0, 0); // Normaliser à minuit heure locale
+  today.setHours(0, 0, 0, 0); 
 
-  // 1. Vérifier le délai d'attente spécifique au service
   if (serviceLeadTimes[currentServiceName] !== undefined) {
     const minLeadDate = new Date(today);
     minLeadDate.setDate(today.getDate() + serviceLeadTimes[currentServiceName]);
@@ -136,23 +178,19 @@ function isServiceDateAvailable(dateStringFromPicker, currentServiceName) {
     return false;
   }
 
-  // 2. Jours autorisés (Lundi, Jeudi, Samedi)
   if (!globalAllowedDays.includes(selectedDate.getDay())) {
-    // getDay() renvoie le jour dans le fuseau horaire local, ce qui est correct ici.
     console.log(`Jour de la semaine non autorisé: ${selectedDate.getDay()} pour la date ${selectedDate.getFullYear()}-${String(selectedDate.getMonth()+1).padStart(2,'0')}-${String(selectedDate.getDate()).padStart(2,'0')}`);
     return false;
   }
 
-  // 3. Dates bloquées manuellement et depuis Google Calendar
-  // Nous devons formater selectedDate en "AAAA-MM-JJ" pour la comparaison avec les listes.
   const formattedYear = selectedDate.getFullYear();
-  const formattedMonth = String(selectedDate.getMonth() + 1).padStart(2, '0'); // Mois est 0-indexé, +1 et padStart
-  const formattedDay = String(selectedDate.getDate()).padStart(2, '0'); // padStart pour le jour
+  const formattedMonth = String(selectedDate.getMonth() + 1).padStart(2, '0'); 
+  const formattedDay = String(selectedDate.getDate()).padStart(2, '0'); 
   const formattedDateForComparison = `${formattedYear}-${formattedMonth}-${formattedDay}`;
   
   console.log("Date sélectionnée (formattedDateForComparison) pour vérification :", formattedDateForComparison, "| Type :", typeof formattedDateForComparison);
   console.log("Vérification contre manualBlockedDates. Contenu :", manualBlockedDates, "| La date est-elle incluse ? :", manualBlockedDates.includes(formattedDateForComparison));
-  console.log("Vérification contre googleCalendarBlockedDates. Contenu :", googleCalendarBlockedDates, "| La date est-elle incluse ? :", googleCalendarBlockedDates.includes(formattedDateForComparison));
+  console.log("Vérification contre googleCalendarBlockedDates. Contenu :", googleCalendarBlockedDates.sort(), "| La date est-elle incluse ? :", googleCalendarBlockedDates.includes(formattedDateForComparison)); // Sort for easier reading
 
   if (manualBlockedDates.includes(formattedDateForComparison)) {
     console.log(`Date bloquée manuellement: ${formattedDateForComparison}`);
