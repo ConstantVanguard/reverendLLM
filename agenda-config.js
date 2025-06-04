@@ -97,30 +97,38 @@ async function fetchGoogleCalendarBlockedDates() {
   }
 }
 
-// Déclenche la récupération des données de Google Calendar au chargement du script.
 fetchGoogleCalendarBlockedDates();
 
 /**
  * Fonction globale pour vérifier la disponibilité d'une date.
  * Elle est destinée à être appelée par les scripts spécifiques de chaque service.
- * @param {string} dateString - La date à vérifier au format "AAAA-MM-JJ".
+ * @param {string} dateStringFromPicker - La date à vérifier au format "AAAA-MM-JJ" provenant du datePicker.value.
  * @param {string} currentServiceName - Le nom du service (ex: "mariage", "bapteme") pour récupérer le bon délai.
  * @returns {boolean} - True si la date est disponible, false sinon.
  */
-function isServiceDateAvailable(dateString, currentServiceName) {
-  const selectedDate = new Date(dateString);
-  selectedDate.setHours(0, 0, 0, 0); // Normaliser à minuit pour la comparaison
+function isServiceDateAvailable(dateStringFromPicker, currentServiceName) {
+  // Crée un objet Date. JavaScript interprète AAAA-MM-JJ comme étant à minuit heure locale.
+  // Pour éviter les problèmes de fuseau horaire qui pourraient faire basculer au jour précédent si on convertit en UTC
+  // directement, nous allons travailler avec les composantes de la date dans le fuseau horaire local.
+  const parts = dateStringFromPicker.split('-');
+  const year = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10) - 1; // Mois en JS est 0-indexé (0=Janvier, 1=Février...)
+  const day = parseInt(parts[2], 10);
+  
+  // selectedDate est maintenant à minuit dans le fuseau horaire local de l'utilisateur
+  const selectedDate = new Date(year, month, day);
+  selectedDate.setHours(0,0,0,0); // S'assurer qu'elle est bien à minuit pour la logique des jours entiers
 
   const today = new Date();
-  today.setHours(0, 0, 0, 0); // Normaliser à minuit
+  today.setHours(0, 0, 0, 0); // Normaliser à minuit heure locale
 
   // 1. Vérifier le délai d'attente spécifique au service
   if (serviceLeadTimes[currentServiceName] !== undefined) {
     const minLeadDate = new Date(today);
-    minLeadDate.setDate(today.getDate() + serviceLeadTimes[currentServiceName]); // Utiliser today.getDate() pour éviter les problèmes de fin de mois
-    minLeadDate.setHours(0,0,0,0); // S'assurer que l'heure est à minuit
+    minLeadDate.setDate(today.getDate() + serviceLeadTimes[currentServiceName]);
+    minLeadDate.setHours(0,0,0,0); 
     if (selectedDate < minLeadDate) {
-      console.log(`Délai non respecté pour ${currentServiceName}. Date sélectionnée: ${selectedDate.toISOString().split('T')[0]}, Date minimale autorisée: ${minLeadDate.toISOString().split('T')[0]}`);
+      console.log(`Délai non respecté pour ${currentServiceName}. Date sélectionnée: ${selectedDate.getFullYear()}-${String(selectedDate.getMonth()+1).padStart(2,'0')}-${String(selectedDate.getDate()).padStart(2,'0')}, Date minimale autorisée: ${minLeadDate.getFullYear()}-${String(minLeadDate.getMonth()+1).padStart(2,'0')}-${String(minLeadDate.getDate()).padStart(2,'0')}`);
       return false;
     }
   } else {
@@ -130,24 +138,32 @@ function isServiceDateAvailable(dateString, currentServiceName) {
 
   // 2. Jours autorisés (Lundi, Jeudi, Samedi)
   if (!globalAllowedDays.includes(selectedDate.getDay())) {
-    console.log(`Jour de la semaine non autorisé: ${selectedDate.getDay()} pour la date ${selectedDate.toISOString().split('T')[0]}`);
+    // getDay() renvoie le jour dans le fuseau horaire local, ce qui est correct ici.
+    console.log(`Jour de la semaine non autorisé: ${selectedDate.getDay()} pour la date ${selectedDate.getFullYear()}-${String(selectedDate.getMonth()+1).padStart(2,'0')}-${String(selectedDate.getDate()).padStart(2,'0')}`);
     return false;
   }
 
-  // 3. Dates bloquées manuellement
-  const formattedDate = selectedDate.toISOString().split('T')[0];
-  if (manualBlockedDates.includes(formattedDate)) {
-    console.log(`Date bloquée manuellement: ${formattedDate}`);
+  // 3. Dates bloquées manuellement et depuis Google Calendar
+  // Nous devons formater selectedDate en "AAAA-MM-JJ" pour la comparaison avec les listes.
+  const formattedYear = selectedDate.getFullYear();
+  const formattedMonth = String(selectedDate.getMonth() + 1).padStart(2, '0'); // Mois est 0-indexé, +1 et padStart
+  const formattedDay = String(selectedDate.getDate()).padStart(2, '0'); // padStart pour le jour
+  const formattedDateForComparison = `${formattedYear}-${formattedMonth}-${formattedDay}`;
+  
+  console.log("Date sélectionnée (formattedDateForComparison) pour vérification :", formattedDateForComparison, "| Type :", typeof formattedDateForComparison);
+  console.log("Vérification contre manualBlockedDates. Contenu :", manualBlockedDates, "| La date est-elle incluse ? :", manualBlockedDates.includes(formattedDateForComparison));
+  console.log("Vérification contre googleCalendarBlockedDates. Contenu :", googleCalendarBlockedDates, "| La date est-elle incluse ? :", googleCalendarBlockedDates.includes(formattedDateForComparison));
+
+  if (manualBlockedDates.includes(formattedDateForComparison)) {
+    console.log(`Date bloquée manuellement: ${formattedDateForComparison}`);
     return false;
   }
 
-  // 4. Dates bloquées depuis Google Calendar (si la liste est remplie)
-  if (googleCalendarBlockedDates.includes(formattedDate)) {
-    console.log(`Date bloquée par Google Calendar (via proxy): ${formattedDate}`);
+  if (googleCalendarBlockedDates.includes(formattedDateForComparison)) {
+    console.log(`Date bloquée par Google Calendar (via proxy): ${formattedDateForComparison}`);
     return false;
   }
 
-  // Si toutes les vérifications passent, la date est disponible
-  console.log(`Date ${formattedDate} disponible pour le service ${currentServiceName}.`);
+  console.log(`Date ${formattedDateForComparison} disponible pour le service ${currentServiceName}.`);
   return true;
 }
