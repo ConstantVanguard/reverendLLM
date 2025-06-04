@@ -7,13 +7,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="guidance-styles.css">
   <style>
-    /* Ajout d'un style pour la nouvelle note */
+    /* Style pour la note de réservation */
     .reservation-note {
       font-family: 'Playfair Display', serif;
       font-size: 0.9rem;
-      color: #f5e7c1; /* Couleur dorée claire, ou adaptez selon vos préférences */
-      margin-top: 15px;
-      margin-bottom: 15px;
+      color: #f5e7c1; /* Couleur dorée claire, ou adaptez */
+      margin-top: 10px; /* Ajusté pour être entre le datepicker et le bouton */
+      margin-bottom: 15px; /* Espace avant le bouton "Vérifier la disponibilité" */
       text-align: center;
     }
   </style>
@@ -122,13 +122,12 @@
     <div class="date-picker-container">
     <input type="date" id="datePicker" placeholder="jj/mm/aaaa">
     </div>
+    <p class="reservation-note">
+      Veuillez indiquer l'heure souhaitée lors du paiement.
+    </p>
     </div>
     
     <button id="bookButton" class="btn">Vérifier la disponibilité</button>
-
-    <p class="reservation-note">
-      Veuillez indiquer l'heure souhaitée lors du paiement de l'acompte. Si nécessaire, le Révérend vous contactera pour modifier l'heure.
-    </p>
     
     <div id="message" style="margin-top:20px; font-weight: bold;"></div>
     
