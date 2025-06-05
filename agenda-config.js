@@ -11,11 +11,15 @@ const globalAllowedDays = [1, 4, 6];
 // - "MM-JJ" pour une date récurrente chaque année (ex: "12-25" pour Noël)
 const manualBlockedDates = [
   // Exemples (à adapter ou supprimer) :
-  // "2025-07-25",      // Bloque uniquement le 25 juillet 2025
+  // "2024-07-25",      // Bloque uniquement le 25 juillet 2024
+  "12-24",          // 
   "12-25",          // Bloque le 25 décembre de chaque année (Noël)
+  "12-31",          // 
   "01-01",          // Bloque le 1er janvier de chaque année (Nouvel An)
   "11-01",          // Bloque le 1er novembre de chaque année (Toussaint)
-  // Ajoutez ici vos propres dates bloquées
+  "08-11",          // 
+  "05-04",          // 
+  // Ajoutez au-dessus vos propres dates bloquées
 ];
 
 // Délai d'attente minimum en jours avant de pouvoir réserver chaque service
@@ -24,7 +28,7 @@ const serviceLeadTimes = {
   mariage: 41,
   confirmation: 12,
   enterrement: 0, // Pour les funérailles, un délai de 0 jour est souvent nécessaire
-  guidance: 1
+  guidance: 6
 };
 
 // URL publique de votre agenda Google au format iCalendar (ICS)
