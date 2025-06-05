@@ -24,7 +24,7 @@ const manualBlockedDates = [
 
 // Délai d'attente minimum en jours avant de pouvoir réserver chaque service
 const serviceLeadTimes = {
-  bapteme: 13,
+  bapteme: 17,
   mariage: 41,
   confirmation: 12,
   enterrement: 0, // Pour les funérailles, un délai de 0 jour est souvent nécessaire
