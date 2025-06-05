@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof isServiceDateAvailable === "function") {
       if (isServiceDateAvailable(dateValue, serviceName)) {
         messageDiv.style.color = "#C8B071";
-        messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 100€."; // Acompte pour mariage
+        messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de l'acompte de 50€."; // Acompte pour mariage
         paypalButtonDiv.style.display = "block";
       } else {
         messageDiv.style.color = "#FFD140";
