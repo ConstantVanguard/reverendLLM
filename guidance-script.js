@@ -75,10 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
         messageDiv.style.color = "#C8B071";
         
         if (selectedType === "single") {
-          messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de votre acompte (70€) pour réserver cette date."; // Acompte pour séance ponctuelle
+          messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de votre acompte (20€) pour réserver cette date."; // Acompte pour séance ponctuelle
           paypalButtonSingleDiv.style.display = "block";
         } else { // "guidance"
-          messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de votre acompte (100€) pour réserver cette date."; // Acompte pour guidance complète (supposé, basé sur le script original)
+          messageDiv.textContent = "Date disponible. Veuillez procéder au paiement de votre acompte (50€) pour réserver cette date."; // Acompte pour guidance complète (supposé, basé sur le script original)
           paypalButtonGuidanceDiv.style.display = "block";
         }
       } else {
