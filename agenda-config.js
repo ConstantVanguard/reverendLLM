@@ -22,7 +22,7 @@ const serviceLeadTimes = {
   mariage: 41,
   confirmation: 12,
   enterrement: 0, // Pour les funérailles, un délai de 0 jour est souvent nécessaire
-  guidance: 1
+  guidance: 6
 };
 
 // URL publique de votre agenda Google au format iCalendar (ICS)
