@@ -5,15 +5,17 @@
 // Actuellement configuré pour Lundi, Jeudi, Samedi
 const globalAllowedDays = [1, 4, 6];
 
-// Dates spécifiques que vous souhaitez bloquer manuellement (ex: vacances, engagements personnels)
-// Format : "AAAA-MM-JJ"
+// Dates spécifiques que vous souhaitez bloquer manuellement.
+// Formats acceptés:
+// - "AAAA-MM-JJ" pour une date spécifique (ex: "2025-07-25")
+// - "MM-JJ" pour une date récurrente chaque année (ex: "12-25" pour Noël)
 const manualBlockedDates = [
   // Exemples (à adapter ou supprimer) :
-  // "2025-07-25",
-  // "2025-08-10",
-  // "2025-12-24",
-  // "2025-12-25"
-  // Ajoutez ici vos propres dates bloquées si nécessaire
+  // "2025-07-25",      // Bloque uniquement le 25 juillet 2025
+  "12-25",          // Bloque le 25 décembre de chaque année (Noël)
+  "01-01",          // Bloque le 1er janvier de chaque année (Nouvel An)
+  "11-01",          // Bloque le 1er novembre de chaque année (Toussaint)
+  // Ajoutez ici vos propres dates bloquées
 ];
 
 // Délai d'attente minimum en jours avant de pouvoir réserver chaque service
@@ -22,7 +24,7 @@ const serviceLeadTimes = {
   mariage: 41,
   confirmation: 12,
   enterrement: 0, // Pour les funérailles, un délai de 0 jour est souvent nécessaire
-  guidance: 6
+  guidance: 1
 };
 
 // URL publique de votre agenda Google au format iCalendar (ICS)
@@ -42,7 +44,7 @@ function parseIcsDate(dateStr) {
   const year = parseInt(dateStr.substring(0, 4), 10);
   const month = parseInt(dateStr.substring(4, 6), 10) - 1; // Month is 0-indexed in JS
   const day = parseInt(dateStr.substring(6, 8), 10);
-  return new Date(Date.UTC(year, month, day)); // Use Date.UTC to avoid timezone issues during parsing
+  return new Date(Date.UTC(year, month, day));
 }
 
 /**
@@ -57,19 +59,11 @@ function formatDateToYyyyMmDd(dateObj) {
   return `${year}-${month}-${day}`;
 }
 
-
-/**
- * Récupère les dates des événements depuis l'URL iCalendar de Google Calendar (via le proxy CORS)
- * et les ajoute à la liste googleCalendarBlockedDates.
- * Gère maintenant les événements s'étendant sur plusieurs jours.
- * Cette fonction est asynchrone.
- */
 async function fetchGoogleCalendarBlockedDates() {
   if (!googleCalendarIcsUrl) {
     console.warn("L'URL iCal (via proxy) n'est pas configurée. La synchronisation Google Calendar est désactivée.");
     return;
   }
-
   try {
     const response = await fetch(googleCalendarIcsUrl, { cache: "no-store" });
     if (!response.ok) {
@@ -80,7 +74,6 @@ async function fetchGoogleCalendarBlockedDates() {
       return;
     }
     const icsData = await response.text();
-
     const lines = icsData.split(/\r\n|\n|\r/);
     const newBlockedDates = new Set();
     let inEvent = false;
@@ -96,18 +89,14 @@ async function fetchGoogleCalendarBlockedDates() {
       } else if (line === "END:VEVENT") {
         if (dtstartStr) {
           const startDate = parseIcsDate(dtstartStr);
-          if (dtendStr) { // If there's an end date, it's a multi-day event or timed event
+          if (dtendStr) {
             const endDate = parseIcsDate(dtendStr);
-            // For all-day events, DTEND is the morning of the day *after* the event ends.
-            // So, we iterate from startDate up to (but not including) endDate.
             let currentDate = new Date(startDate);
             while (currentDate < endDate) {
               newBlockedDates.add(formatDateToYyyyMmDd(currentDate));
               currentDate.setUTCDate(currentDate.getUTCDate() + 1);
             }
           } else {
-            // If no DTEND, assume it's a single all-day event (though less common for all-day in strict iCal)
-            // or a timed event for which we only have DTSTART, so block that single day.
             newBlockedDates.add(formatDateToYyyyMmDd(startDate));
           }
         }
@@ -116,7 +105,7 @@ async function fetchGoogleCalendarBlockedDates() {
         if (line.startsWith("DTSTART;VALUE=DATE:")) {
           dtstartStr = line.substring("DTSTART;VALUE=DATE:".length, "DTSTART;VALUE=DATE:YYYYMMDD".length);
         } else if (line.startsWith("DTSTART:") || line.startsWith("DTSTART;")) {
-          let dateStrMatch = line.match(/(\d{8})T?/); // Match YYYYMMDD, optionally followed by T
+          let dateStrMatch = line.match(/(\d{8})T?/);
           if (dateStrMatch && dateStrMatch[1]) {
             dtstartStr = dateStrMatch[1];
           }
@@ -130,29 +119,18 @@ async function fetchGoogleCalendarBlockedDates() {
         }
       }
     });
-
     googleCalendarBlockedDates = Array.from(newBlockedDates);
     if (googleCalendarBlockedDates.length > 0) {
-        console.log("Dates bloquées récupérées depuis Google Calendar (via proxy):", googleCalendarBlockedDates.sort()); // Sort for easier reading
+        console.log("Dates bloquées récupérées depuis Google Calendar (via proxy):", googleCalendarBlockedDates.sort());
     } else {
         console.log("Aucune date spécifique récupérée de Google Calendar (via proxy) ou le calendrier est vide pour les jours concernés, ou le format des dates n'est pas reconnu par le parser.");
     }
-
   } catch (error) {
     console.error("Erreur lors du traitement de l'agenda Google (via proxy):", error);
   }
 }
-
 fetchGoogleCalendarBlockedDates();
 
-/**
- * Fonction globale pour vérifier la disponibilité d'une date.
- * (Le reste de cette fonction isServiceDateAvailable reste identique à la version précédente
- * qui fonctionnait pour le décalage de date)
- * @param {string} dateStringFromPicker - La date à vérifier au format "AAAA-MM-JJ" provenant du datePicker.value.
- * @param {string} currentServiceName - Le nom du service (ex: "mariage", "bapteme") pour récupérer le bon délai.
- * @returns {boolean} - True si la date est disponible, false sinon.
- */
 function isServiceDateAvailable(dateStringFromPicker, currentServiceName) {
   const parts = dateStringFromPicker.split('-');
   const year = parseInt(parts[0], 10);
@@ -184,24 +162,32 @@ function isServiceDateAvailable(dateStringFromPicker, currentServiceName) {
   }
 
   const formattedYear = selectedDate.getFullYear();
-  const formattedMonth = String(selectedDate.getMonth() + 1).padStart(2, '0'); 
-  const formattedDay = String(selectedDate.getDate()).padStart(2, '0'); 
-  const formattedDateForComparison = `${formattedYear}-${formattedMonth}-${formattedDay}`;
+  const formattedMonthStr = String(selectedDate.getMonth() + 1).padStart(2, '0'); 
+  const formattedDayStr = String(selectedDate.getDate()).padStart(2, '0'); 
+  const fullFormattedDateForComparison = `${formattedYear}-${formattedMonthStr}-${formattedDayStr}`;
+  const monthDayFormattedForComparison = `${formattedMonthStr}-${formattedDayStr}`; // Format "MM-JJ"
+
+  console.log("Date sélectionnée (formattedDateForComparison) pour vérification :", fullFormattedDateForComparison, "| Type :", typeof fullFormattedDateForComparison);
+  console.log("Vérification contre manualBlockedDates. Contenu :", manualBlockedDates);
   
-  console.log("Date sélectionnée (formattedDateForComparison) pour vérification :", formattedDateForComparison, "| Type :", typeof formattedDateForComparison);
-  console.log("Vérification contre manualBlockedDates. Contenu :", manualBlockedDates, "| La date est-elle incluse ? :", manualBlockedDates.includes(formattedDateForComparison));
-  console.log("Vérification contre googleCalendarBlockedDates. Contenu :", googleCalendarBlockedDates.sort(), "| La date est-elle incluse ? :", googleCalendarBlockedDates.includes(formattedDateForComparison)); // Sort for easier reading
+  // 3. Dates bloquées manuellement (gère "AAAA-MM-JJ" et "MM-JJ")
+  for (const manualDate of manualBlockedDates) {
+    if (manualDate.length === 10 && manualDate === fullFormattedDateForComparison) { // Format "AAAA-MM-JJ"
+      console.log(`Date bloquée manuellement (date spécifique): ${fullFormattedDateForComparison}`);
+      return false;
+    } else if (manualDate.length === 5 && manualDate === monthDayFormattedForComparison) { // Format "MM-JJ"
+      console.log(`Date bloquée manuellement (récurrence annuelle MM-JJ): ${monthDayFormattedForComparison} pour ${fullFormattedDateForComparison}`);
+      return false;
+    }
+  }
+  
+  console.log("Vérification contre googleCalendarBlockedDates. Contenu :", googleCalendarBlockedDates.sort(), "| La date est-elle incluse ? :", googleCalendarBlockedDates.includes(fullFormattedDateForComparison));
 
-  if (manualBlockedDates.includes(formattedDateForComparison)) {
-    console.log(`Date bloquée manuellement: ${formattedDateForComparison}`);
+  if (googleCalendarBlockedDates.includes(fullFormattedDateForComparison)) {
+    console.log(`Date bloquée par Google Calendar (via proxy): ${fullFormattedDateForComparison}`);
     return false;
   }
 
-  if (googleCalendarBlockedDates.includes(formattedDateForComparison)) {
-    console.log(`Date bloquée par Google Calendar (via proxy): ${formattedDateForComparison}`);
-    return false;
-  }
-
-  console.log(`Date ${formattedDateForComparison} disponible pour le service ${currentServiceName}.`);
+  console.log(`Date ${fullFormattedDateForComparison} disponible pour le service ${currentServiceName}.`);
   return true;
 }
