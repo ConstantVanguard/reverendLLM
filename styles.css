@@ -1,4 +1,16 @@
 /* styles.css */
+/* Définition des variables de couleur pour une maintenance facile */
+:root {
+  --couleur-or: #C8B071;
+  --couleur-or-transparent-60: rgba(200, 176, 113, 0.6);
+  --couleur-or-transparent-50: rgba(200, 176, 113, 0.5);
+  --couleur-or-transparent-40: rgba(200, 176, 113, 0.4);
+  --couleur-fond: #0A0504;
+  --couleur-blanc: #ffff;
+  --couleur-barre-fond: rgba(0, 0, 0, 0.8);
+  --couleur-ombre-texte: rgba(0, 0, 0, 0.8);
+}
+
 /* Base styles */
 * {
   margin: 0;
@@ -15,8 +27,8 @@ html, body {
 body {
   font-family: 'Cinzel', serif;
   background: url("hero_background.png") center/cover fixed;
-  background-color: #0A0504; /* Ajout de la couleur de fond unie */
-  color: #C8B071; /* Couleur exacte demandée */
+  background-color: var(--couleur-fond);
+  color: var(--couleur-or);
   height: 100vh;
   overflow-y: hidden; /* Garde le overflow-y: hidden pour desktop */
   position: relative;
@@ -31,7 +43,7 @@ body {
 }
 
 .logo img {
-  height: 144px; /* Taille augmentée de 20% (120px * 1.2 = 144px) */
+  height: 144px;
   width: auto;
 }
 
@@ -41,7 +53,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Assure que le conteneur n'est pas plus large que l'écran */
+  width: 100%;
 }
 
 /* Minister container */
@@ -61,7 +73,7 @@ body {
   height: 70vh;
   max-height: 600px;
   z-index: 2;
-  transform: translateX(-5%); /* Déplace l'image 5% plus à gauche */
+  transform: translateX(-5%);
 }
 
 .minister-photo img {
@@ -88,8 +100,8 @@ body {
   font-family: 'Tangerine', cursive;
   font-weight: 700;
   font-size: 2.8rem;
-  color: rgba(200, 176, 113, 0.4);
-  text-shadow: 0 0 20px rgba(200, 176, 113, 0.5), 0 0 30px rgba(200, 176, 113, 0.4);
+  color: var(--couleur-or-transparent-40);
+  text-shadow: 0 0 20px var(--couleur-or-transparent-50), 0 0 30px var(--couleur-or-transparent-40);
   white-space: nowrap;
   z-index: 5;
   letter-spacing: 1px;
@@ -99,8 +111,8 @@ body {
 .service-item {
   position: absolute;
   display: block;
-  width: 150px; /* Largeur fixe plus grande que le cercle */
-  height: 150px; /* Hauteur fixe plus grande que le cercle */
+  width: 150px;
+  height: 150px;
   text-decoration: none;
   cursor: pointer;
   z-index: 10;
@@ -189,7 +201,7 @@ body {
   right: calc(17% - 75px);
 }
 
-/* MODIFICATION: Bordure de 2px avec transparence accrue UNIQUEMENT pour desktop */
+/* Bordure pour les cercles de service */
 .service-circle {
   width: 120px;
   height: 120px;
@@ -198,17 +210,17 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-  border: 2px solid rgba(200, 176, 113, 0.6);
+  border: 2px solid var(--couleur-or-transparent-60);
   transition: all 0.3s ease;
 }
 
 .service-item:hover .service-circle {
   transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(200, 176, 113, 0.6);
-  border-color: #C8B071;
+  box-shadow: 0 0 20px var(--couleur-or-transparent-60);
+  border-color: var(--couleur-or);
 }
 
-/* AJOUT: Opacité de 0.8 sur les icônes avec transition au survol */
+/* Opacité des icônes */
 .service-circle img {
   width: 77px;
   height: 77px;
@@ -217,7 +229,6 @@ body {
   transition: opacity 0.3s ease;
 }
 
-/* Les icônes retrouvent leur pleine opacité au survol */
 .service-item:hover .service-circle img {
   opacity: 1;
 }
@@ -227,19 +238,19 @@ body {
   font-family: 'Cinzel', serif;
   font-size: 0.85rem;
   margin-top: 10px;
-  color: #C8B071;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  color: var(--couleur-or);
+  text-shadow: 0 0 10px var(--couleur-ombre-texte);
   letter-spacing: 1px;
   text-decoration: none;
 }
 
-/* Bottom bar - Restauré à fixed pour desktop */
+/* Bottom bar */
 .bottom-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--couleur-barre-fond);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -247,7 +258,6 @@ body {
   z-index: 100;
 }
 
-/* NOUVELLE SOLUTION: Utilisation de flexbox pour la navigation */
 .nav-links {
   display: flex;
   justify-content: space-between;
@@ -256,23 +266,22 @@ body {
   max-width: 1000px;
 }
 
-/* Style uniforme pour tous les éléments de navigation avec taille augmentée */
+/* Style des liens de navigation */
 .nav-item {
   font-family: 'Cinzel', serif;
   font-size: 1.2rem;
   letter-spacing: 1px;
-  color: #C8B071;
+  color: var(--couleur-or);
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
-/* Style spécifique pour l'élément du milieu */
 .nav-links a.nav-item:nth-child(2) {
   text-align: center;
 }
 
 .nav-item:hover {
-  color: #ffff;
+  color: var(--couleur-blanc);
 }
 
 /* Responsive Design */
@@ -293,17 +302,17 @@ body {
 }
 
 @media (max-width: 768px) {
-  /* MODIFICATION: Changement de l'arrière-plan pour mobile */
+  /* Arrière-plan mobile */
   body {
     background: url("hero_background.png") center top/cover no-repeat;
     background-attachment: scroll;
-    background-color: #0A0504;
+    background-color: var(--couleur-fond);
     overflow-y: auto;
     min-height: 100vh;
   }
   
   html {
-    background-color: #0A0504;
+    background-color: var(--couleur-fond);
   }
   
   .logo img {
@@ -356,7 +365,7 @@ body {
     padding-bottom: 0;
   }
   
-  /* MODIFICATION: Ajustement pour les services en mode mobile */
+  /* Ajustement pour les services en mode mobile */
   .service-item {
     position: relative;
     top: auto !important;
@@ -381,7 +390,7 @@ body {
     width: 77px;
     height: 77px;
     margin-bottom: 5px;
-    border: 1px solid #C8B071;
+    border: 1px solid var(--couleur-or);
   }
   
   .service-circle img {
@@ -397,20 +406,18 @@ body {
     display: block;
   }
   
-  /* Remplacer ACCOMPAGNEMENT par AIDE sur mobile */
-  #service-accompagnement .service-name {
+  /* Remplacement des noms de service sur mobile */
+  #service-accompagnement .service-name,
+  #service-confirmation .service-name {
     font-size: 0.7rem;
+    visibility: hidden;
+    position: relative;
   }
   
   #service-accompagnement .service-name:after {
     content: none;
   }
-  
-  #service-accompagnement .service-name {
-    visibility: hidden;
-    position: relative;
-  }
-  
+
   #service-accompagnement .service-name:before {
     content: "AIDE";
     visibility: visible;
@@ -418,12 +425,6 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-  }
-  
-  /* Remplacer CONFIRMATION par ÉTUDE sur mobile */
-  #service-confirmation .service-name {
-    visibility: hidden;
-    position: relative;
   }
   
   #service-confirmation .service-name:before {
@@ -435,7 +436,7 @@ body {
     width: 100%;
   }
   
-  /* MODIFICATION: Bandeau bas en position relative sur mobile */
+  /* Bandeau bas en position relative sur mobile */
   .bottom-bar {
     position: relative;
     height: auto;
@@ -480,6 +481,9 @@ body {
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     margin-top: calc(10% + 20px);
+    grid-template-areas: 
+    "bapteme mariage accompagnement"
+    "confirmation funerailles empty";
   }
   
   .service-item {
@@ -493,9 +497,6 @@ body {
   
   .service-content {
     position: static;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 100%;
   }
   
@@ -506,16 +507,7 @@ body {
     width: 100%;
   }
   
-  /* Ordre spécifique pour les éléments sur mobile */
-  .service-orbit {
-    display: grid;
-    grid-template-areas: 
-    "bapteme mariage accompagnement"
-    "confirmation funerailles empty";
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
-  }
-  
+  /* Ordre spécifique des éléments */
   #service-bapteme {
     grid-area: bapteme;
   }
@@ -547,7 +539,7 @@ body {
   }
 }
 
-/* Ajustement spécifique pour les très petits écrans */
+/* Ajustement pour les très petits écrans */
 @media (max-width: 360px) {
   .service-orbit {
     grid-template-areas: 
@@ -569,6 +561,7 @@ body {
     margin-top: 10px;
   }
 }
+
 /* Ajout pour le titre H1 caché (SEO) */
 .titre-cache {
   position: absolute;
